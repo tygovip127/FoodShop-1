@@ -21,8 +21,7 @@
   <div class="main-wrap">
     @include('layouts.header')
     @yield('content')
-
-    <p>Hello every body</p>
+    <h3>This is the body, other components will override this parts</h3>
     @include('layouts.footer')
   </div>
 </body>
