@@ -4,11 +4,11 @@
       <div class="col-lg-6 col-md-6">
         <div class="contact-info-wrap">
           <div class="footer-logo">
-            <a href="#"><img src="assets/images/logo/logo.png" alt="logo"></a>
+            <a href="#"><img src="{{ asset('/images/logo/logo.png') }}" alt="logo"></a>
           </div>
           <div class="single-contact-info">
             <span>Our Location</span>
-            <p>869 General Village Apt. 645, Moorebury, USA</p>
+            <p>Hoa Hai, Ngu Hanh Son, Da Nang</p>
           </div>
           <div class="single-contact-info">
             <span>24/7 hotline:</span>
