@@ -122,7 +122,7 @@
         <div class="col-5">
           <div class="mobile-logo">
             <a href="index.html">
-              <img alt=""src="{{ asset('images/logo/logo.png') }}">
+              <img alt="" src="{{ asset('images/logo/logo.png') }}">
             </a>
           </div>
         </div>
@@ -190,6 +190,7 @@
     </div>
   </div>
 </div>
+
 <!-- Mobile menu start -->
 <div class="mobile-header-active mobile-header-wrapper-style">
   <div class="clickalbe-sidebar-wrap">
@@ -287,8 +288,4 @@
       </div>
     </div>
   </div>
-<<<<<<< HEAD
 </div>
-=======
-</div>
->>>>>>> 26a117c327677c97b51d8bfa6b9d5337b58d1361
