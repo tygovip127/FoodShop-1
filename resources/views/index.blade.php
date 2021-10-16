@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','Food Shop VKU | Home')
 
 @section('content')
 <div class="slider-area bg-gray">
@@ -120,6 +121,138 @@
               <h2>Food Shop VKU</h2>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="product-area section-padding-1 pt-115 pb-75">
+  <div class="container">
+    <div class="section-title-tab-wrap mb-45">
+      <div class="section-title">
+        <h2>Featured Products</h2>
+      </div>
+      <div class="tab-style-1 nav">
+        <a class="active" href="#product-1" data-toggle="tab">Best Seller</a>
+        <a href="#product-2" data-toggle="tab"> Trending</a>
+        <a href="#product-3" data-toggle="tab">New Arrivals </a>
+        <a href="#product-4" data-toggle="tab">All Products</a>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="tab-content jump">
+      <div id="product-1" class="tab-pane active">
+        <div class="row">
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+        </div>
+      </div>
+      <div id="product-2" class="tab-pane">
+        <div class="row">
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+        </div>
+      </div>
+      <div id="product-3" class="tab-pane">
+        <div class="row">
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+        </div>
+      </div>
+      <div id="product-4" class="tab-pane">
+        <div class="row">
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Simple Black T-Shirt" price="56.20" discount="15" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
+          <x-simple-card title="Norda Simple Backpack" price="102.54" discount="0" image="images/products/product-1.jpg"
+            link="product-details.html">
+          </x-simple-card>
         </div>
       </div>
     </div>
