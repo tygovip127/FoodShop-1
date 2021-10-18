@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get('/login-register',function (){
     return view('login-register');
 });
+
+Route::get("/cart", function () {
+    return view('cart');
+});
