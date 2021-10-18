@@ -1,7 +1,7 @@
 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
   <div class="single-product-wrap mb-35">
     <div class="product-img product-img-zoom mb-20">
-      <a href="product-details.html">
+      <a href="products/{{ $id }}">
         <img src="{{ asset(''.$image.'') }}">
       </a>
       @if ($discount !=0 || $discount != null)
@@ -20,7 +20,7 @@
     </div>
     <div class="product-content-wrap">
       <div class="product-content-left">
-        <h4><a href="product-details.html">{{ $title }}</a></h4>
+        <h4><a href="products/{{ $id }}">{{ $title }}</a></h4>
         <div class="product-price">
           @if ($discount !=0 || $discount != null)
             <span class="new-price">${{ $new_price }}</span>

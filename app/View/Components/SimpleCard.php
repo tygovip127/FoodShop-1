@@ -11,7 +11,7 @@ class SimpleCard extends Component
      *
      * @return void
      */
-
+    public $id;
     public $title;
     public $old_price;
     public $new_price;
@@ -19,8 +19,9 @@ class SimpleCard extends Component
     public $image;  
     public $link; //the link to detail product
 
-    public function __construct($title, $price, $discount, $image, $link)
+    public function __construct($id=null, $title=null, $price=null, $discount=null, $image=null, $link=null)
     {
+        $this->id = $id;
         $this->title = $title;
         $this->old_price= floatval($price);
         $this->discount = floatval($discount);

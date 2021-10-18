@@ -23,3 +23,7 @@ Route::get('/login-register',function (){
 Route::get("/cart", function () {
     return view('cart');
 });
+
+Route::get("/products/{id}", function () {
+    return view('products.show');
+});
