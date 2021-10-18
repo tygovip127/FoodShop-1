@@ -1,18 +1,7 @@
 @extends('layouts.app')
 @section('title','Food Shop VKU | Login - Register')
 @section('content')
-<div class="breadcrumb-area bg-gray">
-  <div class="container">
-    <div class="breadcrumb-content text-center">
-      <ul>
-        <li>
-          <a href="index.html">Home</a>
-        </li>
-        <li class="active">login - register </li>
-      </ul>
-    </div>
-  </div>
-</div>
+<x-breadcrumb currentPage="Login - Register"></x-breadcrumb>
 <div class="login-register-area pt-115 pb-120">
   <div class="container">
     <div class="row">
