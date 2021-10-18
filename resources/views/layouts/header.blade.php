@@ -5,7 +5,7 @@
         <div class="row align-items-center">
           <div class="col-xl-2 col-lg-2">
             <div class="logo">
-              <a href="index.html"><img src="{{ asset('images/logo/logo.png') }}" alt="logo"></a>
+              <a href="/"><img src="{{ asset('images/logo/logo.png') }}" alt="logo"></a>
             </div>
           </div>
           <div class="col-xl-8 col-lg-7">
@@ -71,7 +71,7 @@
                       <li><a href="compare.html">compare </a></li>
                       <li><a href="contact.html">contact us </a></li>
                       <li><a href="order-tracking.html">order tracking</a></li>
-                      <li><a href="login-register.html">login / register </a></li>
+                      <li><a href="/login-register">login / register </a></li>
                     </ul>
                   </li>
                   <li><a href="blog.html">BLOG </a>
@@ -102,7 +102,7 @@
                 </div>
               </div>
               <div class="same-style-2">
-                <a href="login-register.html"><i class="icon-user"></i></a>
+                <a href="/login-register"><i class="icon-user"></i></a>
               </div>
               <div class="same-style-2">
                 <a href="wishlist.html"><i class="icon-heart"></i><span class="pro-count red">03</span></a>
