@@ -209,6 +209,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .icon-user:before {
   content: "\e005";
 }

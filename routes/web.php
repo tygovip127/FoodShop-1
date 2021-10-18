@@ -27,3 +27,7 @@ Route::get("/cart", function () {
 Route::get("/products/{id}", function () {
     return view('products.show');
 });
+
+Route::get('/account', function () {
+    return view('account');
+});
