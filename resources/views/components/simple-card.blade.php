@@ -20,7 +20,7 @@
     </div>
     <div class="product-content-wrap">
       <div class="product-content-left">
-        <h4><a href="products/{{ $id }}">{{ $title }}</a></h4>
+        <h4><a href="products/{{ $id }}">{{ $name }}</a></h4>
         <div class="product-price">
           @if ($discount !=0 || $discount != null)
             <span class="new-price">${{ $new_price }}</span>

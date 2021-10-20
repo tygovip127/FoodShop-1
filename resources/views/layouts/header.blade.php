@@ -15,7 +15,7 @@
                   <li>
                     <a href="/">HOME </a>
                   </li>
-                  <li><a href="shop.html">SHOP </a>
+                  <li><a href="/products">SHOP </a>
                     <ul class="mega-menu-style mega-menu-mrg-1">
                       <li>
                         <ul>

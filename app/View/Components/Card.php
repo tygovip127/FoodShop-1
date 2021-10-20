@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class SimpleCard extends Component
+class Card extends Component
 {
     /**
      * Create a new component instance.
@@ -41,6 +41,6 @@ class SimpleCard extends Component
      */
     public function render()
     {
-        return view('components.simple-card');
+        return view('components.card');
     }
 }
