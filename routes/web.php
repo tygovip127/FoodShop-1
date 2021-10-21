@@ -38,3 +38,4 @@ Route::get("/wishlist", function () {
 Route::get('/account', function () {
     return view('account');
 });
+
