@@ -20,7 +20,13 @@ Route::get('/login-register',function (){
     return view('login-register');
 });
 Route::post('/register', [Auth\RegisterController::class, 'create'])->name('register');
-Route::post("/login", [Auth\LoginController::class, 'show'])->name('login');
+Route::post("/login", [Auth\LoginController::class, 'login'])->name('login');
+Route::get("/logout", function () {
+    if(session()->has('user')){
+        session()->pull('user');
+    }
+    redirect('/login-register');
+});
 
 Route::get('/products', function () {
     return view('products');

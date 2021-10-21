@@ -15,19 +15,23 @@ class LoginController extends Controller
     {
         $this->middleware('guest');
     }
-    protected function show(Request $request){
+    protected function login(Request $request)
+    {
+        $request->validate([
+            "username-email" => "required",
+            "password" => "required",
+        ]);
         $username_email = $request->input('username-email');
         $password = $request->input('password');
-        $user= User::where(['username' => $username_email])
-                ->orwhere(['email' =>$username_email])->first();
-        if($user && Hash::check($password, $user->password)){
+        $user = User::where(['username' => $username_email])
+            ->orwhere(['email' => $username_email])->first();
+        if ($user && Hash::check($password, $user->password)) {
+            $request->session()->put('user', $user);
             return view('index', [
                 'user' => $user
             ]);
-        }else{
-            //show the notification login fail`
+        } else {
             return view('/login-register');
         };
-        // $request->session->put('user', $user);
     }
 }
