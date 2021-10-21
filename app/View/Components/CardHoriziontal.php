@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class SimpleCard extends Component
+class CardHoriziontal extends Component
 {
     /**
      * Create a new component instance.
@@ -20,7 +20,7 @@ class SimpleCard extends Component
     public $image;  
     public $link; //the link to detail product
 
-    public function __construct($id=null,$name=null, $title=null, $price=null, $discount=null, $image=null, $link=null)
+    public function __construct($id=null, $name=null, $title=null, $price=null, $discount=null, $image=null, $link=null)
     {
         $this->id = $id;
         $this->name = $name;
@@ -41,6 +41,6 @@ class SimpleCard extends Component
      */
     public function render()
     {
-        return view('components.simple-card');
+        return view('components.card-horiziontal');
     }
 }

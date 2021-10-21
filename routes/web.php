@@ -20,14 +20,21 @@ Route::get('/login-register',function (){
     return view('login-register');
 });
 
+Route::get('/products', function () {
+    return view('products');
+}); 
+
+Route::get("/products/{id}", function () {
+    return view('products.show');
+});
+
 Route::get("/cart", function () {
     return view('cart');
 });
 
-Route::get("/shop", function () {
-    return view('shop');
-});
-
 Route::get("/wishlist", function () {
     return view('wishlist');
+});
+Route::get('/account', function () {
+    return view('account');
 });

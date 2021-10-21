@@ -2,7 +2,7 @@
 @section('title','Food Shop VKU | Login - Register')
 @section('content')
 <x-breadcrumb currentPage="Login - Register"></x-breadcrumb>
-<div class="login-register-area pt-115 pb-120">
+<div class="login-register-area pt-50 pb-120">
   <div class="container">
     <div class="row">
       <div class="col-lg-7 col-md-12 ml-auto mr-auto">
