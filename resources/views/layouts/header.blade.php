@@ -12,7 +12,7 @@
             <div class="main-menu main-menu-padding-1 main-menu-lh-1">
               <nav>
                 <ul>
-                  <li><a href="index.html">HOME </a>
+                  <li><a href="/">HOME </a>
                     <ul class="sub-menu-style">
                       <li><a href="index.html">Home version 1 </a></li>
                       <li><a href="index-2.html">Home version 2</a></li>
@@ -26,7 +26,7 @@
                       <li><a href="index-10.html">Home version 10</a></li>
                     </ul>
                   </li>
-                  <li><a href="shop.html">SHOP </a>
+                  <li><a href="/shop">SHOP </a>
                     <ul class="mega-menu-style mega-menu-mrg-1">
                       <li>
                         <ul>
@@ -67,7 +67,7 @@
                       <li><a href="cart.html">cart page</a></li>
                       <li><a href="checkout.html">checkout </a></li>
                       <li><a href="my-account.html">my account</a></li>
-                      <li><a href="wishlist.html">wishlist </a></li>
+                      <li><a href="/wishlist">wishlist </a></li>
                       <li><a href="compare.html">compare </a></li>
                       <li><a href="contact.html">contact us </a></li>
                       <li><a href="order-tracking.html">order tracking</a></li>
@@ -105,7 +105,7 @@
                 <a href="/login-register"><i class="icon-user"></i></a>
               </div>
               <div class="same-style-2">
-                <a href="wishlist.html"><i class="icon-heart"></i><span class="pro-count red">03</span></a>
+                <a href="/wishlist"><i class="icon-heart"></i><span class="pro-count red">03</span></a>
               </div>
               <div class="same-style-2 header-cart">
                 <a class="cart-active" href="#">
@@ -132,7 +132,7 @@
               <a href="login-register.html"><i class="icon-user"></i></a>
             </div>
             <div class="same-style-2">
-              <a href="wishlist.html"><i class="icon-heart"></i><span class="pro-count red">03</span></a>
+              <a href="/wishlist"><i class="icon-heart"></i><span class="pro-count red">03</span></a>
             </div>
             <div class="same-style-2 header-cart">
               <a class="cart-active" href="#">

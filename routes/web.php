@@ -23,3 +23,11 @@ Route::get('/login-register',function (){
 Route::get("/cart", function () {
     return view('cart');
 });
+
+Route::get("/shop", function () {
+    return view('shop');
+});
+
+Route::get("/wishlist", function () {
+    return view('wishlist');
+});
