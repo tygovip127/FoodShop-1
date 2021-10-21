@@ -12,28 +12,10 @@
             <div class="main-menu main-menu-padding-1 main-menu-lh-1">
               <nav>
                 <ul>
-<<<<<<< HEAD
-                  <li><a href="/">HOME </a>
-                    <ul class="sub-menu-style">
-                      <li><a href="index.html">Home version 1 </a></li>
-                      <li><a href="index-2.html">Home version 2</a></li>
-                      <li><a href="index-3.html">Home version 3</a></li>
-                      <li><a href="index-4.html">Home version 4</a></li>
-                      <li><a href="index-5.html">Home version 5</a></li>
-                      <li><a href="index-6.html">Home version 6</a></li>
-                      <li><a href="index-7.html">Home version 7</a></li>
-                      <li><a href="index-8.html">Home version 8</a></li>
-                      <li><a href="index-9.html">Home version 9</a></li>
-                      <li><a href="index-10.html">Home version 10</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="/shop">SHOP </a>
-=======
                   <li>
                     <a href="/">HOME </a>
                   </li>
                   <li><a href="/products">SHOP </a>
->>>>>>> 97bae5fa8460294066ab345126146585665c9317
                     <ul class="mega-menu-style mega-menu-mrg-1">
                       <li>
                         <ul>
