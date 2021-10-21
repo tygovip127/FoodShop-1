@@ -19,9 +19,10 @@
             <div id="lg1" class="tab-pane active">
               <div class="login-form-container">
                 <div class="login-register-form">
-                  <form action="#" method="post">
-                    <input type="text" name="user-name" placeholder="Username">
-                    <input type="password" name="user-password" placeholder="Password">
+                  <form action="{{ route('login') }}" method="post">
+                    @csrf
+                    <input type="text" name="username-email" placeholder="Username / Email">
+                    <input type="password" name="password" placeholder="Password">
                     <div class="button-box">
                       <div class="login-toggle-btn">
                         <input type="checkbox">
@@ -37,10 +38,14 @@
             <div id="lg2" class="tab-pane">
               <div class="login-form-container">
                 <div class="login-register-form">
-                  <form action="#" method="post">
-                    <input type="text" name="user-name" placeholder="Username">
-                    <input type="password" name="user-password" placeholder="Password">
-                    <input name="user-email" placeholder="Email" type="email">
+                  <form action="{{ route('register') }}" method="post">
+                    @csrf
+                    <input type="text" name="fullname" placeholder="Fullname">
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="re-password" placeholder="Retype Password">
+                    <input type="email" name="email" placeholder="Email">
+                    <input type="text" name="phone" placeholder="Phone Number">
                     <div class="button-box">
                       <button type="submit">Register</button>
                     </div>
