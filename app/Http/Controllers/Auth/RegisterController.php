@@ -23,8 +23,8 @@ class RegisterController extends Controller
       'fullname' => ['required', 'string', 'max:255'],
       'username' => ['required', 'string', 'max:255'],
       'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-      'password' => ['required', 'string', 'min:8', 'confirmed'],
-      're-password' => ['required_with:password|same:password', 'string', 'min:8', 'confirmed'],
+      'password' => ['required', 'string', 'min:8'],
+      're-password' => ['required_with:password|same:password', 'string', 'min:8'],
       'phone' => ['required','regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/'],
     ]);
 

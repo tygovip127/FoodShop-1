@@ -130,7 +130,7 @@
         <div class="col-7">
           <div class="header-action header-action-flex">
             <div class="same-style-2">
-              <a href="login-register.html"><i class="icon-user">{{ Auth::user()  }}</i></a>
+              <a href="login-register.html"><i class="icon-user"></i></a>
             </div>
             <div class="same-style-2">
               <a href="/wishlist"><i class="icon-heart"></i><span class="pro-count red">03</span></a>

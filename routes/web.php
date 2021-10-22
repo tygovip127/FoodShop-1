@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
-use App\Http\Controllers\Auth;
+use App\Http\Controllers;
+
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,18 +22,16 @@ Route::get('/', function () {
 Route::get('/login-register',function (){
     return view('login-register');
 });
-Route::post('/register', [Auth\RegisterController::class, 'create'])->name('register');
-Route::post("/login", [Auth\LoginController::class, 'login'])->name('login');
+Route::post('/register', [Controllers\Auth\RegisterController::class, 'create'])->name('register');
+Route::post("/login", [Controllers\Auth\LoginController::class, 'login'])->name('login');
 Route::get("/logout", function () {
-    if(session()->has('user')){
-        session()->pull('user');
-    }
-    redirect('/login-register');
-});
+    Auth::logout();
+    return redirect()->intended('/login-register');
+})->name('logout');
 
 //route login with google
-Route::get('/google', [Auth\LoginController::class,'redirectToGoogle']);
-Route::get('/google/callback',  [Auth\LoginController::class,'handleGoogleCallback']);
+Route::get('/google', [Controllers\Auth\LoginController::class,'redirectToGoogle']);
+Route::get('/google/callback',  [Controllers\Auth\LoginController::class,'handleGoogleCallback']);
 
 
 Route::get('/products', function () {
