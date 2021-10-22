@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,11 @@ Route::get("/logout", function () {
     redirect('/login-register');
 });
 
+//route login with google
+Route::get('/google', [Auth\LoginController::class,'redirectToGoogle']);
+Route::get('/google/callback',  [Auth\LoginController::class,'handleGoogleCallback']);
+
+
 Route::get('/products', function () {
     return view('products');
 }); 
@@ -47,3 +53,5 @@ Route::get('/account', function () {
     return view('account');
 });
 
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

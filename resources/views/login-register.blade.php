@@ -21,10 +21,10 @@
                 <div class="login-register-form">
                   <form action="{{ route('login') }}" method="post">
                     @csrf
-                    <input type="text" name="username-email" placeholder="Username / Email"
-                      value="{{ old('username-email') }}">
+                    <input type="text" name="email" placeholder="Email"
+                      value="{{ old('email') }}">
                     <span class="text-danger">
-                      @error('username-email'){{ $message }}@enderror
+                      @error('email'){{ $message }}@enderror
                     </span>
                     <input type="password" name="password" placeholder="Password" value="{{ old('password') }}">
                     <span class="text-danger">
@@ -36,7 +36,14 @@
                         <label>Remember me</label>
                         <a href="#">Forgot Password?</a>
                       </div>
-                      <button type="submit">Login</button>
+                      <div class="login-toggle-btn text-center">
+                      <button type="submit" >Login</button>
+                      </div>
+                      <hr>
+                      <div class="row login-toggle-btn text-center">
+                        <a href="{{ url('google') }}" class="btn">Or you can login with Google</a>
+                      </div>
+
                     </div>
                   </form>
                 </div>
@@ -72,7 +79,7 @@
                     <span class="text-danger">
                       @error('phone'){{ $message }}@enderror
                     </span>
-                    <div class="button-box">
+                    <div class="button-box text-center">
                       <button type="submit">Register</button>
                     </div>
                   </form>

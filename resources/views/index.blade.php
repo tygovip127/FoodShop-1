@@ -2,6 +2,9 @@
 @section('title','Food Shop VKU | Home')
 
 @section('content')
+@if (Auth::user()!=null)
+  {{ dd(Auth::user()->fullname) }}
+@endif
 <div class="slider-area bg-gray">
   <div class="hero-slider-active-1 nav-style-1 dot-style-1">
     <div class="single-hero-slider single-animation-wrap">

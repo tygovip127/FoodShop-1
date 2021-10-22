@@ -12,10 +12,10 @@ use Illuminate\Support\Str;
 class RegisterController extends Controller
 {
   //
-  public function __construct()
-  {
-    $this->middleware('guest');
-  }
+  // public function __construct()
+  // {
+  //   $this->middleware('guest');
+  // }
 
   protected function create(Request $request)
   {
@@ -26,8 +26,6 @@ class RegisterController extends Controller
       'password' => ['required', 'string', 'min:8', 'confirmed'],
       're-password' => ['required_with:password|same:password', 'string', 'min:8', 'confirmed'],
       'phone' => ['required','regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/'],
-      
-      // /(84|0[3|5|7|8|9])+([0-9]{8})/g
     ]);
 
     $user= User::create([
