@@ -149,26 +149,43 @@
                     <h3>Account Details</h3>
                     <div class="account-details-form">
                       <form action="#">
-                        <div class="row">
+                        @csrf
+                        <div class="profile-header">
+                          <div class="row align-items-center">
+                            <div class="col-auto profile-image">
+                              <a href="#">
+                                <img class="rounded-circle" style="width:5rem" alt="User Image"
+                                  src="{{ Auth::user()->avatar? Auth::user()->avatar : asset('../images/users/usersavatardefault_92824.png') }}">
+                              </a>
+                            </div>
+                            <div class="col ml-md-n2 profile-user-info">
+                              <h4 class="user-name mb-0">{{ Auth::user()->fullname }}</h4>
+                              <h6 class="text-muted">{{ Auth::user()->email }}</h6>
+                              <div class="user-Location"><i class="fa fa-map-marker"></i>{{ Auth::user()->address }}
+                              </div>
+                            </div>
+                            <div class="col-auto profile-btn">
+                              <input type="file" id="upload" hidden />
+                              <label class="btn-primary p-2" for="upload">Edit avatar</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mt-15">
                           <div class="col-lg-6">
                             <div class="single-input-item">
-                              <label for="first-name" class="required">First Name</label>
-                              <input type="text" id="first-name" />
+                              <label for="username" class="required">Username</label>
+                              <input type="text" id="username" />
                             </div>
                           </div>
                           <div class="col-lg-6">
                             <div class="single-input-item">
-                              <label for="last-name" class="required">Last Name</label>
-                              <input type="text" id="last-name" />
+                              <label for="fullname" class="required">Fullname</label>
+                              <input type="text" id="fullname" />
                             </div>
                           </div>
                         </div>
                         <div class="single-input-item">
-                          <label for="display-name" class="required">Display Name</label>
-                          <input type="text" id="display-name" />
-                        </div>
-                        <div class="single-input-item">
-                          <label for="email" class="required">Email Addres</label>
+                          <label for="email" class="required">Email Address</label>
                           <input type="email" id="email" />
                         </div>
                         <fieldset>
