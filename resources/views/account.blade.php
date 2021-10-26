@@ -155,7 +155,7 @@
                             <div class="col-auto profile-image">
                               <a href="#">
                                 <img class="rounded-circle" style="width:5rem" alt="User Image"
-                                  src="{{ Auth::user()->avatar? Auth::user()->avatar : asset('../images/users/usersavatardefault_92824.png') }}">
+                                  src="{{ (Auth::user() && Auth::user()->avatar)? Auth::user()->avatar : asset('../images/users/usersavatardefault_92824.png') }}">
                               </a>
                             </div>
                             <div class="col ml-md-n2 profile-user-info">
