@@ -2,6 +2,7 @@
 @section('title','Food Shop VKU | Account')
 
 @section('content')
+{{-- {{ dd($province) }} --}}
 <x-breadcrumb currentPage="Account"></x-breadcrumb>
 <!-- my account wrapper start -->
 <div class="my-account-wrapper pt-50 pb-50">
@@ -148,8 +149,9 @@
                   <div class="myaccount-content">
                     <h3>Account Details</h3>
                     <div class="account-details-form">
-                      <form action="#">
+                      <form action="/users/{{ Auth::user()->id }}" method="post">
                         @csrf
+                        @method('put')
                         <div class="profile-header">
                           <div class="row align-items-center">
                             <div class="col-auto profile-image">
@@ -174,22 +176,93 @@
                           <div class="col-lg-6">
                             <div class="single-input-item">
                               <label for="username" class="required">Username</label>
-                              <input type="text" id="username" />
+                              <input type="text" name="username" id="username" value="{{ Auth::user()->username }}" />
+                              <span class="text-danger">
+                                @error('username'){{ $message }}@enderror
+                              </span>
                             </div>
                           </div>
                           <div class="col-lg-6">
                             <div class="single-input-item">
                               <label for="fullname" class="required">Fullname</label>
-                              <input type="text" id="fullname" />
+                              <input type="text" name="fullname" id="fullname" value="{{  Auth::user()->fullname }}" />
+                              <span class="text-danger">
+                                @error('fullname'){{ $message }}@enderror
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="single-input-item">
+                              <label for="email" class="required">Email Address</label>
+                              <input type="email" name="email" id="email" value="{{  Auth::user()->email }}" />
+                              <span class="text-danger">
+                                @error('email'){{ $message }}@enderror
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="single-input-item">
+                              <label for="phone" class="required">Your phone number</label>
+                              <input type="text" name="phone" id="phone" value="{{  Auth::user()->phone }}" />
+                              <span class="text-danger">
+                                @error('phone'){{ $message }}@enderror
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="single-input-item">
+                              <label for="province" class="required">Province</label>
+                              <select class="px-2 py-20" name="province" id="province">
+                                <option value="0">---- Select your province ----</option>
+                                @foreach ( $provinces as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                              </select>
+                              <span class="text-danger">
+                                @error('province'){{ $message }}@enderror
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="single-input-item">
+                              <label for="district" class="required">District</label>
+                              <select name="district" id="district">
+                                <option value="0">---- Select your district ----</option>
+                              </select>
+                              <span class="text-danger">
+                                @error('district'){{ $message }}@enderror
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="single-input-item">
+                              <label for="ward" class="required">Ward</label>
+                              <select name="ward" id="ward">
+                                <option value="0">---- Select your ward ----</option>
+                              </select>
+                              <span class="text-danger">
+                                @error('ward'){{ $message }}@enderror
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="single-input-item">
+                              <label for="street" class="required">Street</label>
+                              <input type="text" name="street" id="street">
+                              <span class="text-danger">
+                                @error('street'){{ $message }}@enderror
+                              </span>
                             </div>
                           </div>
                         </div>
                         <div class="single-input-item">
-                          <label for="email" class="required">Email Address</label>
-                          <input type="email" id="email" />
+                          <button class="check-btn sqr-btn ">Save Changes</button>
                         </div>
+                      </form>
+                      <form action="#" method="post" enctype="multipart/form">
+                        @csrf
                         <fieldset>
-                          <legend>Password change</legend>
+                          <legend class="pt-15">Password change</legend>
                           <div class="single-input-item">
                             <label for="current-pwd" class="required">Current Password</label>
                             <input type="password" id="current-pwd" />
@@ -210,7 +283,7 @@
                           </div>
                         </fieldset>
                         <div class="single-input-item">
-                          <button class="check-btn sqr-btn ">Save Changes</button>
+                          <button class="check-btn sqr-btn ">Change Password</button>
                         </div>
                       </form>
                     </div>
@@ -225,4 +298,45 @@
   </div>
 </div>
 <!-- my account wrapper end -->
+@endsection
+@section('script')
+<script type="text/javascript">
+  $(document).ready(function (){
+    $("#province").change(function(e){
+      e.preventDefault();
+      var id = $("#province").val();
+      $("#district option").remove();
+      $("#ward option").remove();
+      $.ajax({
+        type: "GET",
+        url: `http://localhost:8000/api/address/districts/${id}`,
+        headers: { 'Content-Type': 'application/json' },
+        success: function(response) {
+          console.log(response);
+          $.each( response, function(id, item) {
+            $('#district').append($('<option>', {value:item.id, text:item.name}));
+          });
+        }
+      })
+     
+    });
+
+    $('#district').change(function (e){
+      e.preventDefault();
+      var id = $("#district").val();
+      $("#ward option").remove();
+      $.ajax({
+        type: "GET",
+        url: `http://localhost:8000/api/address/wards/${id}`,
+        headers: { 'Content-Type': 'application/json' },
+        success: function(response) {
+          console.log(response);
+          $.each( response, function(id,item) {
+            $('#ward').append($('<option>', {value:item.id, text:item.name}));
+          });
+        }
+      })
+    })
+  })
+</script>
 @endsection

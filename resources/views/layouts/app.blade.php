@@ -52,6 +52,7 @@
   <script src="{{ asset('../../js/plugins/ajax-mail.js') }}"></script>
 
   <script src="{{ asset('../../js/main.js') }}"></script>
+  @yield('script')
 </body>
 
 </html>

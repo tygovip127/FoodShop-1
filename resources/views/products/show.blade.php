@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Food Shop VKU | Product-Detail')
+@section('title','Food Shop VKU | Product Detail')
 
 @section('content')
 <x-breadcrumb currentPage=" Product-Detail"></x-breadcrumb>

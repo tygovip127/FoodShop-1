@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers;
-
+use App\Models\Province;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 Route::get('/login-register',function (){
     return view('login-register');
-});
+})->name('login-register');
 Route::post('/register', [Controllers\Auth\RegisterController::class, 'create'])->name('register');
 Route::post("/login", [Controllers\Auth\LoginController::class, 'login'])->name('login');
 Route::get("/logout", function () {
@@ -34,14 +34,7 @@ Route::get('/google', [Controllers\Auth\LoginController::class,'redirectToGoogle
 Route::get('/google/callback',  [Controllers\Auth\LoginController::class,'handleGoogleCallback']);
 
 
-Route::get('/products', function () {
-    return view('products');
-}); 
-
-Route::get("/products/{id}", function () {
-    return view('products.show');
-});
-
+// Route::get()
 Route::get("/cart", function () {
     return view('cart');
 });
@@ -50,8 +43,15 @@ Route::get("/wishlist", function () {
     return view('wishlist');
 });
 Route::get('/account', function () {
-    return view('account');
-});
-
+    $provinces = Province::all();
+    return view('account', ['provinces'=> $provinces]);
+})->middleware('auth');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
+
+Route::resource('/products', Controllers\ProductController::class);
+Route::get("/test", function (){
+    //test thử code
+    return view('test');
+});
