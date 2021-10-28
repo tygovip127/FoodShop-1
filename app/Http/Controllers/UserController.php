@@ -22,10 +22,6 @@ class UserController extends Controller
 
     $user =User::find($id);
     $user->update($request->all());
-    return $user;
-    // try {
-    // } catch (\Exception $e) {
-
-    // }
+    return redirect()->intended('/account')->with('user_success', 'Change user information successfully!');
   }
 }

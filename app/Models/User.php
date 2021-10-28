@@ -28,6 +28,9 @@ class User extends Authenticatable
         'token',
         'google_id',
         'avatar',
+        'province_id',
+        'district_id',
+        'ward_id',
     ];
 
     /**

@@ -29,4 +29,6 @@ Route::prefix('/address')->name('address.')->group(function () {
     Route::get("/provinces", [AddressController::class, "provinces"])->name('provinces');
     Route::get("/districts/{id}", [AddressController::class, "districts"])->name('districts');
     Route::get("/wards/{id}", [AddressController::class, "wards"])->name('wards');
+    Route::get("/user-address/{id}",[AddressController::class, "getUserAddress"]);
+    Route::put('/update/{id}', [AddressController::class, "saveAddress"])->name('update');
 });
