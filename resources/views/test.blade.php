@@ -1,25 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <select name="province" id="province">
-      <option value="1">Hihi</option>
-      <option value="2">aab</option>
-    </select>
-    {{-- <script>
-      $(document).ready(function (){
-        $('#province').change(function(e){
-          alert('Please select');
-        })
-      })
-    </script> --}}
+<form action="#" method="post">
+  @csrf
+  @method('put')
+  <div class="col-auto profile-btn">
+    <input type="file" name="image" id="upload" hidden />
+    <label class="btn-primary p-2" for="upload">Edit avatar</label>
+  </div>
+  <div class="single-input-item">
+    <button class="check-btn sqr-btn ">Save Changes</button>
+  </div>
+</form>
 @endsection
 @section('script')
-    
 <script>
-  $(document).ready(function (){
-    $('#province').change(function(e){
-      alert('Please select');
-    })
-  })
+  
 </script>
 @endsection
