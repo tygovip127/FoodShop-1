@@ -21,15 +21,29 @@
                 <div class="login-register-form">
                   <form action="{{ route('login') }}" method="post">
                     @csrf
-                    <input type="text" name="username-email" placeholder="Username / Email">
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="text" name="email" placeholder="Email"
+                      value="{{ old('email') }}">
+                    <span class="text-danger">
+                      @error('email'){{ $message }}@enderror
+                    </span>
+                    <input type="password" name="password" placeholder="Password" value="{{ old('password') }}">
+                    <span class="text-danger">
+                      @error('password'){{ $message }}@enderror
+                    </span>
                     <div class="button-box">
                       <div class="login-toggle-btn">
                         <input type="checkbox">
                         <label>Remember me</label>
                         <a href="#">Forgot Password?</a>
                       </div>
-                      <button type="submit">Login</button>
+                      <div class="login-toggle-btn text-center">
+                      <button type="submit" >Login</button>
+                      </div>
+                      <hr>
+                      <div class="row login-toggle-btn text-center">
+                        <a href="{{ url('google') }}" class="btn">Or you can login with Google</a>
+                      </div>
+
                     </div>
                   </form>
                 </div>
@@ -40,13 +54,32 @@
                 <div class="login-register-form">
                   <form action="{{ route('register') }}" method="post">
                     @csrf
-                    <input type="text" name="fullname" placeholder="Fullname">
-                    <input type="text" name="username" placeholder="Username">
-                    <input type="password" name="password" placeholder="Password">
-                    <input type="password" name="re-password" placeholder="Retype Password">
-                    <input type="email" name="email" placeholder="Email">
-                    <input type="text" name="phone" placeholder="Phone Number">
-                    <div class="button-box">
+                    <input type="text" name="fullname" placeholder="Fullname" value="{{ old('fullname') }}">
+                    <span class="text-danger">
+                      @error('fullname'){{ $message }}@enderror
+                    </span>
+                    <input type="text" name="username" placeholder="Username" value="{{ old('username') }}">
+                    <span class="text-danger">
+                      @error('username'){{ $message }}@enderror
+                    </span>
+                    <input type="password" name="password" placeholder="Password" value="{{ old('password') }}">
+                    <span class="text-danger">
+                      @error('password'){{ $message }}@enderror
+                    </span>
+                    <input type="password" name="re-password" placeholder="Retype Password"
+                      value="{{ old('re-password') }}">
+                    <span class="text-danger">
+                      @error('re-password'){{ $message }}@enderror
+                    </span>
+                    <input type="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                    <span class="text-danger">
+                      @error('email'){{ $message }}@enderror
+                    </span>
+                    <input type="text" name="phone" placeholder="Phone Number" value="{{ old('phone') }}">
+                    <span class="text-danger">
+                      @error('phone'){{ $message }}@enderror
+                    </span>
+                    <div class="button-box text-center">
                       <button type="submit">Register</button>
                     </div>
                   </form>

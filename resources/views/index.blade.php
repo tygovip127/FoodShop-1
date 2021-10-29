@@ -2,6 +2,10 @@
 @section('title','Food Shop VKU | Home')
 
 @section('content')
+{{-- @if (Auth::user())
+{{ dd(Auth::user()->fullname) }}
+@endif --}}
+
 <div class="slider-area bg-gray">
   <div class="hero-slider-active-1 nav-style-1 dot-style-1">
     <div class="single-hero-slider single-animation-wrap">
@@ -145,113 +149,113 @@
     <div class="tab-content jump">
       <div id="product-1" class="tab-pane active">
         <div class="row">
-          <x-simple-card name="Simple Black T-Shirt" id="1"  price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1"  price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1"  price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1"  price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1"  price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1"  price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1"  price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1"  price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
         </div>
       </div>
       <div id="product-2" class="tab-pane">
         <div class="row">
-          <x-simple-card name="Simple Black T-Shirt" id="1"  price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1"  price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1"  price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1"  price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1"  price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1"  price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1"  price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1"  price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
         </div>
       </div>
       <div id="product-3" class="tab-pane">
         <div class="row">
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
         </div>
       </div>
       <div id="product-4" class="tab-pane">
         <div class="row">
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg"
-            link="product-details.html">
+          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0"
+            image="images/products/product-1.jpg" link="product-details.html">
           </x-simple-card>
         </div>
       </div>

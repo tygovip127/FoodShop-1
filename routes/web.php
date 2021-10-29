@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth;
+use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers;
+use App\Http\Controllers\AddressController;
+use App\Models\Province;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,20 +20,25 @@ use App\Http\Controllers\Auth;
 Route::get('/', function () {
     return view('index');
 });
+
 Route::get('/login-register',function (){
     return view('login-register');
-});
-Route::post('/register', [Auth\RegisterController::class, 'create'])->name('register');
-Route::post("/login", [Auth\LoginController::class, 'show'])->name('login');
+})->name('login-register');
+Route::post('/register', [Controllers\Auth\RegisterController::class, 'create'])->name('register');
+Route::post("/login", [Controllers\Auth\LoginController::class, 'login'])->name('login');
+Route::put('/reset-password', [Controllers\Auth\ResetPasswordController::class, 'reset'])
+    ->name('reset-password');
+Route::get("/logout", function () {
+    Auth::logout();
+    return redirect()->intended('/login-register');
+})->name('logout');
 
-Route::get('/products', function () {
-    return view('products');
-}); 
+//route login with google
+Route::get('/google', [Controllers\Auth\LoginController::class,'redirectToGoogle']);
+Route::get('/google/callback',  [Controllers\Auth\LoginController::class,'handleGoogleCallback']);
 
-Route::get("/products/{id}", function () {
-    return view('products.show');
-});
 
+// Route::get()
 Route::get("/cart", function () {
     return view('cart');
 });
@@ -38,9 +47,20 @@ Route::get("/wishlist", function () {
     return view('wishlist');
 });
 Route::get('/account', function () {
-    return view('account');
-});
+    $provinces = Province::all();
+    $id= Auth::user()->id;
+    $address= AddressController::getUserAddress($id);
+    return view('account', ['provinces'=> $provinces, 'address'=> $address]);
+})->middleware('auth');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
+});
+Route::resource('/products', Controllers\ProductController::class);
+Route::get("/test", function (){
+    //test thử code
+    return view('test');
 });

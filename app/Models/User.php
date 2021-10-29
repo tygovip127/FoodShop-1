@@ -26,6 +26,11 @@ class User extends Authenticatable
         'phone',
         'address',
         'token',
+        'google_id',
+        'avatar',
+        'province_id',
+        'district_id',
+        'ward_id',
     ];
 
     /**
