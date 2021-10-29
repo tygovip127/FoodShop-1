@@ -93,8 +93,8 @@
                       <p><strong>{{ Auth::user()->fullname }}</strong></p>
                       @if ($address)
                         <p>
-                          {{ Auth::user()->address }}, {{ $address[2]->name}}<br>
-                          {{$address[1]->name }}, {{ $address[0]->name}}
+                          {{ Auth::user()->address }}- {{ $address[2] ? $address[2]->name:null}}<br>
+                          {{$address[1] ?$address[1]->name : null }}- {{ $address[0] ? $address[0]->name : null}}
                         </p>
                       @endif
                       <p>Mobile: {{ Auth::user()->phone }}</p>
@@ -193,10 +193,6 @@
                               <h6 class="text-muted">{{ Auth::user()->email }}</h6>
                               <div class="user-Location"><i class="fa fa-map-marker"></i>{{ Auth::user()->address }}
                               </div>
-                            </div>
-                            <div class="col-auto profile-btn">
-                              <input type="file" id="upload" hidden />
-                              <label class="btn-primary p-2" for="upload">Edit avatar</label>
                             </div>
                           </div>
                         </div>

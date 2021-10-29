@@ -37,8 +37,6 @@ Route::get("/logout", function () {
 Route::get('/google', [Controllers\Auth\LoginController::class,'redirectToGoogle']);
 Route::get('/google/callback',  [Controllers\Auth\LoginController::class,'handleGoogleCallback']);
 
-
-// Route::get()
 Route::get("/cart", function () {
     return view('cart');
 });
@@ -54,6 +52,9 @@ Route::get('/account', function () {
 })->middleware('auth');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get("/error", function (){
+    return view('error');
+});
 Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
 
 Route::resource('/products', Controllers\ProductController::class);
