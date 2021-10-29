@@ -26,7 +26,7 @@
                       <li><a href="index-10.html">Home version 10</a></li>
                     </ul>
                   </li>
-                  <li><a href="shop.html">SHOP </a>
+                  <li><a href="/shop">SHOP </a>
                     <ul class="mega-menu-style mega-menu-mrg-1">
                       <li>
                         <ul>
