@@ -58,6 +58,9 @@ Route::get("/error", function (){
 });
 Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
 Route::resource('/products', Controllers\ProductController::class);
 Route::get("/test", function (){
     //test thử code
