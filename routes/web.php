@@ -56,7 +56,7 @@ Route::get("/error", function (){
     return view('error');
 });
 Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
-
+Route::get("/users", [Controllers\UserController::class, 'index']);
 Route::resource('/products', Controllers\ProductController::class);
 Route::get("/test", function (){
     //test thử code
