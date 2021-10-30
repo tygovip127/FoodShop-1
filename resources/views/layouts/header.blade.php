@@ -12,21 +12,10 @@
             <div class="main-menu main-menu-padding-1 main-menu-lh-1">
               <nav>
                 <ul>
-                  <li><a href="index.html">HOME </a>
-                    <ul class="sub-menu-style">
-                      <li><a href="index.html">Home version 1 </a></li>
-                      <li><a href="index-2.html">Home version 2</a></li>
-                      <li><a href="index-3.html">Home version 3</a></li>
-                      <li><a href="index-4.html">Home version 4</a></li>
-                      <li><a href="index-5.html">Home version 5</a></li>
-                      <li><a href="index-6.html">Home version 6</a></li>
-                      <li><a href="index-7.html">Home version 7</a></li>
-                      <li><a href="index-8.html">Home version 8</a></li>
-                      <li><a href="index-9.html">Home version 9</a></li>
-                      <li><a href="index-10.html">Home version 10</a></li>
-                    </ul>
+                  <li>
+                    <a href="/">HOME </a>
                   </li>
-                  <li><a href="/shop">SHOP </a>
+                  <li><a href="/products">SHOP </a>
                     <ul class="mega-menu-style mega-menu-mrg-1">
                       <li>
                         <ul>
@@ -67,7 +56,7 @@
                       <li><a href="cart.html">cart page</a></li>
                       <li><a href="checkout.html">checkout </a></li>
                       <li><a href="my-account.html">my account</a></li>
-                      <li><a href="wishlist.html">wishlist </a></li>
+                      <li><a href="/wishlist">wishlist </a></li>
                       <li><a href="compare.html">compare </a></li>
                       <li><a href="contact.html">contact us </a></li>
                       <li><a href="order-tracking.html">order tracking</a></li>
@@ -101,11 +90,23 @@
                   </form>
                 </div>
               </div>
-              <div class="same-style-2">
-                <a href="/login-register"><i class="icon-user"></i></a>
+              <div class="same-style-2 main-menu" >
+                <nav>
+                  <ul>
+                    <li>
+                      <a href="/login-register"><i class="icon-user"></i></a>
+                      <ul class="sub-menu-style">
+                        <li ><a href="/account">{{ (Auth::user() && Auth::user()->fullname)? Auth::user()->fullname: "My account" }}  </a></li>
+                        <li><a href="/logout">Logout </a></li>
+                        <li><a href="/admin">Admin </a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
               </div>
+
               <div class="same-style-2">
-                <a href="wishlist.html"><i class="icon-heart"></i><span class="pro-count red">03</span></a>
+                <a href="/wishlist"><i class="icon-heart"></i><span class="pro-count red">03</span></a>
               </div>
               <div class="same-style-2 header-cart">
                 <a class="cart-active" href="#">
@@ -132,7 +133,7 @@
               <a href="login-register.html"><i class="icon-user"></i></a>
             </div>
             <div class="same-style-2">
-              <a href="wishlist.html"><i class="icon-heart"></i><span class="pro-count red">03</span></a>
+              <a href="/wishlist"><i class="icon-heart"></i><span class="pro-count red">03</span></a>
             </div>
             <div class="same-style-2 header-cart">
               <a class="cart-active" href="#">
