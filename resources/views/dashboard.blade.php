@@ -5,8 +5,9 @@
 <x-breadcrumb currentPage="Dashboard"></x-breadcrumb>
 <div class="shop-area pt-120 pb-120 section-padding-2">
   <div class="container-fluid">
-    <div class="row flex-row-reverse">
-      <div class="col-lg-9">
+    <div class="row">
+      @include('layouts.admin-sidebar')
+      <div class="col-lg-9 col-md-8">
         <div class="row">
           <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card">
@@ -621,7 +622,6 @@
           </div>
         </div>
       </div>
-      @include('layouts.admin-sidebar')
     </div>
   </div>
 </div>
