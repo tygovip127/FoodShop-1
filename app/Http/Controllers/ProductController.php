@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Requests\StoreProductRequest;
 use App\Models\Goods;
 
 class ProductController extends Controller
@@ -34,12 +35,20 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Requests\StoreProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        //
+
+        Goods::create([
+            'title' => $request->input('title'),
+            'category_id' => $request->input('category_id'),
+            'restock_value' => $request->input('restock_value'),
+            'sell_value' => $request->input('sell_value'),
+            'subtitle' => $request->input('subtitle')
+        ]);
+        return redirect()->route('product.show');
     }
 
     /**
