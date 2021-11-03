@@ -17,8 +17,8 @@ class ProductController extends Controller
         /**
          * Get data from database and pass them through view 
          */
-
-        return view('products');
+        $products = Goods::paginate(9);
+        return view('products', ['$products'=>$products]);
     }
 
     /**
@@ -84,6 +84,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Goods::find($id)->delete();
+        return Goods::all();
     }
 }

@@ -18,10 +18,10 @@ class CreateGoodsTable extends Migration
             $table->string('title');
             $table->float('restock_value');
             $table->float('sell_value');
-            $table->string('subtitle');
-            $table->unsignedInteger('size');
-            $table->float('rate');
-            $table->unsignedInteger('view');
+            $table->string('subtitle')->nullable();
+            $table->unsignedInteger('size')->nullable();
+            $table->float('rate')->nullable();
+            $table->unsignedInteger('view')->default(0);
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')
                 ->references('id')
