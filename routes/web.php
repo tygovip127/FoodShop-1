@@ -70,5 +70,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::resource('/products', Controllers\ProductController::class);
 Route::get("/test", function (){
     //test thử code
-    return view('test');
+    $products= Models\Goods::paginate(9);
+    return view('test', ['products'=> $products]);
 });

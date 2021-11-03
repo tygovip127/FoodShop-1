@@ -18,7 +18,7 @@ class ProductController extends Controller
          * Get data from database and pass them through view 
          */
         $products = Goods::paginate(9);
-        return view('products', ['$products'=>$products]);
+        return view('products', ['products'=>$products]);
     }
 
     /**
