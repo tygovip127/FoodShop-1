@@ -7,5 +7,6 @@
         <a  href="shop.html">Billing</a>
         <a  href="shop.html">RTL</a>
         <a  href="shop.html">Profile</a>
+        <a href="/admin/category">Category</a>
     </div>
 </div>

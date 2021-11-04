@@ -65,6 +65,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return view('dashboard');
     })->name('dashboard');
     Route::get('/users-management',[Controllers\AdminController::class, "showUsers"])->name('users-managerment');
+    Route::resource('/category', Controllers\CategoryController::class);
 });
 // 
 Route::resource('/products', Controllers\ProductController::class);
