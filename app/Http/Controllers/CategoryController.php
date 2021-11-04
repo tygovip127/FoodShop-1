@@ -15,7 +15,7 @@ class CategoryController extends Controller
     {
         // get all categories from database
         $categories= Category::all();
-        return $categories;
+        return view('admin.category', ['categories' => $categories]);
     }
 
     /**
@@ -37,12 +37,13 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' =>"required",
+            'category' =>"required",
         ]);
         $category= Category::create([
-            'name' => $request->input('name'),
+            'name' => $request->input('category'),
         ]);
-        return $category;
+        // return $category;
+        return view('admin.category', ['categories' => Category::all()]);
     }
 
     /**
@@ -53,7 +54,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        return Category::find($id)->first();
+        return Category::find($id);
     }
 
     /**
@@ -91,5 +92,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::find($id)->delete();
+        return view('admin.category', ['categories' =>  Category::all()]);
     }
 }

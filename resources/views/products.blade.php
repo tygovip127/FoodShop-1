@@ -100,6 +100,20 @@
               <li><a class="next" href="#"><i class="icon-arrow-right"></i></a></li>
             </ul>
           </div>
+          {{-- <div class="pro-pagination-style text-center mt-10">
+            <span class="hidden">
+              {{ $pages = ceil($products->total() / $products->perPage()) }}
+            </span>
+            <ul>
+              <li><a class="prev" href="{{ $products->previousPageUrl() }}"><i class="icon-arrow-left"></i></a></li>
+              @for ($i = 1; $i <= $pages; $i++) 
+              <li>
+                <a  href='{{ "http://127.0.0.1:8000/products?page=".$i }}'>{{ $i }}</a>
+              </li>
+              @endfor
+              <li><a class="next" href="{{ $products->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
+            </ul>
+          </div> --}}
         </div>
       </div>
       <div class="col-lg-3">

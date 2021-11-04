@@ -24,7 +24,7 @@
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="hero-slider-img-1 slider-animated-1">
-              <img class="animated" src="{{  asset('../images/slider/hm-1-slider-1.png') }}" alt="">
+              <img class="animated" src="{{  asset('../images/slider/potato.png') }}" alt="">
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="hero-slider-img-1 slider-animated-1">
-              <img class="animated" src="{{  asset('../images/slider/hm-1-slider-1.png') }}" alt="">
+              <img class="animated" src="{{  asset('../images/slider/bubble-milk-tea.png') }}" alt="">
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@
             </div>
             <div class="service-content">
               <h3>100% Secure</h3>
-              <span>Payment Online</span>
+              <span>Ship Cod</span>
             </div>
           </div>
         </div>
@@ -118,9 +118,9 @@
         <div class="col-lg-9 col-md-9">
           <div class="about-us-content">
             <h3>Introduce</h3>
-            <p>Norda store is a business concept is to offer fashion and quality at the best price. It has since it
-              was founded in 2018 grown into one of the best WooCommerce Fashion Theme. The content of this site is
-              copyright-protected and is the property of David Moye Creative.</p>
+            <p>Food Shop VKU is a business concept is to offer Foods and Drinks with the best price. It has since it
+              was founded in 2021 with the goal of bringing the best products to everyone at reasonable prices.
+              It's really convenient, fast and economical thanks to ordering via our webiste</p>
             <div class="signature">
               <h2>Food Shop VKU</h2>
             </div>

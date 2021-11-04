@@ -65,10 +65,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return view('dashboard');
     })->name('dashboard');
     Route::get('/users-management',[Controllers\AdminController::class, "showUsers"])->name('users-managerment');
+    Route::resource('/category', Controllers\CategoryController::class);
 });
 // 
 Route::resource('/products', Controllers\ProductController::class);
 Route::get("/test", function (){
     //test thử code
-    return view('test');
+    $products= Models\Goods::paginate(9);
+    return view('test', ['products'=> $products]);
 });
