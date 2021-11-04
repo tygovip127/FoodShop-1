@@ -67,3 +67,4 @@ Route::get("/test", function (){
     //test thử code
     return view('test');
 });
+
