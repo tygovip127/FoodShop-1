@@ -18,7 +18,7 @@
                 <div class="col-lg-6">
                   <div class="single-input-item">
                     <label for="category">Category Name</label>
-                    <input type="text" name="category" id="category" autocomplete="off">
+                    <input type="text" name="category" id="category">
                     <span class="text-danger">
                       @error('category'){{ $message }}@enderror
                     </span>

@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\BannerController;
 use App\Models;
 use App\Models\Province;
+use App\Models\Banner;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,8 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('index');
+    $banners= Banner::all();
+    return view('index', ['banners'=>$banners]);
 });
 
 Route::get('/login-register',function (){
@@ -65,7 +68,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return view('dashboard');
     })->name('dashboard');
     Route::get('/users-management',[Controllers\AdminController::class, "showUsers"])->name('users-managerment');
-    Route::resource('/category', Controllers\CategoryController::class);
+    Route::resources([
+        '/category'=> Controllers\CategoryController::class,
+        '/banner'=>Controllers\BannerController::class,
+    ]);
 });
 // 
 Route::resource('/products', Controllers\ProductController::class);

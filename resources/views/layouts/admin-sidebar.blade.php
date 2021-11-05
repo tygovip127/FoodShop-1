@@ -8,5 +8,6 @@
         <a  href="shop.html">RTL</a>
         <a  href="shop.html">Profile</a>
         <a href="/admin/category">Category</a>
+        <a href="/admin/banner">Banner</a>
     </div>
 </div>
