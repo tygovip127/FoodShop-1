@@ -49,7 +49,7 @@
           <div class="col-lg-6">
             <div class="single-input-item">
               <label for="category_id" class="required">Category</label>
-              <select name="category_id" id="category_id" class="@error('restock_value') is-invalid @enderror">
+              <select name="category_id" id="category_id" class="@error('category_id') is-invalid @enderror">
                 <option value="" disabled selected>Select your option</option>
                 @foreach($categories as $category)
                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -65,7 +65,7 @@
           <div class="col-lg-6">
             <div class="single-input-item">
               <label for="sell_value" class="required">Sell value</label>
-              <input type="number" name="sell_value" id="sell_value" class="@error('restock_value') is-invalid @enderror" placeholder="VND" min="0" value="" />
+              <input type="number" name="sell_value" id="sell_value" class="@error('sell_value') is-invalid @enderror" placeholder="VND" min="0" value="" />
               @error('sell_value')
               <span class="text-danger">
                 <strong>{{ $message }}</strong>
@@ -76,7 +76,7 @@
           <div class="col-lg-6">
             <div class="single-input-item">
               <label for="subtitle" class="required">Subtitle</label>
-              <textarea name="subtitle" id="subtitle" class="@error('restock_value') is-invalid @enderror" cols="30" rows="10"></textarea>
+              <textarea name="subtitle" id="subtitle" class="@error('subtitle') is-invalid @enderror" cols="30" rows="10"></textarea>
               @error('subtitle')
               <span class="text-danger">
                 <strong>{{ $message }}</strong>
@@ -86,8 +86,8 @@
           </div>
           <div class="col-lg-6">
             <div class="single-input-item">
-              <label for="subtitle" class="required">Images</label>
-              <input type="file" multiple>
+              <label for="feature_image_path" class="required">Images</label>
+              <input type="file" name="feature_image_path" id="feature_image_path" multiple>
               <span class="text-danger">
 
               </span>

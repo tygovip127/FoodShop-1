@@ -60,7 +60,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach( $products as $product)
-                                        <x-product-list-card id="{{ $product->id }}" image="{{ $product->feature_image_path }}" title="{{ $product->title }}" category_id="{{ $product->category_id }}" restock_value="{{ $product->restock_value }}" sell_value="{{$product->sell_value}}" subtitle="{{$product->subtitle}}" rate="{{$product->rate}}" view="{{$product->view}}" created_at="{{$product->created_at}}" updated_at="{{$product->updated_at}}">
+                                        <x-product-list-card id="{{ $product->id }}" image="{{ $product->feature_image_path }}" title="{{ $product->title }}" categoryId="{{ $product->category_id }}" restockValue="{{ $product->restock_value }}" sellValue="{{$product->sell_value}}" subtitle="{{$product->subtitle}}" rate="{{$product->rate}}" view="{{$product->view}}" createdAt="{{$product->created_at}}" updatedAt="{{$product->updated_at}}">
                                         </x-product-list-card>
                                         @endforeach
                                     </tbody>
