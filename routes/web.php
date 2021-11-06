@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers;
 use App\Http\Controllers\AddressController;
+use App\Models;
 use App\Models\Province;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -57,14 +58,21 @@ Route::get("/error", function (){
     return view('error');
 });
 Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
+Route::get('/users',[Controllers\UserController::class, 'index']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+//route for admin
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::get('/users-management',[Controllers\AdminController::class, "showUsers"])->name('users-managerment');
+    Route::resource('/category', Controllers\CategoryController::class);
 });
-
+ 
 Route::resource('/products', Controllers\ProductController::class);
 Route::get("/test", function (){
     //test thử code
-    return view('test');
+    $products= Models\Goods::paginate(9);
+    return view('test', ['products'=> $products]);
 });
 

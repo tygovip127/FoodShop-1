@@ -15,61 +15,14 @@
                   <li>
                     <a href="/">HOME </a>
                   </li>
-                  <li><a href="/products">SHOP </a>
-                    <ul class="mega-menu-style mega-menu-mrg-1">
-                      <li>
-                        <ul>
-                          <li>
-                            <a class="dropdown-title" href="#">Shop Layout</a>
-                            <ul>
-                              <li><a href="shop.html">standard style</a></li>
-                              <li><a href="shop-list.html">shop list style</a></li>
-                              <li><a href="shop-fullwide.html">shop fullwide</a></li>
-                              <li><a href="shop-no-sidebar.html">grid no sidebar</a></li>
-                              <li><a href="shop-list-no-sidebar.html">list no sidebar</a></li>
-                              <li><a href="shop-right-sidebar.html">shop right sidebar</a></li>
-                              <li><a href="store-location.html">store location</a></li>
-                            </ul>
-                          </li>
-                          <li>
-                            <a class="dropdown-title" href="#">Products Layout</a>
-                            <ul>
-                              <li><a href="product-details.html">tab style 1</a></li>
-                              <li><a href="product-details-2.html">tab style 2</a></li>
-                              <li><a href="product-details-sticky.html">sticky style</a></li>
-                              <li><a href="product-details-gallery.html">gallery style </a></li>
-                              <li><a href="product-details-affiliate.html">affiliate style</a></li>
-                              <li><a href="product-details-group.html">group style</a></li>
-                              <li><a href="product-details-fixed-img.html">fixed image style </a></li>
-                            </ul>
-                          </li>
-                          <li>
-                            <a href="shop.html"><img src="assets/images/banner/banner-12.png" alt=""></a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
+                  <li>
+                    <a href="/products">SHOP </a>
                   </li>
-                  <li><a href="#">PAGES </a>
-                    <ul class="sub-menu-style">
-                      <li><a href="about-us.html">about us </a></li>
-                      <li><a href="cart.html">cart page</a></li>
-                      <li><a href="checkout.html">checkout </a></li>
-                      <li><a href="my-account.html">my account</a></li>
-                      <li><a href="/wishlist">wishlist </a></li>
-                      <li><a href="compare.html">compare </a></li>
-                      <li><a href="contact.html">contact us </a></li>
-                      <li><a href="order-tracking.html">order tracking</a></li>
-                      <li><a href="/login-register">login / register </a></li>
-                    </ul>
+                  <li>
+                    <a href="#">PAGES </a>
                   </li>
-                  <li><a href="blog.html">BLOG </a>
-                    <ul class="sub-menu-style">
-                      <li><a href="blog.html">blog standard </a></li>
-                      <li><a href="blog-no-sidebar.html">blog no sidebar </a></li>
-                      <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
-                      <li><a href="blog-details.html">blog details</a></li>
-                    </ul>
+                  <li>
+                    <a href="blog.html">BLOG </a>
                   </li>
                   <li><a href="contact.html">CONTACT </a></li>
                 </ul>
@@ -98,7 +51,7 @@
                       <ul class="sub-menu-style">
                         <li ><a href="/account">{{ (Auth::user() && Auth::user()->fullname)? Auth::user()->fullname: "My account" }}  </a></li>
                         <li><a href="/logout">Logout </a></li>
-                        <li><a href="/dashboard">Admin </a></li>
+                        <li><a href="/admin/dashboard">Admin </a></li>
                       </ul>
                     </li>
                   </ul>

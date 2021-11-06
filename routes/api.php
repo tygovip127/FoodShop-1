@@ -20,11 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::resource([
-//     '/categories' => CategoryController::class,
-
-// ]);
-Route::apiResource('/categories', CategoryController::class);
 Route::prefix('/address')->name('address.')->group(function () {
     Route::get("/provinces", [AddressController::class, "provinces"])->name('provinces');
     Route::get("/districts/{id}", [AddressController::class, "districts"])->name('districts');

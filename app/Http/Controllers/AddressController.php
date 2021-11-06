@@ -54,7 +54,7 @@ class AddressController extends Controller
             $user->address = $request->input('street');
             $user->save();
             return redirect()->intended('/account')
-                ->with('address_success', "Change address succesffully!");
+                ->with('address_success', "Change address successfully!");
         }
         return redirect()->intended('/account')
             ->with('address_fail', "Change address fail! Try again!");

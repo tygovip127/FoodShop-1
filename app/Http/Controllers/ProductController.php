@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\Requests\StoreProductRequest;
 use App\Models\Goods;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -18,8 +19,11 @@ class ProductController extends Controller
         /**
          * Get data from database and pass them through view 
          */
+        // $products = Goods::paginate(9);
+        // return view('products', ['products'=>$products]);
 
-        return view('products');
+        $products = Goods::paginate(20);
+        return view('admin.product-management', ['products' => $products]);
     }
 
     /**
@@ -29,7 +33,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $categories = Category::all();
+        return view('products.create', ['categories' => $categories]);
     }
 
     /**
@@ -93,6 +98,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Goods::find($id)->delete();
+        return Goods::all();
     }
 }

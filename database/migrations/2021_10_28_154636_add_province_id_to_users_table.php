@@ -14,9 +14,9 @@ class AddProvinceIdToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('province_id');
-            $table->integer('district_id');
-            $table->integer('ward_id');
+            $table->integer('province_id')->nullable();
+            $table->integer('district_id')->nullable();
+            $table->integer('ward_id')->nullable();
         });
     }
 

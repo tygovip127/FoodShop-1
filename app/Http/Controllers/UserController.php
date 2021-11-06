@@ -11,6 +11,9 @@ use App\Models\User;
 // use 
 class UserController extends Controller
 {
+  public function index(){
+    return User::paginate(10);
+  }
   public function update(Request $request, $id)
   {
     $request->validate([
