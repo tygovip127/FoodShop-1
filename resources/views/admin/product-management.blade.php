@@ -9,10 +9,10 @@
                     <div class="card">
                         <div class="card-header pb-0 d-flex flex-row justify-content-between">
                             <div>
-                                <h5 class="mb-0">All Users</h5>
+                                <h5 class="mb-0">All Products</h5>
                             </div>
                             <div class="single-input-item m-0">
-                              <a href="{{ route('products.create') }}">Add product</a>
+                              <a href="{{ route('admin.products.create') }}">Add product</a>
                             </div>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
@@ -39,9 +39,6 @@
                                                 Sell value
                                             </th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Subtitle
-                                            </th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 Rate
                                             </th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -60,7 +57,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach( $products as $product)
-                                        <x-product-list-card id="{{ $product->id }}" image="{{ $product->feature_image_path }}" title="{{ $product->title }}" categoryId="{{ $product->category_id }}" restockValue="{{ $product->restock_value }}" sellValue="{{$product->sell_value}}" subtitle="{{$product->subtitle}}" rate="{{$product->rate}}" view="{{$product->view}}" createdAt="{{$product->created_at}}" updatedAt="{{$product->updated_at}}">
+                                        <x-product-list-card id="{{ $product->id }}" image="{{ $product->feature_image_path }}" title="{{ $product->title }}" categoryId="{{ $product->category_id }}" restockValue="{{ $product->restock_value }}" sellValue="{{$product->sell_value}}" rate="{{$product->rate}}" view="{{$product->view}}" createdAt="{{$product->created_at}}" updatedAt="{{$product->updated_at}}">
                                         </x-product-list-card>
                                         @endforeach
                                     </tbody>

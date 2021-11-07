@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Requests;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,7 +24,7 @@ class StoreProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'min:2|max:40',
+            'title' => 'required|min:2|max:40',
             'category_id' => 'required',
             'restock_value' => 'numeric|min:0',
             'sell_value' => 'numeric|min:0',

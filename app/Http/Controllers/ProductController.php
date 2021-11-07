@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\Requests\StoreProductRequest;
+use App\Http\Requests\StoreProductRequest;
 use App\Models\Goods;
 use App\Models\Category;
+use App\Models\Picture;
+use App\Traits\StorageImageTrait;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
+    use StorageImageTrait;
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +27,7 @@ class ProductController extends Controller
         // $products = Goods::paginate(9);
         // return view('products', ['products'=>$products]);
 
-        $products = Goods::paginate(20);
+        $products = Goods::paginate(10);
         return view('admin.product-management', ['products' => $products]);
     }
 
@@ -40,20 +45,39 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Requests\StoreProductRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreProductRequest $request)
     {
+        $data_upload_feature_image = $this->storageTraitUpload($request, 'feature_image_path', 'product');
 
-        Goods::create([
+        $data_product_create = [
             'title' => $request->input('title'),
             'category_id' => $request->input('category_id'),
             'restock_value' => $request->input('restock_value'),
             'sell_value' => $request->input('sell_value'),
-            'subtitle' => $request->input('subtitle')
-        ]);
-        return redirect()->route('product.show');
+            'subtitle' => $request->input('subtitle'),
+        ];
+
+        if (!empty($data_upload_feature_image)) {
+            $data_product_create['feature_image_path'] = $data_upload_feature_image['file_path'];
+        }
+
+        $product = Goods::create($data_product_create);
+        
+        if ($request->hasFile('image_path')) {
+            
+            foreach ($request->file('image_path') as $file) {
+                $data_upload_images = $this->storageTraitUploadMultiple($file, 'product');
+                Picture::create([
+                    'picture' => $data_upload_images['file_path'],
+                    'goods_id' => $product->id
+                ]);
+            }
+        }
+
+        return redirect()->route('admin.products.create');
     }
 
     /**

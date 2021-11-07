@@ -16,7 +16,7 @@
                     <li><a class="nav-link" href="{{ route('admin.users-managerment') }}">User Management</a></li>
                 </ul>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ route('products.index') }}">Product Management</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.products.index') }}">Product Management</a></li>
                 </ul>
             </li>
             <li class="menu-header">Table</li>

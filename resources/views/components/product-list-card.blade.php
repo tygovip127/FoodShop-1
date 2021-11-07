@@ -20,9 +20,6 @@
         <p class="text-xs font-weight-bold mb-0">{{ $sellValue }}</p>
     </td>
     <td class="text-center">
-        <p class="text-xs font-weight-bold mb-0">{{ $subtitle }}</p>
-    </td>
-    <td class="text-center">
         <p class="text-xs font-weight-bold mb-0">{{ $rate }}</p>
     </td>
     <td class="text-center">

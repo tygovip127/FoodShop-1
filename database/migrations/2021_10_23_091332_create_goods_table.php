@@ -20,7 +20,7 @@ class CreateGoodsTable extends Migration
             $table->double('sell_value');
             $table->string('subtitle')->nullable();
             $table->unsignedInteger('size')->nullable();
-            $table->double('rate')->nullable();
+            $table->double('rate')->default(0);
             $table->unsignedInteger('view')->default(0);
             $table->unsignedInteger('category_id');
             $table->string('feature_image_path')->nullable();

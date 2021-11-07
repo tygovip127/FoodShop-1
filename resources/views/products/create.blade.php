@@ -6,14 +6,22 @@
   <div class="myaccount-content">
     <h3>Create new products</h3>
     <div class="account-details-form">
-      <form action="{{ route('products.store') }}" method="post">
+      <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="profile-header">
           <div class="row align-items-center">
-            <div class="col-auto profile-image">
+            <!-- <div class="col-auto profile-image">
               <a href="#">
                 <img class="rounded-circle" style="width:5rem" alt="User Image" src="">
               </a>
+            </div> -->
+            <img class="rounded-circle" style="width:5rem" alt="User Image" src="http://localhost:8000/../images/users/usersavatardefault_92824.png">
+            <div class="single-input-item">
+              <label for="feature_image_path" class="required">Avatar</label>
+              <input type="file" name="feature_image_path" id="feature_image_path">
+              <span class="text-danger">
+
+              </span>
             </div>
             <div class="col ml-md-n2 profile-user-info">
               <h4 class="user-name mb-0"></h4>
@@ -74,37 +82,38 @@
             </div>
           </div>
           <div class="col-lg-6">
-            <div class="single-input-item">
-              <label for="subtitle" class="required">Subtitle</label>
-              <textarea name="subtitle" id="subtitle" class="@error('subtitle') is-invalid @enderror" cols="30" rows="10"></textarea>
-              @error('subtitle')
-              <span class="text-danger">
-                <strong>{{ $message }}</strong>
-              </span>
-              @enderror
-            </div>
+            <label for="subtitle" class="required">Subtitle</label>
+            <textarea name="subtitle" id="editor" class="@error('subtitle') is-invalid @enderror"></textarea>
+            @error('subtitle')
+            <span class="text-danger">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
           </div>
           <div class="col-lg-6">
             <div class="single-input-item">
-              <label for="feature_image_path" class="required">Images</label>
-              <input type="file" name="feature_image_path" id="feature_image_path" multiple>
+              <label for="image_path[]">Images</label>
+              <input type="file" name="image_path[]" id="image_path[]" multiple>
               <span class="text-danger">
 
               </span>
+
             </div>
           </div>
         </div>
-
-        <div class="alert alert-success">
-
-        </div>
-
-
-        <div class="single-input-item">
-          <button class="check-btn sqr-btn ">Create</button>
+        <div class="single-input-item mt-2">
+          <button class="check-btn sqr-btn">Create</button>
         </div>
       </form>
     </div>
   </div>
 </div>
+<script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+<script>
+  ClassicEditor
+    .create(document.querySelector('#editor'))
+    .catch(error => {
+      console.error(error);
+    });
+</script>
 @endsection

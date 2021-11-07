@@ -19,6 +19,7 @@ class Goods extends Model
         'subtitle',
         'rate',
         'view',
+        'feature_image_path'
     ];
 
     public function pictures(){
