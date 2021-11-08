@@ -62,21 +62,21 @@ Route::get("/error", function (){
 });
 Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
 Route::get('/users',[Controllers\UserController::class, 'index']);
+
 //route for admin
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
     Route::get('/users-management',[Controllers\AdminController::class, "showUsers"])->name('users-managerment');
-    Route::resources([
-        '/category'=> Controllers\CategoryController::class,
-        '/banner'=>Controllers\BannerController::class,
-    ]);
+    Route::resource('/category', Controllers\CategoryController::class);
+    Route::resource('/products', Controllers\ProductController::class);
 });
-// 
-Route::resource('/products', Controllers\ProductController::class);
+ 
+
 Route::get("/test", function (){
     //test thử code
     $products= Models\Goods::paginate(9);
     return view('test', ['products'=> $products]);
 });
+

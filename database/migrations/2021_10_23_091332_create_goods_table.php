@@ -16,13 +16,14 @@ class CreateGoodsTable extends Migration
         Schema::create('goods', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->float('restock_value');
-            $table->float('sell_value');
+            $table->double('restock_value');
+            $table->double('sell_value');
             $table->string('subtitle')->nullable();
             $table->unsignedInteger('size')->nullable();
-            $table->float('rate')->nullable();
+            $table->double('rate')->default(0);
             $table->unsignedInteger('view')->default(0);
             $table->unsignedInteger('category_id');
+            $table->string('feature_image_path')->nullable();
             $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')
