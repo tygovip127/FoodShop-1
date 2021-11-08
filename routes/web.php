@@ -61,13 +61,15 @@ Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('
 Route::get('/users',[Controllers\UserController::class, 'index']);
 
 //route for admin
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    Route::get('/users-management',[Controllers\AdminController::class, "showUsers"])->name('users-managerment');
-    Route::resource('/category', Controllers\CategoryController::class);
-    Route::resource('/products', Controllers\ProductController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+        Route::get('/users-management',[Controllers\AdminController::class, "showUsers"])->name('users-managerment');
+        Route::resource('/category', Controllers\CategoryController::class);
+        Route::resource('/products', Controllers\ProductController::class);
+    });
 });
  
 

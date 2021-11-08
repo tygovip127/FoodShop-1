@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+  <!-- X-CSRF-TOKEN -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <link rel="stylesheet" href="{{ asset('../../css/vendor/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{ asset('../../css/vendor/signericafat.css')}}">
   <link rel="stylesheet" href="{{ asset('../../css/vendor/cerebrisans.css')}}">
@@ -41,6 +44,8 @@
   <!-- Template CSS Sidebar -->
   <link rel="stylesheet" href="{{ asset('../../css/style-sidebar.css') }}">
   <link rel="stylesheet" href="{{ asset('../../css/components-sidebar.css') }}">
+  @yield('css')
+
   <title>@yield('title')</title>
 </head>
 
@@ -97,6 +102,7 @@
 
   <!-- Page Specific JS File Sidebar-->
   <script src="{{ asset('../../js/index-sidebar.js') }}"></script>
+  @yield('js')
 </body>
 
 </html>

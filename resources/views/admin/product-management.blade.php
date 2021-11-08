@@ -12,7 +12,7 @@
                                 <h5 class="mb-0">All Products</h5>
                             </div>
                             <div class="single-input-item m-0">
-                              <a href="{{ route('admin.products.create') }}">Add product</a>
+                                <a href="{{ route('admin.products.create') }}">Add product</a>
                             </div>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
@@ -84,4 +84,8 @@
         </div>
     </div>
 </div>
+@section('js')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('../../js/admin/admin.js') }}"></script>
+@endsection
 @endsection
