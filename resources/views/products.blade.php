@@ -39,27 +39,11 @@
           <div class="tab-content jump">
             <div id="shop-1" class="tab-pane active">
               <div class="row">
-                <x-card id="1" name="Make Thing Happen T-Shirt" discount="20" price="45.80"
-                  image="images/products/product-14.jpg">
-                </x-card>
-                <x-card id="3" name="Basic White Simple Sneake" price="55.50" image="images/products/product-14.jpg">
-                </x-card>
-                <x-card id="3" name="Basic White Simple Sneake" price="80.50" image="images/products/product-14.jpg">
-                </x-card>
-                <x-card id="1" name="Make Thing Happen T-Shirt" discount="20" price="45.80"
-                  image="images/products/product-14.jpg">
-                </x-card>
-                <x-card id="3" name="Basic White Simple Sneake" price="55.50" image="images/products/product-14.jpg">
-                </x-card>
-                <x-card id="3" name="Basic White Simple Sneake" price="80.50" image="images/products/product-14.jpg">
-                </x-card>
-                <x-card id="1" name="Make Thing Happen T-Shirt" discount="20" price="45.80"
-                  image="images/products/product-14.jpg">
-                </x-card>
-                <x-card id="3" name="Basic White Simple Sneake" price="55.50" image="images/products/product-14.jpg">
-                </x-card>
-                <x-card id="3" name="Basic White Simple Sneake" price="80.50" image="images/products/product-14.jpg">
-                </x-card>
+                @foreach ($products as $item)
+                    <x-card :id="$item->id" :name="$item->title" :price="$item->sell_value" image="images/products/product-14.jpg">
+                    </x-card>
+                @endforeach
+                
               </div>
             </div>
             <div id="shop-2" class="tab-pane">
@@ -92,15 +76,15 @@
               </x-card-horiziontal>
             </div>
           </div>
-          <div class="pro-pagination-style text-center mt-10">
+          {{-- <div class="pro-pagination-style text-center mt-10">
             <ul>
               <li><a class="prev" href="#"><i class="icon-arrow-left"></i></a></li>
               <li><a class="active" href="#">1</a></li>
               <li><a href="#">2</a></li>
               <li><a class="next" href="#"><i class="icon-arrow-right"></i></a></li>
             </ul>
-          </div>
-          {{-- <div class="pro-pagination-style text-center mt-10">
+          </div> --}}
+          <div class="pro-pagination-style text-center mt-10">
             <span class="hidden">
               {{ $pages = ceil($products->total() / $products->perPage()) }}
             </span>
@@ -113,7 +97,7 @@
               @endfor
               <li><a class="next" href="{{ $products->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
             </ul>
-          </div> --}}
+          </div>
         </div>
       </div>
       <div class="col-lg-3">
@@ -133,12 +117,9 @@
             <h4 class="sidebar-widget-title">Categories </h4>
             <div class="shop-catigory">
               <ul>
-                <li><a href="shop.html">T-Shirt</a></li>
-                <li><a href="shop.html">Shoes</a></li>
-                <li><a href="shop.html">Clothing </a></li>
-                <li><a href="shop.html">Women </a></li>
-                <li><a href="shop.html">Baby Boy </a></li>
-                <li><a href="shop.html">Accessories </a></li>
+                @foreach ($categories as $category)
+                    <li><a href="#">{{ $category->name }}</a></li>
+                @endforeach
               </ul>
             </div>
           </div>

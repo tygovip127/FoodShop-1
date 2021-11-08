@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Goods;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -18,7 +19,11 @@ class ProductController extends Controller
          * Get data from database and pass them through view 
          */
         $products = Goods::paginate(9);
-        return view('products', ['products'=>$products]);
+        $categories = Category::all();
+        return view('products', [
+            'products'=>$products,
+            'categories'=>$categories,
+        ]);
     }
 
     /**
