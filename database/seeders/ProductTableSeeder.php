@@ -15,9 +15,10 @@ class ProductTableSeeder extends Seeder
      */
     public function run()
     {
-        $product = Product::factory()->create();
-        $product->pictures()->create([
-            'picture' => '/storage/product/matcha.jpg'
-        ]);
+          Product::factory(20)->create()->each(function ($item){
+            $item->pictures()->create([
+                'picture' => '/storage/product/matcha.jpg'
+            ]);
+          });
     }
 }
