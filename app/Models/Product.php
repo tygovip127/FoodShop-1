@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use phpDocumentor\Reflection\Types\This;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Goods extends Model
+class Product extends Model
 {
+    use SoftDeletes;
     use HasFactory;
     protected $fillable = [
         'id',

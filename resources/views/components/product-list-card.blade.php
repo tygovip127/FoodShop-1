@@ -32,11 +32,11 @@
         <span class="text-secondary text-xs font-weight-bold">{{ $updatedAt }}</span>
     </td>
     <td class="text-center">
-        <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+        <a href="" class="mx-3">
             <i class="fas fa-user-edit text-secondary"></i>
         </a>
-        <span>
+        <a href="" data-url="{{ route('admin.products.destroy', array($id)) }}" class="action_delete">
             <i class="cursor-pointer fas fa-trash text-secondary"></i>
-        </span>
+        </a>
     </td>
 </tr>

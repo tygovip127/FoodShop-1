@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
-use App\Models\Goods;
+use App\Models\Product;
 use App\Models\Category;
 use App\Models\Picture;
 use App\Traits\StorageImageTrait;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -24,10 +23,10 @@ class ProductController extends Controller
         /**
          * Get data from database and pass them through view 
          */
-        // $products = Goods::paginate(9);
+        // $products = Product::paginate(9);
         // return view('products', ['products'=>$products]);
 
-        $products = Goods::paginate(10);
+        $products = Product::paginate(10);
         return view('admin.product-management', ['products' => $products]);
     }
 
@@ -64,15 +63,14 @@ class ProductController extends Controller
             $data_product_create['feature_image_path'] = $data_upload_feature_image['file_path'];
         }
 
-        $product = Goods::create($data_product_create);
+        $product = Product::create($data_product_create);
         
         if ($request->hasFile('image_path')) {
             
             foreach ($request->file('image_path') as $file) {
                 $data_upload_images = $this->storageTraitUploadMultiple($file, 'product');
-                Picture::create([
+                $product->pictures()->create([
                     'picture' => $data_upload_images['file_path'],
-                    'goods_id' => $product->id
                 ]);
             }
         }
@@ -122,7 +120,20 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        Goods::find($id)->delete();
-        return Goods::all();
+        try {
+            Product::find($id)->delete();
+
+            return response()->json([
+                'code' => 200,
+                'message' => 'success'
+            ], 200);
+
+        } catch (\Exception $exception) {
+            Log::error('Message: ' . $exception->getMessage() . ' --- Line : ' . $exception->getLine());
+            return response()->json([
+                'code' => 500,
+                'message' => 'fail'
+            ], 500);
+        }
     }
 }
