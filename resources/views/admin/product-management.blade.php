@@ -75,7 +75,7 @@
                 <ul>
                     <li><a class="prev" href="{{ $products->previousPageUrl() }}"><i class="icon-arrow-left"></i></a></li>
                     @for ($i = 1; $i <= $pages; $i++) <li>
-                        <a href='{{ "http://127.0.0.1:8000/admin/product-management?page=".$i }}'>{{ $i }}</a>
+                        <a href='{{ "http://127.0.0.1:8000/admin/products?page=".$i }}'>{{ $i }}</a>
                         </li>
                         @endfor
                         <li><a class="next" href="{{ $products->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
