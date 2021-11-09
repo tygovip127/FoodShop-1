@@ -21,16 +21,16 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
-        $array =[4,5,6,7];
-        $restock_value= $this->faker->randomFloat(6, 10000, 200000);
+        $array =[4,5,6,7, 19];
+        $restock_value= $this->faker->randomNumber(5, 10000, 99000);
         $sell_value = $restock_value*1.3;
         return [
             'title' => $this->faker->text(50),
             'restock_value' => $restock_value,
             'sell_value' => $sell_value,
             'subtitle' => $this->faker->realText(100),
-            'view' =>0,
             'category_id'=> $this->faker->randomElement($array),
+            'feature_image_path' => '/storage/product/matcha.jpg',
         ];
     }
 }

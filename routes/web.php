@@ -78,7 +78,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get("/test", function (){
     //test thử code
-    $products= Models\Goods::paginate(9);
+    $products= Models\Product::paginate(9);
     return view('test', ['products'=> $products]);
 });
 
