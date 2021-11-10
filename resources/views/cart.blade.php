@@ -52,7 +52,6 @@
                   <a href="/products">Continue Shopping</a>
                 </div>
                 <div class="cart-clear">
-                  <button>Update Cart</button>
                   <a href="#" class="clear">Clear Cart</a>
                 </div>
               </div>
@@ -147,9 +146,11 @@
     $(".remove-cart-item").click(function (e) {
       e.preventDefault();
       var element = $(this);
+      var host= window.location.hostname;
       if(confirm("Are you sure want to remove?")) {
           $.ajax({
               url: '{{ route('removeCartItem') }}',
+              // url: `${host}`
               method: "DELETE",
               data: {
                   _token: '{{ csrf_token() }}', 
@@ -177,7 +178,7 @@
                 quantity: element.parents("tr").find(".quantity").val()
             },
             success: function (response) {
-              e.preventDefault();
+
             }
         });
     });

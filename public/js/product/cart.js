@@ -3,9 +3,10 @@
     event.preventDefault();
     var element = $(this);
     var id= element.parent().attr("data-id")
-
+    var host = window.location.host;
+  
     $.ajax({
-      url:  `http://localhost:8000/cart/add-to-cart/${id}`,
+      url:  `http://${host}/cart/add-to-cart/${id}`,
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
       success: function (response) {

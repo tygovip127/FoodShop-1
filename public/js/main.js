@@ -803,7 +803,8 @@
     var CartPlusMinus = $('.cart-plus-minus');
     CartPlusMinus.prepend('<div class="dec qtybutton">-</div>');
     CartPlusMinus.append('<div class="inc qtybutton">+</div>');
-    $(".qtybutton").on("click", function() {
+    $(".qtybutton").on("click", function(e) {
+
         var $button = $(this);
         var oldValue = $button.parent().find("input").val();
 
@@ -821,9 +822,32 @@
                 newVal = 1;
             }
         }
+
+        // update data in view
         var newSubTotal=parseFloat(newVal)*parseFloat(price.innerText);
         subTotal.innerText= newSubTotal.toFixed(1);
         $button.parent().find("input").val(newVal);
+
+        // send request update data to server
+        var host = window.location.host;
+        $.ajaxSetup({
+            headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            url: `http://${host}/cart/update`,
+            method: "put",
+            data: {
+                id: id, 
+                quantity: newVal
+            },
+            success: function (response) {
+                e.preventDefault();
+            }
+        });
+        
     });
     
     $('#exampleModal').on('shown.bs.modal', function () {
