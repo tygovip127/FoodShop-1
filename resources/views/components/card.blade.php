@@ -1,7 +1,7 @@
 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
   <div class="single-product-wrap mb-35">
     <div class="product-img product-img-zoom mb-15">
-      <a href="products/{{ $id }}">
+      <a href="{{ route('product.show',$id) }}">
         <img src="{{ asset(''.$image.'') }}" alt="">
       </a>
       @if($discount !=0 || $discount != null)
@@ -25,7 +25,7 @@
         </div>
         <span>(5)</span>
       </div>
-      <h3><a href="product-details.html">{{ $name }}</a></h3>
+      <h3><a href="{{ route('product.show',$id) }}">{{ $name }}</a></h3>
       <div class="product-price-2">
         @if ($discount !=0 || $discount != null)
         <span class="new-price">${{ $new_price }}</span>
@@ -46,7 +46,7 @@
         </div>
         <span>(5)</span>
       </div>
-      <h3><a href="products/{{ $id }}">{{ $name }}</a></h3>
+      <h3><a href="{{ route('product.show',$id) }}">{{ $name }}</a></h3>
       <div class="product-price-2">
         @if ($discount !=0 || $discount != null)
         <span class="new-price">${{ $new_price }}</span>
@@ -55,8 +55,8 @@
         <span>${{ $old_price }}</span>
         @endif
       </div>
-      <div class="pro-add-to-cart">
-        <button title="Add to Cart">Add To Cart</button>
+      <div data-id="{{ $id }}" class="pro-add-to-cart">
+        <button class="add-to-cart" title="Add to Cart">Add To Cart</button>
       </div>
     </div>
   </div>

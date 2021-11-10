@@ -806,6 +806,11 @@
     $(".qtybutton").on("click", function() {
         var $button = $(this);
         var oldValue = $button.parent().find("input").val();
+
+        var id= $button.parents('tr').attr('data-id');
+        var subTotal = document.getElementById(`subTotal_${id}`);
+        var price = document.getElementById(`price_${id}`)
+        
         if ($button.text() === "+") {
             var newVal = parseFloat(oldValue) + 1;
         } else {
@@ -816,6 +821,8 @@
                 newVal = 1;
             }
         }
+        var newSubTotal=parseFloat(newVal)*parseFloat(price.innerText);
+        subTotal.innerText= newSubTotal.toFixed(1);
         $button.parent().find("input").val(newVal);
     });
     

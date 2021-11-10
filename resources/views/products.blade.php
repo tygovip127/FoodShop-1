@@ -4,6 +4,12 @@
 @section('content')
 <x-breadcrumb currentPage="Products List"></x-breadcrumb>
 
+{{-- @if(session('success'))
+<div class="alert alert-success">
+  {{ session('success') }}
+</div> 
+@endif --}}
+
 <div class="shop-area pt-120 pb-120">
   <div class="container">
     <div class="row flex-row-reverse">
@@ -76,14 +82,6 @@
               </x-card-horiziontal>
             </div>
           </div>
-          {{-- <div class="pro-pagination-style text-center mt-10">
-            <ul>
-              <li><a class="prev" href="#"><i class="icon-arrow-left"></i></a></li>
-              <li><a class="active" href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a class="next" href="#"><i class="icon-arrow-right"></i></a></li>
-            </ul>
-          </div> --}}
           <div class="pro-pagination-style text-center mt-10">
             <span class="hidden">
               {{ $pages = ceil($products->total() / $products->perPage()) }}
@@ -92,7 +90,7 @@
               <li><a class="prev" href="{{ $products->previousPageUrl() }}"><i class="icon-arrow-left"></i></a></li>
               @for ($i = 1; $i <= $pages; $i++) 
               <li>
-                <a  href='{{ "http://127.0.0.1:8000/products?page=".$i }}'>{{ $i }}</a>
+                <a  href='{{ "http://localhost:8000/products?page=".$i }}'>{{ $i }}</a>
               </li>
               @endfor
               <li><a class="next" href="{{ $products->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
@@ -117,9 +115,11 @@
             <h4 class="sidebar-widget-title">Categories </h4>
             <div class="shop-catigory">
               <ul>
+                @if(!empty($categories))
                 @foreach ($categories as $category)
                     <li><a href="#">{{ $category->name }}</a></li>
                 @endforeach
+                @endif
               </ul>
             </div>
           </div>
@@ -226,11 +226,11 @@
           <div class="sidebar-widget shop-sidebar-border pt-40">
             <h4 class="sidebar-widget-title">Popular Tags</h4>
             <div class="tag-wrap sidebar-widget-tag">
-              <a href="#">Clothing</a>
-              <a href="#">Accessories</a>
-              <a href="#">For Men</a>
-              <a href="#">Women</a>
-              <a href="#">Fashion</a>
+              <a href="#">New Products</a>
+              <a href="#">Sale Off</a>
+              <a href="#">Best-selling</a>
+              <a href="#">For Man</a>
+              <a href="#">For Woman</a>
             </div>
           </div>
         </div>
@@ -238,4 +238,8 @@
     </div>
   </div>
 </div>
+@endsection
+
+@section('script')
+  <script src="{{ asset('../../js/product/cart.js') }}"></script>
 @endsection

@@ -9219,6 +9219,23 @@ textarea:focus {
     background-color: #ff2f2f;
 }
 
+.single-product-wrap .product-content-wrap-2 .pro-add-to-cart a {
+    border: none;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #000000;
+    font-size: 14px;
+    padding: 8px 28px 8px;
+    border-radius: 50px;
+    -webkit-transition: all .3s ease 0s;
+    -o-transition: all .3s ease 0s;
+    transition: all .3s ease 0s;
+}
+
+.single-product-wrap .product-content-wrap-2 .pro-add-to-cart a:hover {
+    background-color: #ff2f2f;
+}
+
 .single-product-wrap .product-content-wrap-2.product-content-wrap-2-modify .pro-add-to-cart {
     margin: 4px 0 0;
 }
