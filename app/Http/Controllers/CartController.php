@@ -44,10 +44,6 @@ class CartController extends Controller
             session()->put('cart', $cart);
             session()->flash('success', 'Cart updated successfully');
         }
-        // return response()->json([
-        //     'code' => 200,
-        //     'message' => 'success'
-        // ], 200);
     }
 
     public function remove(Request $request)
@@ -60,5 +56,9 @@ class CartController extends Controller
             }
             session()->flash('success', 'Product removed successfully');
         }
+    }
+
+    public function removeAll(Request $request){
+        session()->forget('cart');
     }
 }

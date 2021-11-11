@@ -71,6 +71,8 @@ Route::get('/users',[Controllers\UserController::class, 'index']);
 Route::get("/cart/add-to-cart/{id}", [Controllers\CartController::class, 'addToCart'])->name('addToCart');
 Route::delete("/cart/remove-cart-item", [Controllers\CartController::class, 'remove'])->name('removeCartItem');
 Route::put("/cart/update", [Controllers\CartController::class, 'update'])->name('updateCart');
+Route::delete('/cart/remove-all', [Controllers\CartController::class, 'removeAll'])->name("cart.remove.all");
+
 //route for admin
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {

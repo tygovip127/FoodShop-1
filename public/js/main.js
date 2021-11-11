@@ -825,7 +825,7 @@
 
         // update data in view
         var newSubTotal=parseFloat(newVal)*parseFloat(price.innerText);
-        subTotal.innerText= newSubTotal.toFixed(1);
+        subTotal.innerText= newSubTotal.toFixed(1)+" VND";
         $button.parent().find("input").val(newVal);
 
         // send request update data to server

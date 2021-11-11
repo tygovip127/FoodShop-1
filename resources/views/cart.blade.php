@@ -21,7 +21,7 @@
                   <th>action</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="tbody">
                 @if (session('cart'))
                 @foreach (session('cart') as $id => $item)
                 <tr data-id="{{ $id }}">
@@ -35,7 +35,7 @@
                       <input class="cart-plus-minus-box quantity update-cart" type="text" name="qtybutton" value="{{ $item['quantity'] }}">
                     </div>
                   </td>
-                  <td class="product-subtotal" id="{{ "subTotal_".$id }}">{{ $item['quantity']*$item['price'] }}</td>
+                  <td class="product-subtotal" id="{{ "subTotal_".$id }}">{{ $item['quantity']*$item['price'] }} VND</td>
                   <td class="product-remove">
                     <button class="remove-cart-item btn-danger"><i class="icon_close"></i></button>
                   </td>
@@ -52,7 +52,7 @@
                   <a href="/products">Continue Shopping</a>
                 </div>
                 <div class="cart-clear">
-                  <a href="#" class="clear">Clear Cart</a>
+                  <a href="#" id="cart-clear" class="clear">Clear Cart</a>
                 </div>
               </div>
             </div>
@@ -141,46 +141,5 @@
 @endsection
 
 @section('script')
-  <script type="text/javascript">
-
-    $(".remove-cart-item").click(function (e) {
-      e.preventDefault();
-      var element = $(this);
-      var host= window.location.hostname;
-      if(confirm("Are you sure want to remove?")) {
-          $.ajax({
-              url: '{{ route('removeCartItem') }}',
-              // url: `${host}`
-              method: "DELETE",
-              data: {
-                  _token: '{{ csrf_token() }}', 
-                  id: element.parents("tr").attr("data-id")
-              },
-              success: function (response) {
-                var numberCartTtem = document.getElementById("number-cart-time");
-        numberCartTtem.innerText= parseInt(numberCartTtem.innerText)-1;
-                element.parents('tr').remove();
-              }
-          });
-      }
-    });
-    
-     $(".update-cart").change(function (e) {
-        e.preventDefault();
-        var element = $(this);
-        console.log(element);
-        $.ajax({
-            url: '{{ route('updateCart') }}',
-            method: "put",
-            data: {
-                _token: '{{ csrf_token() }}', 
-                id: element.parents("tr").attr("data-id"), 
-                quantity: element.parents("tr").find(".quantity").val()
-            },
-            success: function (response) {
-
-            }
-        });
-    });
-  </script>
+  <script src="{{ asset('../../js/product/cart.js') }}"></script>
 @endsection

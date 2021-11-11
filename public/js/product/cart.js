@@ -1,4 +1,5 @@
 
+  // function to add a product to cart
   $(".add-to-cart").click(function (event) {
     event.preventDefault();
     var element = $(this);
@@ -44,3 +45,76 @@
       }
     })
   })
+
+  // function clear all cart item
+  $("#cart-clear").click(function(e){
+    e.preventDefault();
+    var host = window.location.host;
+    $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+
+    $.ajax({
+      url: `http://${host}/cart/remove-all`,
+      method: "delete",
+      success: function (response) {
+        $("#tbody tr").remove();
+      }
+    });
+  })
+
+  // function to clear a cart item
+  $(".remove-cart-item").click(function (e) {
+    e.preventDefault();
+    var element = $(this);
+    var host = window.location.host;
+
+    $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+
+    if(confirm("Are you sure want to remove?")) {
+      $.ajax({
+          url: `http://${host}/cart/remove-cart-item`,
+          method: "DELETE",
+          data: {
+            id: element.parents("tr").attr("data-id")
+          },
+          success: function (response) {
+            var numberCartTtem = document.getElementById("number-cart-time");
+    numberCartTtem.innerText= parseInt(numberCartTtem.innerText)-1;
+            element.parents('tr').remove();
+          }
+      });
+    }
+  });
+
+  // function to update cart item
+  $(".update-cart").change(function (e) {
+    e.preventDefault();
+    var element = $(this);
+    var host = window.location.host;
+    console.log(element);
+
+    $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+
+    $.ajax({
+      url: `http://${host}/cart/update`,
+      method: "put",
+      data: {
+          id: element.parents("tr").attr("data-id"), 
+          quantity: element.parents("tr").find(".quantity").val()
+      },
+      success: function (response) {
+
+      }
+    });
+  });
