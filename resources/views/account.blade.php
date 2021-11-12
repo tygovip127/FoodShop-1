@@ -307,43 +307,5 @@
 <!-- my account wrapper end -->
 @endsection
 @section('script')
-<script type="text/javascript">
-  $(document).ready(function (){
-    $("#province").change(function(e){
-      e.preventDefault();
-      var id = $("#province").val();
-      $("#district option").remove();
-      $("#ward option").remove();
-      $.ajax({
-        type: "GET",
-        url: `http://localhost:8000/api/address/districts/${id}`,
-        headers: { 'Content-Type': 'application/json' },
-        success: function(response) {
-          console.log(response);
-          $.each( response, function(id, item) {
-            $('#district').append($('<option>', {value:item.id, text:item.name}));
-          });
-        }
-      })
-     
-    });
-
-    $('#district').change(function (e){
-      e.preventDefault();
-      var id = $("#district").val();
-      $("#ward option").remove();
-      $.ajax({
-        type: "GET",
-        url: `http://localhost:8000/api/address/wards/${id}`,
-        headers: { 'Content-Type': 'application/json' },
-        success: function(response) {
-          console.log(response);
-          $.each( response, function(id,item) {
-            $('#ward').append($('<option>', {value:item.id, text:item.name}));
-          });
-        }
-      })
-    })
-  })
-</script>
+<script src="{{ asset('../../js/account/address.js') }}"></script>
 @endsection

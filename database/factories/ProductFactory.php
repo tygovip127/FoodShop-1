@@ -22,7 +22,7 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
-        $array =[1,2];
+        $array =[46,47, 48];
         $restock_value= $this->faker->randomNumber(5, 10000, 99000);
         $sell_value = $restock_value*1.3;
         return [
