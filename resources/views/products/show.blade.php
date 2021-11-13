@@ -11,11 +11,11 @@
           <div class="pro-dec-big-img-slider">
             <div class="easyzoom-style">
               <div class="easyzoom easyzoom--overlay">
-                <a href="{{ asset('../../images/products/product-1.jpg') }}">
-                  <img src="{{ asset('../../images/products/product-1.jpg') }}" alt="">
+                <a href="{{ asset('../../images/products/b-large-1.jpg') }}">
+                  <img src="{{ asset('../../images/products/large-1.jpg') }}" alt="">
                 </a>
               </div>
-              <a class="easyzoom-pop-up img-popup" href="{{ asset('../../images/products/product-1.jpg') }}"><i
+              <a class="easyzoom-pop-up img-popup" href="{{ asset('../../images/products/b-large-1.jpg') }}"><i
                   class="icon-size-fullscreen"></i></a>
             </div>
             <div class="easyzoom-style">
@@ -57,26 +57,26 @@
           </div>
           <div class="product-dec-slider-small product-dec-small-style1">
             <div class="product-dec-small active">
-              <img src="assets/images/product-details/small-1.jpg" alt="">
+              <img src="{{ asset('images/products/small-1.jpg') }}" alt="">
             </div>
-            <div class="product-dec-small">
-              <img src="assets/images/product-details/small-2.jpg" alt="">
+            <div class="product-dec-small active">
+              <img src="{{ asset('images/products/small-1.jpg') }}" alt="">
             </div>
-            <div class="product-dec-small">
-              <img src="assets/images/product-details/small-3.jpg" alt="">
+            <div class="product-dec-small active">
+              <img src="{{ asset('images/products/lagrge-1.jpg') }}" alt="">
             </div>
-            <div class="product-dec-small">
-              <img src="assets/images/product-details/small-4.jpg" alt="">
+            <div class="product-dec-small active">
+              <img src="{{ asset('images/products/small-1.jpg') }}" alt="">
             </div>
-            <div class="product-dec-small">
-              <img src="assets/images/product-details/small-2.jpg" alt="">
+            <div class="product-dec-small active">
+              <img src="{{ asset('images/products/small-1.jpg') }}" alt="">
             </div>
           </div>
         </div>
       </div>
       <div class="col-lg-6 col-md-6">
         <div class="product-details-content pro-details-content-mrg">
-          <h2>Simple Black T-Shirt</h2>
+          <h2>{{ $product->title }}</h2>
           <div class="product-ratting-review-wrap">
             <div class="product-ratting-digit-wrap">
               <div class="product-ratting">
@@ -95,10 +95,11 @@
               <span>242 orders</span>
             </div>
           </div>
-          <p>Seamlessly predominate enterprise metrics without performance based process improvements.</p>
+          <p>{{  strip_tags($product->subtitle) }}</p>
           <div class="pro-details-price">
-            <span class="new-price">$75.72</span>
-            <span class="old-price">$95.72</span>
+            {{-- <span class="new-price">$75.72</span>
+            <span class="old-price">$95.72</span> --}}
+            <span class="new-price">{{ $product->sell_value }}</span>
           </div>
           <div class="pro-details-color-wrap">
             <span>Color:</span>

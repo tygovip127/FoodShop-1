@@ -17,7 +17,7 @@
             </div> -->
             <img class="rounded-circle" style="width:5rem" alt="User Image" src="http://localhost:8000/../images/users/usersavatardefault_92824.png">
             <div class="single-input-item">
-              <label for="feature_image_path" class="required">Avatar</label>
+              <label for="feature_image_path" class="required">Main Image</label>
               <input type="file" name="feature_image_path" id="feature_image_path">
               <span class="text-danger">
 

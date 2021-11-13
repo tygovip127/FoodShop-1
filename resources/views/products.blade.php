@@ -46,7 +46,9 @@
             <div id="shop-1" class="tab-pane active">
               <div class="row">
                 @foreach ($products as $item)
-                    <x-card :id="$item->id" :name="$item->title" :price="$item->sell_value" image="images/products/product-14.jpg">
+                    {{-- <x-card :id="$item->id" :name="$item->title" :price="$item->sell_value" image="images/products/product-14.jpg">
+                    </x-card> --}}
+                    <x-card :id="$item->id" :name="$item->title" :price="$item->sell_value" :image="$item->feature_image_path">
                     </x-card>
                 @endforeach
                 

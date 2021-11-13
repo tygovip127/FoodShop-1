@@ -2,8 +2,10 @@
   <div class="single-product-wrap mb-35">
     <div class="product-img product-img-zoom mb-15">
       <a href="{{ route('product.show',$id) }}">
-        <img src="{{ asset(''.$image.'') }}" alt="">
+        {{-- <img src="{{ asset('/storage/app/public/'.$image.'') }}" alt=""> --}}
+        <img src="{{ asset($image) }}" alt="">
       </a>
+      
       @if($discount !=0 || $discount != null)
       <span class="pro-badge left bg-red">{{ $discount }}%</span>
       @endif
@@ -28,10 +30,10 @@
       <h3><a href="{{ route('product.show',$id) }}">{{ $name }}</a></h3>
       <div class="product-price-2">
         @if ($discount !=0 || $discount != null)
-        <span class="new-price">${{ $new_price }}</span>
-        <span class="old-price">${{ $old_price }}</span>
+        <span class="new-price">{{ $new_price }} VND</span>
+        <span class="old-price">{{ $old_price }} VND</span>
         @else
-        <span>${{ $old_price }}</span>
+        <span>{{ $old_price }} VND</span>
         @endif
       </div>
     </div>
@@ -49,8 +51,8 @@
       <h3><a href="{{ route('product.show',$id) }}">{{ $name }}</a></h3>
       <div class="product-price-2">
         @if ($discount !=0 || $discount != null)
-        <span class="new-price">${{ $new_price }}</span>
-        <span class="old-price">${{ $old_price }}</span>
+        <span class="new-price">{{ $new_price }} VND</span>
+        <span class="old-price">{{ $old_price }} VND</span>
         @else
         <span>${{ $old_price }}</span>
         @endif

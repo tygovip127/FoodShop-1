@@ -82,6 +82,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/users-management',[Controllers\AdminController::class, "showUsers"])->name('users-managerment');
         Route::resource('/category', Controllers\CategoryController::class);
         Route::resource('/products', Controllers\ProductController::class)->except(['show']);
+        Route::resource('/banner', Controllers\BannerController::class);
     });
 });
  

@@ -1,37 +1,37 @@
-<tr>
+<tr class="text-center pb-10">
     <td class="ps-4">
         <p class="text-xs font-weight-bold mb-0">{{ $id }}</p>
     </td>
     <td>
         <div>
-            <img src="{{ $image }}" class="avatar avatar-sm me-3">
+            <img src="{{ $image }}" class="pt-2" style="width:5rem;">
         </div>
     </td>
-    <td class="text-center">
-        <p class="text-xs font-weight-bold mb-0">{{ $title }}</p>
+    <td>
+        <p class="text-xs font-weight-bold  d-inline-block text-truncate">{{ $title }}</p>
     </td>
-    <td class="text-center">
-        <p class="text-xs font-weight-bold mb-0">{{ $categoryId }}</p>
+    <td>
+        <p class="text-xs font-weight-bold ">{{ $categoryId }}</p>
     </td>
-    <td class="text-center">
-        <p class="text-xs font-weight-bold mb-0">{{ $restockValue }}</p>
+    <td>
+        <p class="text-xs font-weight-bold ">{{ $restockValue }}</p>
     </td>
-    <td class="text-center">
-        <p class="text-xs font-weight-bold mb-0">{{ $sellValue }}</p>
+    <td>
+        <p class="text-xs font-weight-bold ">{{ $sellValue }}</p>
     </td>
-    <td class="text-center">
-        <p class="text-xs font-weight-bold mb-0">{{ $rate }}</p>
+    <td>
+        <p class="text-xs font-weight-bold ">{{ $rate }}</p>
     </td>
-    <td class="text-center">
-        <p class="text-xs font-weight-bold mb-0">{{ $view }}</p>
+    <td>
+        <p class="text-xs font-weight-bold ">{{ $view }}</p>
     </td>
-    <td class="text-center">
+    <td>
         <span class="text-secondary text-xs font-weight-bold">{{ $createdAt }}</span>
     </td>
-    <td class="text-center">
+    <td>
         <span class="text-secondary text-xs font-weight-bold">{{ $updatedAt }}</span>
     </td>
-    <td class="text-center">
+    <td>
         <a href="" class="mx-3">
             <i class="fas fa-user-edit text-secondary"></i>
         </a>
