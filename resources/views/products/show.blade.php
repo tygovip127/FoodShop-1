@@ -139,8 +139,8 @@
             </ul>
           </div>
           <div class="pro-details-action-wrap">
-            <div class="pro-details-add-to-cart">
-              <a title="Add to Cart" href="#">Add To Cart </a>
+            <div data-id="{{ $product->id }}" class="pro-details-add-to-cart">
+              <a class="add-to-cart" title="Add to Cart">Add To Cart</a>
             </div>
             <div class="pro-details-action">
               <a title="Add to Wishlist" href="#"><i class="icon-heart"></i></a>
@@ -333,4 +333,7 @@
     </div>
   </div>
 </div>
+@endsection
+@section('script')
+  <script src="{{ asset('../../js/product/cart.js') }}"></script>
 @endsection
