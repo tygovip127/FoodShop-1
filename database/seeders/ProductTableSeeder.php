@@ -2,11 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Picture;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
-use PhpOffice\PhpSpreadsheet\Chart\Title;
-use Faker\Factory as Faker;
+
 class ProductTableSeeder extends Seeder
 {
     /**

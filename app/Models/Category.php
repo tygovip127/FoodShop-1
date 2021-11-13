@@ -12,7 +12,7 @@ class Category extends Model
         'id',
         'name',
     ];
-    public function goods(){
-        return $this->hasMany(Goods::class);
+    public function products(){
+        return $this->hasMany(Product::class);
     }
 }

@@ -7,7 +7,7 @@
             <img src="{{ $image }}" class="avatar avatar-sm me-3">
         </div>
     </td>
-    <td class="text-center">
+    <td class="">
         <p class="text-xs font-weight-bold mb-0">{{ $title }}</p>
     </td>
     <td class="text-center">
@@ -26,13 +26,7 @@
         <p class="text-xs font-weight-bold mb-0">{{ $view }}</p>
     </td>
     <td class="text-center">
-        <span class="text-secondary text-xs font-weight-bold">{{ $createdAt }}</span>
-    </td>
-    <td class="text-center">
-        <span class="text-secondary text-xs font-weight-bold">{{ $updatedAt }}</span>
-    </td>
-    <td class="text-center">
-        <a href="" class="mx-3">
+        <a href="{{ route('admin.products.edit', array($id)) }}" class="mx-3">
             <i class="fas fa-user-edit text-secondary"></i>
         </a>
         <a href="" data-url="{{ route('admin.products.destroy', array($id)) }}" class="action_delete">

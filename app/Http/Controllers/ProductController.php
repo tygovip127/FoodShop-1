@@ -76,12 +76,48 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        $categories = Category::all();
+        return view('products.edit', compact('product', 'categories'));
     }
 
-    public function update(Request $request, $id)
+    public function update(StoreProductRequest $request, $id)
     {
-        //
+        $data_upload_feature_image = $this->storageTraitUpload($request, 'feature_image_path', 'product');
+
+        $data_product_update = [
+            'title' => $request->input('title'),
+            'category_id' => $request->input('category_id'),
+            'restock_value' => $request->input('restock_value'),
+            'sell_value' => $request->input('sell_value'),
+            'subtitle' => $request->input('subtitle'),
+        ];
+
+        if (!empty($data_upload_feature_image)) {
+            $data_product_update['feature_image_path'] = $data_upload_feature_image['file_path'];
+        }
+
+        Product::find($id)->update($data_product_update);
+        $product = Product::find($id);
+        
+        $product->pictures()->delete();
+
+        if($request->image_picture)
+        {
+            foreach ($request->image_picture as $picture) {
+                $product->pictures()->create(['picture' => $picture]);
+            }
+        }
+       
+        if ($request->hasFile('image_path')) {
+            foreach ($request->file('image_path') as $file) {
+                $data_upload_images = $this->storageTraitUploadMultiple($file, 'product');
+                $product->pictures()->create([
+                    'picture' => $data_upload_images['file_path'],
+                ]);
+            }
+        }
+        return redirect()->route('admin.products.edit', array($id));
     }
 
     public function destroy($id)

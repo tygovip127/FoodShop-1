@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="{{ asset('../../css/vendor/vendor.min.css')}}">
   <link rel="stylesheet" href="{{ asset('../../plugins/plugins.min.css')}}">
   <link rel="stylesheet" href="{{ asset('../../css/style.min.css')}}">
+  @yield('css')
   <title>@yield('title')</title>
 </head>
 

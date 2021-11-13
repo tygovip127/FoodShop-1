@@ -8,6 +8,7 @@ use App\Http\Controllers\BannerController;
 use App\Models;
 use App\Models\Province;
 use App\Models\Banner;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,8 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     $banners= Banner::all();
-    return view('index', ['banners'=>$banners]);
+    $products = Product::paginate(8);
+    return view('index', compact('banners', 'products'));
 });
 
 Route::get('/login-register',function (){

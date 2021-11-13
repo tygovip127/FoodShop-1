@@ -2,7 +2,7 @@
   <div class="single-product-wrap mb-35">
     <div class="product-img product-img-zoom mb-20">
       <a href="products/{{ $id }}">
-        <img src="{{ asset(''.$image.'') }}">
+        <img src="{{ asset(''.$image.'') }}" class="obf-cover product-img">
       </a>
       @if ($discount !=0 || $discount != null)
         <span class="pro-badge left bg-red">-{{ $discount }}%</span>

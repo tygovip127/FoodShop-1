@@ -44,20 +44,20 @@
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 View
                                             </th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 Created at
-                                            </th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            </th> -->
+                                            <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 Updated at
-                                            </th>
+                                            </th>-->
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 Action
-                                            </th>
+                                            </th> 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach( $products as $product)
-                                        <x-product-list-card id="{{ $product->id }}" image="{{ $product->feature_image_path }}" title="{{ $product->title }}" categoryId="{{ $product->category_id }}" restockValue="{{ $product->restock_value }}" sellValue="{{$product->sell_value}}" rate="{{$product->rate}}" view="{{$product->view}}" createdAt="{{$product->created_at}}" updatedAt="{{$product->updated_at}}">
+                                        <x-product-list-card id="{{ $product->id }}" image="{{ $product->feature_image_path }}" title="{{ $product->title }}" categoryId="{{ $product->category_id }}" restockValue="{{ $product->restock_value }}" sellValue="{{$product->sell_value}}" rate="{{$product->rate}}" view="{{$product->view}}">
                                         </x-product-list-card>
                                         @endforeach
                                     </tbody>
