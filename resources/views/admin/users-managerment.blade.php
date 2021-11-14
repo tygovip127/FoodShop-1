@@ -30,8 +30,8 @@
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->fullname }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->phone ? $user->phone : "----------" }}</td>
-                    <td><a href="#" class="check-btn sqr-btn">Delete</a></td>
+                    <td>{{ $user->phone ? $user->phone : "--------------" }}</td>
+                    <td><button class="btn-danger m-auto">Delete</button></td>
                   </tr>
                   @endforeach
                 </tbody>

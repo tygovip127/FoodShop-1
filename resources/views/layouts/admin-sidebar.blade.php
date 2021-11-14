@@ -21,12 +21,15 @@
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.banner.index') }}">Banner Management</a></li>
                 </ul>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('admin.category.index') }}">Category Management</a></li>
+                </ul>
             </li>
             <li class="menu-header">Table</li>
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-columns"></i> <span>Table</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ route('admin.category.index') }}">Category</a></li>
+                    <li><a class="nav-link" href="">Blah Blah Blah</a></li>
                 </ul>
             </li>
             <li class="menu-header">Starter</li>
