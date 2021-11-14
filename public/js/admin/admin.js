@@ -1,3 +1,4 @@
+//delete product
 function actionDelete(event) {
     event.preventDefault();
     let urlRequest = $(this).data('url');
@@ -44,4 +45,17 @@ function actionDelete(event) {
 
 $(function() {
     $(document).on('click', '.action_delete', actionDelete);
+});
+
+//delete image from update product
+
+
+function actionDeleteImage(event) {
+    event.preventDefault();
+    let that = $(this);
+    that.parent().parent().parent().remove();
+}
+
+$(function() {
+    $(document).on('click', '.action_delete_image', actionDeleteImage);
 });

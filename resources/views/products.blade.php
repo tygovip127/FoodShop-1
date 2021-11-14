@@ -1,8 +1,17 @@
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('../../css/product.css')}}">
+@endsection
 @section('title','Food Shop VKU | Products')
 @section('content')
 <x-breadcrumb currentPage="Products List"></x-breadcrumb>
+
+{{-- @if(session('success'))
+<div class="alert alert-success">
+  {{ session('success') }}
+</div>
+@endif --}}
 
 <div class="shop-area pt-120 pb-120">
   <div class="container">
@@ -39,81 +48,47 @@
           <div class="tab-content jump">
             <div id="shop-1" class="tab-pane active">
               <div class="row">
-                <x-card id="1" name="Make Thing Happen T-Shirt" discount="20" price="45.80"
-                  image="images/products/product-14.jpg">
+                @foreach ($products as $item)
+                <x-card :id="$item->id" :name="$item->title" :price="$item->sell_value" :image="$item->feature_image_path">
                 </x-card>
-                <x-card id="3" name="Basic White Simple Sneake" price="55.50" image="images/products/product-14.jpg">
-                </x-card>
-                <x-card id="3" name="Basic White Simple Sneake" price="80.50" image="images/products/product-14.jpg">
-                </x-card>
-                <x-card id="1" name="Make Thing Happen T-Shirt" discount="20" price="45.80"
-                  image="images/products/product-14.jpg">
-                </x-card>
-                <x-card id="3" name="Basic White Simple Sneake" price="55.50" image="images/products/product-14.jpg">
-                </x-card>
-                <x-card id="3" name="Basic White Simple Sneake" price="80.50" image="images/products/product-14.jpg">
-                </x-card>
-                <x-card id="1" name="Make Thing Happen T-Shirt" discount="20" price="45.80"
-                  image="images/products/product-14.jpg">
-                </x-card>
-                <x-card id="3" name="Basic White Simple Sneake" price="55.50" image="images/products/product-14.jpg">
-                </x-card>
-                <x-card id="3" name="Basic White Simple Sneake" price="80.50" image="images/products/product-14.jpg">
-                </x-card>
+                @endforeach
+
               </div>
             </div>
             <div id="shop-2" class="tab-pane">
-              <x-card-horiziontal id="1" name="Make Thing Happen T-Shirt" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="1" name="Make Thing Happen T-Shirt" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="2" name="Basic White Simple Sneake" discount="20" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="2" name="Basic White Simple Sneake" discount="20" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="3" name="Basic White Simple Sneake" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="3" name="Basic White Simple Sneake" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="1" name="Make Thing Happen T-Shirt" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="1" name="Make Thing Happen T-Shirt" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="2" name="Basic White Simple Sneake" discount="20" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="2" name="Basic White Simple Sneake" discount="20" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="3" name="Basic White Simple Sneake" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="3" name="Basic White Simple Sneake" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="1" name="Make Thing Happen T-Shirt" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="1" name="Make Thing Happen T-Shirt" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="2" name="Basic White Simple Sneake" discount="20" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="2" name="Basic White Simple Sneake" discount="20" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="3" name="Basic White Simple Sneake" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="3" name="Basic White Simple Sneake" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
             </div>
           </div>
           <div class="pro-pagination-style text-center mt-10">
-            <ul>
-              <li><a class="prev" href="#"><i class="icon-arrow-left"></i></a></li>
-              <li><a class="active" href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a class="next" href="#"><i class="icon-arrow-right"></i></a></li>
-            </ul>
-          </div>
-          {{-- <div class="pro-pagination-style text-center mt-10">
             <span class="hidden">
               {{ $pages = ceil($products->total() / $products->perPage()) }}
             </span>
             <ul>
               <li><a class="prev" href="{{ $products->previousPageUrl() }}"><i class="icon-arrow-left"></i></a></li>
-              @for ($i = 1; $i <= $pages; $i++) 
-              <li>
-                <a  href='{{ "http://127.0.0.1:8000/products?page=".$i }}'>{{ $i }}</a>
-              </li>
-              @endfor
-              <li><a class="next" href="{{ $products->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
+              @for ($i = 1; $i <= $pages; $i++) <li>
+                <a href='{{ "http://localhost:8000/products?page=".$i }}'>{{ $i }}</a>
+                </li>
+                @endfor
+                <li><a class="next" href="{{ $products->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
             </ul>
-          </div> --}}
+          </div>
         </div>
       </div>
       <div class="col-lg-3">
@@ -133,12 +108,11 @@
             <h4 class="sidebar-widget-title">Categories </h4>
             <div class="shop-catigory">
               <ul>
-                <li><a href="shop.html">T-Shirt</a></li>
-                <li><a href="shop.html">Shoes</a></li>
-                <li><a href="shop.html">Clothing </a></li>
-                <li><a href="shop.html">Women </a></li>
-                <li><a href="shop.html">Baby Boy </a></li>
-                <li><a href="shop.html">Accessories </a></li>
+                @if(!empty($categories))
+                @foreach ($categories as $category)
+                <li><a href="#">{{ $category->name }}</a></li>
+                @endforeach
+                @endif
               </ul>
             </div>
           </div>
@@ -245,11 +219,11 @@
           <div class="sidebar-widget shop-sidebar-border pt-40">
             <h4 class="sidebar-widget-title">Popular Tags</h4>
             <div class="tag-wrap sidebar-widget-tag">
-              <a href="#">Clothing</a>
-              <a href="#">Accessories</a>
-              <a href="#">For Men</a>
-              <a href="#">Women</a>
-              <a href="#">Fashion</a>
+              <a href="#">New Products</a>
+              <a href="#">Sale Off</a>
+              <a href="#">Best-selling</a>
+              <a href="#">For Man</a>
+              <a href="#">For Woman</a>
             </div>
           </div>
         </div>
@@ -257,4 +231,8 @@
     </div>
   </div>
 </div>
+@endsection
+
+@section('script')
+<script src="{{ asset('../../js/product/cart.js') }}"></script>
 @endsection

@@ -21,55 +21,27 @@
                   <th>action</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
+              <tbody id="tbody">
+                @if (session('cart'))
+                @foreach (session('cart') as $id => $item)
+                <tr data-id="{{ $id }}">
                   <td class="product-thumbnail">
-                    <a href="#"><img src="assets/images/cart/cart-1.jpg" alt=""></a>
+                    <a href="{{ route('product.show',$id) }}"><img src="{{ asset($item['image']) }}" alt=""></a>
                   </td>
-                  <td class="product-name"><a href="#">Simple Black T-Shirt</a></td>
-                  <td class="product-price-cart"><span class="amount">$260.00</span></td>
+                  <td class="product-name"><a href="{{ route('product.show',$id) }}">{{ $item['title'] }}</a></td>
+                  <td class="product-price-cart" id={{ "price_".$id }} value="{{ $item['price'] }}"><span class="amount">{{ $item['price'] }}</span></td>
                   <td class="product-quantity pro-details-quality">
                     <div class="cart-plus-minus">
-                      <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                      <input class="cart-plus-minus-box quantity update-cart" type="text" name="qtybutton" value="{{ $item['quantity'] }}">
                     </div>
                   </td>
-                  <td class="product-subtotal">$110.00</td>
+                  <td class="product-subtotal" id="{{ "subTotal_".$id }}">{{ $item['quantity']*$item['price'] }} VND</td>
                   <td class="product-remove">
-                    <a href="#"><i class="icon_close"></i></a>
+                    <button class="remove-cart-item btn-danger"><i class="icon_close"></i></button>
                   </td>
                 </tr>
-                <tr>
-                  <td class="product-thumbnail">
-                    <a href="#"><img src="assets/images/cart/cart-2.jpg" alt=""></a>
-                  </td>
-                  <td class="product-name"><a href="#">Norda Simple Backpack</a></td>
-                  <td class="product-price-cart"><span class="amount">$150.00</span></td>
-                  <td class="product-quantity pro-details-quality">
-                    <div class="cart-plus-minus">
-                      <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                    </div>
-                  </td>
-                  <td class="product-subtotal">$150.00</td>
-                  <td class="product-remove">
-                    <a href="#"><i class="icon_close"></i></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="product-thumbnail">
-                    <a href="#"><img src="assets/images/cart/cart-1.jpg" alt=""></a>
-                  </td>
-                  <td class="product-name"><a href="#">Simple Black T-Shirt </a></td>
-                  <td class="product-price-cart"><span class="amount">$170.00</span></td>
-                  <td class="product-quantity pro-details-quality">
-                    <div class="cart-plus-minus">
-                      <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
-                    </div>
-                  </td>
-                  <td class="product-subtotal">$170.00</td>
-                  <td class="product-remove">
-                    <a href="#"><i class="icon_close"></i></a>
-                  </td>
-                </tr>
+                @endforeach
+                @endif
               </tbody>
             </table>
           </div>
@@ -77,11 +49,10 @@
             <div class="col-lg-12">
               <div class="cart-shiping-update-wrapper">
                 <div class="cart-shiping-update">
-                  <a href="#">Continue Shopping</a>
+                  <a href="/products">Continue Shopping</a>
                 </div>
                 <div class="cart-clear">
-                  <button>Update Cart</button>
-                  <a href="#">Clear Cart</a>
+                  <a href="#" id="cart-clear" class="clear">Clear Cart</a>
                 </div>
               </div>
             </div>
@@ -167,4 +138,8 @@
     </div>
   </div>
 </div>
+@endsection
+
+@section('script')
+  <script src="{{ asset('../../js/product/cart.js') }}"></script>
 @endsection
