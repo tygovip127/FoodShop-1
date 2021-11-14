@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('css')
+<link rel="stylesheet" href="{{ asset('../../css/product.css')}}">
+@endsection
 @section('title','Food Shop VKU | Cart')
 
 @section('content')
@@ -25,8 +28,8 @@
                 @if (session('cart'))
                 @foreach (session('cart') as $id => $item)
                 <tr data-id="{{ $id }}">
-                  <td class="product-thumbnail">
-                    <a href="{{ route('product.show',$id) }}"><img src="{{ asset($item['image']) }}" alt=""></a>
+                  <td >
+                    <a href="{{ route('product.show',$id) }}"><img src="{{ asset($item['image']) }}" class="img-col" alt=""></a>
                   </td>
                   <td class="product-name"><a href="{{ route('product.show',$id) }}">{{ $item['title'] }}</a></td>
                   <td class="product-price-cart" id={{ "price_".$id }} value="{{ $item['price'] }}"><span class="amount">{{ $item['price'] }}</span></td>

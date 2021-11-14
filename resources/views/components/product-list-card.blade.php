@@ -7,8 +7,8 @@
             <img src="{{ $image }}" class="pt-2" style="width:5rem;">
         </div>
     </td>
-    <td>
-        <p class="text-xs font-weight-bold  d-inline-block text-truncate">{{ $title }}</p>
+    <td class="">
+        <p class="text-xs font-weight-bold mb-0">{{ $title }}</p>
     </td>
     <td>
         <p class="text-xs font-weight-bold ">{{ $categoryId }}</p>
@@ -25,14 +25,8 @@
     <td>
         <p class="text-xs font-weight-bold ">{{ $view }}</p>
     </td>
-    <td>
-        <span class="text-secondary text-xs font-weight-bold">{{ $createdAt }}</span>
-    </td>
-    <td>
-        <span class="text-secondary text-xs font-weight-bold">{{ $updatedAt }}</span>
-    </td>
-    <td>
-        <a href="" class="mx-3">
+    <td class="text-center">
+        <a href="{{ route('admin.products.edit', array($id)) }}" class="mx-3">
             <i class="fas fa-user-edit text-secondary"></i>
         </a>
         <a href="" data-url="{{ route('admin.products.destroy', array($id)) }}" class="action_delete">

@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('../../css/product.css')}}">
+@endsection
 @section('title','Food Shop VKU | Products')
 @section('content')
 <x-breadcrumb currentPage="Products List"></x-breadcrumb>
@@ -7,7 +10,7 @@
 {{-- @if(session('success'))
 <div class="alert alert-success">
   {{ session('success') }}
-</div> 
+</div>
 @endif --}}
 
 <div class="shop-area pt-120 pb-120">
@@ -46,41 +49,30 @@
             <div id="shop-1" class="tab-pane active">
               <div class="row">
                 @foreach ($products as $item)
-                    {{-- <x-card :id="$item->id" :name="$item->title" :price="$item->sell_value" image="images/products/product-14.jpg">
-                    </x-card> --}}
-                    <x-card :id="$item->id" :name="$item->title" :price="$item->sell_value" :image="$item->feature_image_path">
-                    </x-card>
+                <x-card :id="$item->id" :name="$item->title" :price="$item->sell_value" :image="$item->feature_image_path">
+                </x-card>
                 @endforeach
-                
+
               </div>
             </div>
             <div id="shop-2" class="tab-pane">
-              <x-card-horiziontal id="1" name="Make Thing Happen T-Shirt" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="1" name="Make Thing Happen T-Shirt" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="2" name="Basic White Simple Sneake" discount="20" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="2" name="Basic White Simple Sneake" discount="20" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="3" name="Basic White Simple Sneake" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="3" name="Basic White Simple Sneake" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="1" name="Make Thing Happen T-Shirt" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="1" name="Make Thing Happen T-Shirt" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="2" name="Basic White Simple Sneake" discount="20" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="2" name="Basic White Simple Sneake" discount="20" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="3" name="Basic White Simple Sneake" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="3" name="Basic White Simple Sneake" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="1" name="Make Thing Happen T-Shirt" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="1" name="Make Thing Happen T-Shirt" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="2" name="Basic White Simple Sneake" discount="20" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="2" name="Basic White Simple Sneake" discount="20" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
-              <x-card-horiziontal id="3" name="Basic White Simple Sneake" price="80.50"
-                image="images/products/product-14.jpg">
+              <x-card-horiziontal id="3" name="Basic White Simple Sneake" price="80.50" image="images/products/product-14.jpg">
               </x-card-horiziontal>
             </div>
           </div>
@@ -90,12 +82,11 @@
             </span>
             <ul>
               <li><a class="prev" href="{{ $products->previousPageUrl() }}"><i class="icon-arrow-left"></i></a></li>
-              @for ($i = 1; $i <= $pages; $i++) 
-              <li>
-                <a  href='{{ "http://localhost:8000/products?page=".$i }}'>{{ $i }}</a>
-              </li>
-              @endfor
-              <li><a class="next" href="{{ $products->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
+              @for ($i = 1; $i <= $pages; $i++) <li>
+                <a href='{{ "http://localhost:8000/products?page=".$i }}'>{{ $i }}</a>
+                </li>
+                @endfor
+                <li><a class="next" href="{{ $products->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
             </ul>
           </div>
         </div>
@@ -119,7 +110,7 @@
               <ul>
                 @if(!empty($categories))
                 @foreach ($categories as $category)
-                    <li><a href="#">{{ $category->name }}</a></li>
+                <li><a href="#">{{ $category->name }}</a></li>
                 @endforeach
                 @endif
               </ul>
@@ -243,5 +234,5 @@
 @endsection
 
 @section('script')
-  <script src="{{ asset('../../js/product/cart.js') }}"></script>
+<script src="{{ asset('../../js/product/cart.js') }}"></script>
 @endsection
