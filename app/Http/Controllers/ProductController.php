@@ -17,12 +17,13 @@ class ProductController extends Controller
     /**
      * Show all products for users
      */
-    public function showProducts(Request $request){
+    public function showProducts(Request $request)
+    {
         $products = Product::paginate(9);
         $categories = Category::all();
         return view('products', [
-            'products'=>$products,
-            'categories'=>$categories
+            'products' => $products,
+            'categories' => $categories
         ]);
     }
 
@@ -55,9 +56,9 @@ class ProductController extends Controller
         }
 
         $product = Product::create($data_product_create);
-        
+
         if ($request->hasFile('image_path')) {
-            
+
             foreach ($request->file('image_path') as $file) {
                 $data_upload_images = $this->storageTraitUploadMultiple($file, 'product');
                 $product->pictures()->create([
@@ -71,8 +72,8 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $product= Product::find($id);
-        return view('products.show', ['product'=>$product]);
+        $product = Product::find($id);
+        return view('products.show', ['product' => $product]);
     }
 
     public function edit($id)
@@ -100,16 +101,15 @@ class ProductController extends Controller
 
         Product::find($id)->update($data_product_update);
         $product = Product::find($id);
-        
+
         $product->pictures()->delete();
 
-        if($request->image_picture)
-        {
+        if ($request->image_picture) {
             foreach ($request->image_picture as $picture) {
                 $product->pictures()->create(['picture' => $picture]);
             }
         }
-       
+
         if ($request->hasFile('image_path')) {
             foreach ($request->file('image_path') as $file) {
                 $data_upload_images = $this->storageTraitUploadMultiple($file, 'product');
@@ -130,13 +130,27 @@ class ProductController extends Controller
                 'code' => 200,
                 'message' => 'success'
             ], 200);
-
         } catch (\Exception $exception) {
             Log::error('Message: ' . $exception->getMessage() . ' --- Line : ' . $exception->getLine());
             return response()->json([
                 'code' => 500,
                 'message' => 'fail'
             ], 500);
+        }
+    }
+
+    public function search(Request $request)
+    {
+        try {
+            $keyword = $request->input('keyword');
+            $products = Product::where('title', 'LIKE', '%' . $keyword . '%')
+                ->paginate(9);
+            $categories = Category::all();
+            return view('products', [
+                'products' => $products,
+                'categories' => $categories
+            ]);
+        } catch (\Exception $exception) {
         }
     }
 }

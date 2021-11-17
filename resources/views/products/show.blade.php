@@ -15,8 +15,9 @@
                   <img src="{{ asset('../../images/products/large-1.jpg') }}" alt="">
                 </a>
               </div>
-              <a class="easyzoom-pop-up img-popup" href="{{ asset('../../images/products/b-large-1.jpg') }}"><i
-                  class="icon-size-fullscreen"></i></a>
+              <a class="easyzoom-pop-up img-popup" href="{{ asset('../../images/products/b-large-1.jpg') }}">
+                <i class="icon-size-fullscreen"></i>
+              </a>
             </div>
             <div class="easyzoom-style">
               <div class="easyzoom easyzoom--overlay">
@@ -24,8 +25,9 @@
                   <img src="assets/images/product-details/large-2.jpg" alt="">
                 </a>
               </div>
-              <a class="easyzoom-pop-up img-popup" href="assets/images/product-details/b-large-2.jpg"><i
-                  class="icon-size-fullscreen"></i></a>
+              <a class="easyzoom-pop-up img-popup" href="assets/images/product-details/b-large-2.jpg">
+                <i class="icon-size-fullscreen"></i>
+              </a>
             </div>
             <div class="easyzoom-style">
               <div class="easyzoom easyzoom--overlay">
@@ -33,8 +35,9 @@
                   <img src="assets/images/product-details/large-3.jpg" alt="">
                 </a>
               </div>
-              <a class="easyzoom-pop-up img-popup" href="assets/images/product-details/b-large-3.jpg"><i
-                  class="icon-size-fullscreen"></i></a>
+              <a class="easyzoom-pop-up img-popup" href="assets/images/product-details/b-large-3.jpg">
+                <i class="icon-size-fullscreen"></i>
+              </a>
             </div>
             <div class="easyzoom-style">
               <div class="easyzoom easyzoom--overlay">
@@ -42,8 +45,9 @@
                   <img src="assets/images/product-details/large-4.jpg" alt="">
                 </a>
               </div>
-              <a class="easyzoom-pop-up img-popup" href="assets/images/product-details/b-large-4.jpg"><i
-                  class="icon-size-fullscreen"></i></a>
+              <a class="easyzoom-pop-up img-popup" href="assets/images/product-details/b-large-4.jpg">
+                <i class="icon-size-fullscreen"></i>
+              </a>
             </div>
             <div class="easyzoom-style">
               <div class="easyzoom easyzoom--overlay">
@@ -95,7 +99,7 @@
               <span>242 orders</span>
             </div>
           </div>
-          <p>{{  strip_tags($product->subtitle) }}</p>
+          <p>{{ strip_tags($product->subtitle) }}</p>
           <div class="pro-details-price">
             {{-- <span class="new-price">$75.72</span>
             <span class="old-price">$95.72</span> --}}
@@ -129,7 +133,7 @@
           <div class="pro-details-quality">
             <span>Quantity:</span>
             <div class="cart-plus-minus">
-              <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+              <input class="cart-plus-minus-box quantity update-cart" type="text" name="qtybutton" value="1">
             </div>
           </div>
           <div class="product-details-meta">
@@ -335,5 +339,5 @@
 </div>
 @endsection
 @section('script')
-  <script src="{{ asset('../../js/product/cart.js') }}"></script>
+<script src="{{ asset('../../js/product/cart.js') }}"></script>
 @endsection

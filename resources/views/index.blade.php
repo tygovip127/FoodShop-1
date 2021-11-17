@@ -36,28 +36,6 @@
     </div>
     @endforeach
     @endif
-    <div class="single-hero-slider single-animation-wrap">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="hero-slider-content-1 hero-slider-content-1-pt-1 slider-animated-1">
-              <h4 class="animated">New Arrivals</h4>
-              <h1 class="animated">Leather Simple <br>Backpacks</h1>
-              <p class="animated">Discover our collection with leather simple backpacks. Less is more never out
-                trend.</p>
-              <div class="btn-style-1">
-                <a class="animated btn-1-padding-1" href="product-details.html">Explore Now</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="hero-slider-img-1 slider-animated-1">
-              <img class="animated" src="{{  asset('../images/slider/bubble-milk-tea.png') }}" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 <div class="service-area">
@@ -225,4 +203,7 @@
   </div>
 </div>
 
+@endsection
+@section('script')
+<script src="{{ asset('../../js/product/cart.js') }}"></script>
 @endsection
