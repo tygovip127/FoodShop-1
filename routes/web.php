@@ -90,7 +90,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get("/test", function (){
     //test thử code
-    dd(session()->get('cart',[]));
+    // dd(session()->get('cart',[]));
     $products= Models\Product::paginate(9);
     return view('test', ['products'=> $products]);
 });
