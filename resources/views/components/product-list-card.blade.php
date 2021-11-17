@@ -4,7 +4,7 @@
     </td>
     <td>
         <div>
-            <img src="{{ $image }}" class="pt-2" style="width:5rem;">
+            <img src="{{ $image }}" class="avatar avatar-sm me-3">
         </div>
     </td>
     <td class="">

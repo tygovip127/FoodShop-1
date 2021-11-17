@@ -104,7 +104,7 @@
             <input type="file" name="image_path[]" id="image_path[]" multiple>
               <div class="row">
                 @foreach($product->pictures as $picture)
-                  <div class="single-product-wrap m-3">
+                  <div class="single-product-wrap m-1">
                     <div class="product-img product-img-zoom mb-20">
                       <a href="#" class="p-0"><img src="{{ $picture->picture }}" class="obf-cover product-img"></a>
                       <div class="product-action-wrap">
