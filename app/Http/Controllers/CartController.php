@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Province;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    public function index(){
+        $address= Auth::user() ?AddressController::getUserAddress(Auth::user()->id): NULL;
+        $provinces = Province::all();
+        return view('cart', ["provinces"=> $provinces, 'address'=>$address]);
+    }
+
+
     public function addToCart($id)
     {
         $product = Product::find($id);

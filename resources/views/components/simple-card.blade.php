@@ -5,15 +5,18 @@
         <img src="{{ asset(''.$image.'') }}" class="obf-cover product-img">
       </a>
       @if ($discount !=0 || $discount != null)
-        <span class="pro-badge left bg-red">-{{ $discount }}%</span>
+      <span class="pro-badge left bg-red">-{{ $discount }}%</span>
       @endif
       <div class="product-action-wrap">
-        <div class="product-action-left">
-          <button><i class="icon-basket-loaded"></i>Add to Cart</button>
+        <div data-id="{{ $id }}" class="product-action-left">
+          <button class="add-to-cart">
+            <i class="icon-basket-loaded"></i>Add to Cart
+          </button>
         </div>
         <div class="product-action-right tooltip-style">
-          <button data-toggle="modal" data-target="#exampleModal"><i class="icon-size-fullscreen icons"></i><span>Quick
-              View</span></button>
+          <button data-toggle="modal" data-target="#exampleModal">
+            <i class="icon-size-fullscreen icons"></i><span>Quick View</span>
+          </button>
           <button class="font-inc"><i class="icon-refresh"></i><span>Compare</span></button>
         </div>
       </div>
@@ -23,10 +26,10 @@
         <h4><a href="products/{{ $id }}">{{ $name }}</a></h4>
         <div class="product-price">
           @if ($discount !=0 || $discount != null)
-            <span class="new-price">${{ $new_price }}</span>
-            <span class="old-price">${{ $old_price }}</span>
+          <span class="new-price">{{ $new_price }}đ</span>
+          <span class="old-price">{{ $old_price }}</span>
           @else
-            <span>${{ $old_price }}</span>
+          <span>{{ $old_price }}đ</span>
           @endif
         </div>
       </div>

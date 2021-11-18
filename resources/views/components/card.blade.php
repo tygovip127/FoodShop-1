@@ -53,7 +53,7 @@
         <span class="new-price">{{ $new_price }} VND</span>
         <span class="old-price">{{ $old_price }} VND</span>
         @else
-        <span>${{ $old_price }}</span>
+        <span>{{ $old_price }} VND</span>
         @endif
       </div>
       <div data-id="{{ $id }}" class="pro-add-to-cart">
