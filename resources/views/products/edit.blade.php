@@ -101,18 +101,18 @@
           <div class="col-lg-6">
             <div class="single-input-item">
               <label for="image_path[]">Images</label>
-            <input type="file" name="image_path[]" id="image_path[]" multiple>
+              <input type="file" name="image_path[]" id="image_path[]" multiple>
               <div class="row">
                 @foreach($product->pictures as $picture)
-                  <div class="single-product-wrap m-1">
-                    <div class="product-img product-img-zoom mb-20">
-                      <a href="#" class="p-0"><img src="{{ $picture->picture }}" class="obf-cover product-img"></a>
-                      <div class="product-action-wrap">
-                          <a href="" class="action_delete_image">Delete</a>
-                          <input type="hidden" name="image_picture[]" value="{{ $picture->picture }}">
-                      </div>
+                <div class="single-product-wrap m-1">
+                  <div class="product-img product-img-zoom mb-20">
+                    <a href="#" class="p-0"><img src="{{ $picture->picture }}" class="obf-cover product-delete-img"></a>
+                    <div class="product-action-wrap">
+                      <a href="" class="action_delete_image">Delete</a>
+                      <input type="hidden" name="image_picture[]" value="{{ $picture->picture }}">
                     </div>
                   </div>
+                </div>
                 @endforeach
                 <div id="deleted_image">
 
