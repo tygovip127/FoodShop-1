@@ -13,7 +13,7 @@
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-columns"></i> <span>Management</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ route('admin.users-managerment') }}">User Management</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.users.index') }}">User Management</a></li>
                 </ul>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.products.index') }}">Product Management</a></li>
@@ -25,7 +25,7 @@
                     <li><a class="nav-link" href="{{ route('admin.category.index') }}">Category Management</a></li>
                 </ul>
             </li>
-            <li class="menu-header">Table</li>
+            <!-- <li class="menu-header">Table</li>
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-columns"></i> <span>Table</span></a>
                 <ul class="dropdown-menu">
@@ -165,7 +165,7 @@
                 </ul>
             </li>
             <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
-        </ul>
+        </ul> -->
 
         <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
             <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">

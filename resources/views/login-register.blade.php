@@ -43,7 +43,6 @@
                       <div class="row login-toggle-btn text-center">
                         <a href="{{ url('google') }}" class="btn">Or you can login with Google</a>
                       </div>
-
                     </div>
                   </form>
                 </div>

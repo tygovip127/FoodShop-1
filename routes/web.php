@@ -5,6 +5,7 @@ use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\UserController;
 use App\Models;
 use App\Models\Province;
 use App\Models\Banner;
@@ -65,8 +66,8 @@ Route::get("/error", function (){
     return view('error');
 });
 
-Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
-Route::get('/users',[Controllers\UserController::class, 'index']);
+// Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
+// Route::get('/users',[Controllers\UserController::class, 'index']);
 
 Route::get("/cart",[Controllers\CartController::class, 'index']);
 Route::get("/cart/add-to-cart/{id}", [Controllers\CartController::class, 'addToCart'])->name('addToCart');
@@ -80,7 +81,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
-        Route::get('/users-management',[Controllers\AdminController::class, "showUsers"])->name('users-managerment');
+        // Route::get('/users-management',[Controllers\AdminController::class, "showUsers"])->name('users-managerment');
+        Route::resource('/users', UserController::class);
         Route::resource('/category', Controllers\CategoryController::class);
         Route::resource('/products', Controllers\ProductController::class)->except(['show']);
         Route::resource('/banner', Controllers\BannerController::class);
@@ -94,4 +96,5 @@ Route::get("/test", function (){
     $products= Models\Product::paginate(9);
     return view('test', ['products'=> $products]);
 });
+
 

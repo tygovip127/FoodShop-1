@@ -2,7 +2,7 @@
   <div class="single-product-wrap mb-35">
     <div class="product-img product-img-zoom mb-15">
       <a href="{{ route('product.show',$id) }}">
-        <img src="{{ asset(''.$image.'') }}" class="obf-cover product-img" alt="">
+        <img src="{{ asset(''.$image.'') }}" class="obf-cover product-show-img" alt="">
       </a>
       
       @if($discount !=0 || $discount != null)
