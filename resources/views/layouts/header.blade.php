@@ -37,8 +37,8 @@
                   <i class="icon_close s-close"></i>
                 </a>
                 <div class="search-wrap-1">
-                  <form action="#">
-                    <input placeholder="Search products…" type="text">
+                  <form action="{{ route('search') }}">
+                    <input name="keyword" placeholder="Search products…" type="text">
                     <button class="button-search"><i class="icon-magnifier"></i></button>
                   </form>
                 </div>
@@ -75,7 +75,7 @@
       <div class="row align-items-center">
         <div class="col-5">
           <div class="mobile-logo">
-            <a href="index.html">
+            <a href="/">
               <img alt="" src="{{ asset('images/logo/logo.png') }}">
             </a>
           </div>
@@ -153,8 +153,8 @@
     <a class="sidebar-close"><i class="icon_close"></i></a>
     <div class="mobile-header-content-area">
       <div class="mobile-search mobile-header-padding-border-1">
-        <form class="search-form" action="#">
-          <input type="text" placeholder="Search here…">
+        <form class="search-form" action="{{ route('search') }}">
+          <input name="keyword" type="text" placeholder="Search here…">
           <button class="button-search"><i class="icon-magnifier"></i></button>
         </form>
       </div>

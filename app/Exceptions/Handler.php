@@ -4,6 +4,9 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Http\Response;
 
 class Handler extends ExceptionHandler
 {
@@ -38,4 +41,10 @@ class Handler extends ExceptionHandler
             //
         });
     }
+    // public function render($request, $exception){
+    //     if ($exception) {
+    //         $statusTexts =Response::$statusTexts[http_response_code()];
+    //         return response()->view('error', ['errorStatus' => http_response_code(), 'statusText' => $statusTexts]);
+    //     }
+    // }
 }

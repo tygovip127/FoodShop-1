@@ -37,7 +37,7 @@ class RegisterController extends Controller
       'token' => Hash::make(Str::random(64)),
     ]);
     if($valid){
-      return view('login-register');
+      return redirect()->intended('/login-register');
     }
   }
 }

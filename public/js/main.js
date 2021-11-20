@@ -808,9 +808,7 @@
         var $button = $(this);
         var oldValue = $button.parent().find("input").val();
 
-        var id= $button.parents('tr').attr('data-id');
-        var subTotal = document.getElementById(`subTotal_${id}`);
-        var price = document.getElementById(`price_${id}`)
+       
         
         if ($button.text() === "+") {
             var newVal = parseFloat(oldValue) + 1;
@@ -822,12 +820,15 @@
                 newVal = 1;
             }
         }
-
-        // update data in view
-        var newSubTotal=parseFloat(newVal)*parseFloat(price.innerText);
-        subTotal.innerText= newSubTotal.toFixed(1)+" VND";
         $button.parent().find("input").val(newVal);
 
+        // update data in view
+        var id= $button.parents('tr').attr('data-id');
+        var subTotal = document.getElementById(`subTotal_${id}`);
+        var price = document.getElementById(`price_${id}`)
+        var newSubTotal=parseFloat(newVal)*parseFloat(price.innerText);
+        subTotal.innerText= newSubTotal.toFixed(1)+" VND";
+        
         // send request update data to server
         var host = window.location.host;
         $.ajaxSetup({

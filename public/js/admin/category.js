@@ -47,18 +47,31 @@ $(".delete-category").click(function(e){
   var id = element.attr("data-id");
   console.log(id);
 
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-  });
-
-  $.ajax({
-    url: `http://${host}/admin/category/${id}`,
-    method: 'DELETE',
-    success: function (response) {
-      element.parents('tr').remove();
-      --index;
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+    
+      $.ajax({
+        url: `http://${host}/admin/category/${id}`,
+        method: 'DELETE',
+        success: function (response) {
+          element.parents('tr').remove();
+          --index;
+        }
+      })
     }
   })
+  
 })

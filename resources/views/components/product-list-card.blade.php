@@ -1,4 +1,4 @@
-<tr>
+<tr class="text-center pb-10">
     <td class="ps-4">
         <p class="text-xs font-weight-bold mb-0">{{ $id }}</p>
     </td>
@@ -10,20 +10,20 @@
     <td class="">
         <p class="text-xs font-weight-bold mb-0">{{ $title }}</p>
     </td>
-    <td class="text-center">
-        <p class="text-xs font-weight-bold mb-0">{{ $categoryId }}</p>
+    <td>
+        <p class="text-xs font-weight-bold ">{{ $categoryId }}</p>
     </td>
-    <td class="text-center">
-        <p class="text-xs font-weight-bold mb-0">{{ $restockValue }}</p>
+    <td>
+        <p class="text-xs font-weight-bold ">{{ $restockValue }}</p>
     </td>
-    <td class="text-center">
-        <p class="text-xs font-weight-bold mb-0">{{ $sellValue }}</p>
+    <td>
+        <p class="text-xs font-weight-bold ">{{ $sellValue }}</p>
     </td>
-    <td class="text-center">
-        <p class="text-xs font-weight-bold mb-0">{{ $rate }}</p>
+    <td>
+        <p class="text-xs font-weight-bold ">{{ $rate }}</p>
     </td>
-    <td class="text-center">
-        <p class="text-xs font-weight-bold mb-0">{{ $view }}</p>
+    <td>
+        <p class="text-xs font-weight-bold ">{{ $view }}</p>
     </td>
     <td class="text-center">
         <a href="{{ route('admin.products.edit', array($id)) }}" class="mx-3">

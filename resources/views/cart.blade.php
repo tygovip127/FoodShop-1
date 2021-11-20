@@ -1,7 +1,11 @@
 @extends('layouts.app')
+@section('css')
+<link rel="stylesheet" href="{{ asset('../../css/product.css')}}">
+@endsection
 @section('title','Food Shop VKU | Cart')
 
 @section('content')
+
 <x-breadcrumb currentPage="Cart"></x-breadcrumb>
 <div class="cart-main-area pt-50 pb-120">
   <div class="container">
@@ -25,8 +29,8 @@
                 @if (session('cart'))
                 @foreach (session('cart') as $id => $item)
                 <tr data-id="{{ $id }}">
-                  <td class="product-thumbnail">
-                    <a href="{{ route('product.show',$id) }}"><img src="{{ asset($item['image']) }}" alt=""></a>
+                  <td >
+                    <a href="{{ route('product.show',$id) }}"><img src="{{ asset($item['image']) }}" class="img-col" alt=""></a>
                   </td>
                   <td class="product-name"><a href="{{ route('product.show',$id) }}">{{ $item['title'] }}</a></td>
                   <td class="product-price-cart" id={{ "price_".$id }} value="{{ $item['price'] }}"><span class="amount">{{ $item['price'] }}</span></td>
@@ -69,33 +73,48 @@
                 <div class="tax-select-wrapper">
                   <div class="tax-select">
                     <label>
-                      * Country
+                      * Province
                     </label>
-                    <select class="email s-email s-wid">
-                      <option>Bangladesh</option>
-                      <option>Albania</option>
-                      <option>Åland Islands</option>
-                      <option>Afghanistan</option>
-                      <option>Belgium</option>
+                    <select class="px-2 py-20" name="province" id="province">
+                      @if ($address)
+                      <option value="{{ $address[0]->id }}">{{ $address[0]->name }}</option>
+                      @else
+                      <option value="0">-------- Select your province --------</option>
+                      @endif
+                      @foreach ( $provinces as $item)
+                      <option value="{{ $item->id }}">{{ $item->name }}</option>
+                      @endforeach
                     </select>
                   </div>
                   <div class="tax-select">
                     <label>
-                      * Region / State
+                      * District 
                     </label>
-                    <select class="email s-email s-wid">
-                      <option>Bangladesh</option>
-                      <option>Albania</option>
-                      <option>Åland Islands</option>
-                      <option>Afghanistan</option>
-                      <option>Belgium</option>
+                    <select name="district" id="district">
+                      @if ($address)
+                      <option value="{{ $address[1]->id }}">{{ $address[1]->name }}</option>
+                      @else
+                      <option value="0">-------- Select your district --------</option>
+                      @endif
                     </select>
                   </div>
                   <div class="tax-select">
                     <label>
-                      * Zip/Postal Code
+                      * Ward
                     </label>
-                    <input type="text">
+                    <select name="ward" id="ward">
+                      @if ($address)
+                      <option value="{{ $address[2]->id }}">{{ $address[2]->name }}</option>
+                      @else
+                      <option value="0">-------- Select your ward --------</option>
+                      @endif
+                    </select>
+                  </div>
+                  <div class="tax-select">
+                    <label>
+                      * Street
+                    </label>
+                    <input type="text" name="street" id="street" value="{{ Auth::user() ? Auth::user()->address: NULL }}">
                   </div>
                   <button class="cart-btn-2" type="submit">Get A Quote</button>
                 </div>
@@ -142,4 +161,5 @@
 
 @section('script')
   <script src="{{ asset('../../js/product/cart.js') }}"></script>
+  <script src="{{ asset('../../js/account/address.js') }}"></script>
 @endsection

@@ -17,7 +17,7 @@
             </div> -->
             <img class="rounded-circle" style="width:5rem" alt="User Image" src="http://localhost:8000/../images/users/usersavatardefault_92824.png">
             <div class="single-input-item">
-              <label for="feature_image_path" class="required">Avatar</label>
+              <label for="feature_image_path" class="required">Main Image</label>
               <input type="file" name="feature_image_path" id="feature_image_path">
               <span class="text-danger">
 
@@ -35,7 +35,7 @@
           <div class="col-lg-6">
             <div class="single-input-item">
               <label for="title" class="required">Product name</label>
-              <input type="text" name="title" id="title" class="@error('title') is-invalid @enderror" value="" />
+              <input type="text" name="title" id="title" class="@error('title') is-invalid @enderror" value="{{ old('title') }}" />
               @error('title')
               <span class="text-danger">
                 <strong>{{ $message }}</strong>
@@ -46,7 +46,7 @@
           <div class="col-lg-6">
             <div class="single-input-item">
               <label for="restock_value" class="required">Restock value</label>
-              <input type="number" name="restock_value" id="restock_value" class="@error('restock_value') is-invalid @enderror" placeholder="VND" min="0" value="" />
+              <input type="number" name="restock_value" id="restock_value" class="@error('restock_value') is-invalid @enderror" placeholder="VND" min="0" value="{{ old('restock_value') }}" />
               @error('restock_value')
               <span class="text-danger">
                 <strong>{{ $message }}</strong>
@@ -73,7 +73,7 @@
           <div class="col-lg-6">
             <div class="single-input-item">
               <label for="sell_value" class="required">Sell value</label>
-              <input type="number" name="sell_value" id="sell_value" class="@error('sell_value') is-invalid @enderror" placeholder="VND" min="0" value="" />
+              <input type="number" name="sell_value" id="sell_value" class="@error('sell_value') is-invalid @enderror" placeholder="VND" min="0" value="{{ old('sell_value') }}" />
               @error('sell_value')
               <span class="text-danger">
                 <strong>{{ $message }}</strong>
@@ -83,7 +83,7 @@
           </div>
           <div class="col-lg-6">
             <label for="subtitle" class="required">Subtitle</label>
-            <textarea name="subtitle" id="editor" class="@error('subtitle') is-invalid @enderror"></textarea>
+            <textarea name="subtitle" id="editor" class="@error('subtitle') is-invalid @enderror">{{ old('subtitle') }}</textarea>
             @error('subtitle')
             <span class="text-danger">
               <strong>{{ $message }}</strong>

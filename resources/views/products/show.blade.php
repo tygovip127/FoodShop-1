@@ -11,72 +11,46 @@
           <div class="pro-dec-big-img-slider">
             <div class="easyzoom-style">
               <div class="easyzoom easyzoom--overlay">
-                <a href="{{ asset('../../images/products/product-1.jpg') }}">
-                  <img src="{{ asset('../../images/products/product-1.jpg') }}" alt="">
+                <a href="{{ asset($product->feature_image_path) }}">{{--  image full scrreen--}}
+                  <img src="{{ asset($product->feature_image_path) }}" alt=""> 
                 </a>
               </div>
-              <a class="easyzoom-pop-up img-popup" href="{{ asset('../../images/products/product-1.jpg') }}"><i
-                  class="icon-size-fullscreen"></i></a>
+              <a class="easyzoom-pop-up img-popup" href="{{ asset($product->feature_image_path) }}">
+                <i class="icon-size-fullscreen"></i>
+              </a>
             </div>
-            <div class="easyzoom-style">
-              <div class="easyzoom easyzoom--overlay">
-                <a href="assets/images/product-details/b-large-2.jpg">
-                  <img src="assets/images/product-details/large-2.jpg" alt="">
-                </a>
-              </div>
-              <a class="easyzoom-pop-up img-popup" href="assets/images/product-details/b-large-2.jpg"><i
-                  class="icon-size-fullscreen"></i></a>
-            </div>
-            <div class="easyzoom-style">
-              <div class="easyzoom easyzoom--overlay">
-                <a href="assets/images/product-details/b-large-3.jpg">
-                  <img src="assets/images/product-details/large-3.jpg" alt="">
-                </a>
-              </div>
-              <a class="easyzoom-pop-up img-popup" href="assets/images/product-details/b-large-3.jpg"><i
-                  class="icon-size-fullscreen"></i></a>
-            </div>
-            <div class="easyzoom-style">
-              <div class="easyzoom easyzoom--overlay">
-                <a href="assets/images/product-details/b-large-4.jpg">
-                  <img src="assets/images/product-details/large-4.jpg" alt="">
-                </a>
-              </div>
-              <a class="easyzoom-pop-up img-popup" href="assets/images/product-details/b-large-4.jpg"><i
-                  class="icon-size-fullscreen"></i></a>
-            </div>
-            <div class="easyzoom-style">
-              <div class="easyzoom easyzoom--overlay">
-                <a href="assets/images/product-details/b-large-2.jpg">
-                  <img src="assets/images/product-details/large-2.jpg" alt="">
-                </a>
-              </div>
-              <a class="easyzoom-pop-up img-popup" href="assets/images/product-details/b-large-2.jpg"><i
-                  class="icon-size-fullscreen"></i></a>
-            </div>
+            @if ($product->pictures)
+                @foreach ($product->pictures as $item)
+                  <div class="easyzoom-style">
+                    <div class="easyzoom easyzoom--overlay">
+                      <a href="{{ asset($item->picture) }}">
+                        <img src="{{ asset($item->picture) }}" alt="">
+                      </a>
+                    </div>
+                    <a class="easyzoom-pop-up img-popup" href="{{ asset($item->picture) }}">
+                      <i class="icon-size-fullscreen"></i>
+                    </a>
+                  </div>
+                @endforeach
+            @endif
           </div>
           <div class="product-dec-slider-small product-dec-small-style1">
             <div class="product-dec-small active">
-              <img src="assets/images/product-details/small-1.jpg" alt="">
+              <img src="{{ asset($product->feature_image_path) }}" alt="">
             </div>
-            <div class="product-dec-small">
-              <img src="assets/images/product-details/small-2.jpg" alt="">
-            </div>
-            <div class="product-dec-small">
-              <img src="assets/images/product-details/small-3.jpg" alt="">
-            </div>
-            <div class="product-dec-small">
-              <img src="assets/images/product-details/small-4.jpg" alt="">
-            </div>
-            <div class="product-dec-small">
-              <img src="assets/images/product-details/small-2.jpg" alt="">
-            </div>
+            @if ($product->pictures)
+              @foreach ($product->pictures as $item)
+                <div class="product-dec-small active">
+                  <img src="{{ asset($item->picture) }}" alt="">
+                </div>
+              @endforeach
+            @endif
           </div>
         </div>
       </div>
       <div class="col-lg-6 col-md-6">
         <div class="product-details-content pro-details-content-mrg">
-          <h2>Simple Black T-Shirt</h2>
+          <h2>{{ $product->title }}</h2>
           <div class="product-ratting-review-wrap">
             <div class="product-ratting-digit-wrap">
               <div class="product-ratting">
@@ -95,10 +69,11 @@
               <span>242 orders</span>
             </div>
           </div>
-          <p>Seamlessly predominate enterprise metrics without performance based process improvements.</p>
+          <p>{{ strip_tags($product->subtitle) }}</p>
           <div class="pro-details-price">
-            <span class="new-price">$75.72</span>
-            <span class="old-price">$95.72</span>
+            {{-- <span class="new-price">$75.72</span>
+            <span class="old-price">$95.72</span> --}}
+            <span class="new-price">{{ $product->sell_value }} VND</span>
           </div>
           <div class="pro-details-color-wrap">
             <span>Color:</span>
@@ -128,18 +103,18 @@
           <div class="pro-details-quality">
             <span>Quantity:</span>
             <div class="cart-plus-minus">
-              <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+              <input class="cart-plus-minus-box quantity update-cart" type="text" name="qtybutton" value="1">
             </div>
           </div>
           <div class="product-details-meta">
             <ul>
-              <li><span>Categories:</span> <a href="#">Woman,</a> <a href="#">Dress,</a> <a href="#">T-Shirt</a></li>
+              <li><span>Categories:</span> <a href="#">{{ $product->category->name }}</a></li>
               <li><span>Tag: </span> <a href="#">Fashion,</a> <a href="#">Mentone</a> , <a href="#">Texas</a></li>
             </ul>
           </div>
           <div class="pro-details-action-wrap">
-            <div class="pro-details-add-to-cart">
-              <a title="Add to Cart" href="#">Add To Cart </a>
+            <div data-id="{{ $product->id }}" class="pro-details-add-to-cart">
+              <a class="add-to-cart" title="Add to Cart">Add To Cart</a>
             </div>
             <div class="pro-details-action">
               <a title="Add to Wishlist" href="#"><i class="icon-heart"></i></a>
@@ -332,4 +307,7 @@
     </div>
   </div>
 </div>
+@endsection
+@section('script')
+<script src="{{ asset('../../js/product/cart.js') }}"></script>
 @endsection
