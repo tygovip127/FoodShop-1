@@ -4,7 +4,7 @@
 @endsection
 @section('title','Food Shop VKU | Order')
 @section('content')
-{{-- {{ dd($items) }} --}}
+{{-- {{ dd($address) }} --}}
 <x-breadcrumb currentPage="Order"></x-breadcrumb>
 <div class="cart-main-area pt-50 pb-120">
   <div class="container">
@@ -22,7 +22,7 @@
                   * Province
                 </label>
                 <select class="px-2 py-20" name="province" id="province">
-                  @if ($address)
+                  @if (count($address)!=0)
                   <option value="{{ $address[0]->id }}">{{ $address[0]->name }}</option>
                   @else
                   <option value="0">-------- Select your province --------</option>
@@ -123,11 +123,11 @@
               <div class="your-order-info order-shipping">
                 <ul>
                   <li>Delivery Address
-                    <p id="address-billing-1">{{ $address[0]->name.", ".$address[1]->name."," }}</p>
+                    <p id="address-billing-1">{{ count($address)!=0 ?$address[0]->name.", ".$address[1]->name."," : null }}</p>
                   </li>
                   <li>
                     <p id="address-billing-2">
-                      {{ $address[2]->name.", "}} {{ Auth::user() ? Auth::user()->address: NULL }}
+                      {{ count($address)!=0 ? $address[2]->name.", " : null}} {{ Auth::user() ? Auth::user()->address: NULL }}
                     </p>
                   </li>
                 </ul>

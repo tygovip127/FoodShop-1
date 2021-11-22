@@ -2,6 +2,7 @@
 @section('title','Food Shop VKU | Account')
 
 @section('content')
+{{-- {{ dd(count(Auth::user()->orders)) }} --}}
 <x-breadcrumb currentPage="Account"></x-breadcrumb>
 <!-- my account wrapper start -->
 <div class="my-account-wrapper pt-50 pb-50">
@@ -59,7 +60,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          @if (!Auth::user()->orders)
+                          @if (count(Auth::user()->orders)!=0)
                             @foreach (Auth::user()->orders as $order)
                               <tr>
                                 <td>{{ $order->id }}</td>
