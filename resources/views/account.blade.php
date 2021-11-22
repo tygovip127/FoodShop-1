@@ -5,7 +5,7 @@
 <x-breadcrumb currentPage="Account"></x-breadcrumb>
 <!-- my account wrapper start -->
 <div class="my-account-wrapper pt-50 pb-50">
-  <div class="container">
+  <div class="container-fluid ">
     <div class="row">
       <div class="col-lg-12">
         <!-- My Account Page Start -->
@@ -49,35 +49,39 @@
                       <table class="table table-bordered">
                         <thead class="thead-light">
                           <tr>
-                            <th>Order</th>
+                            <th>ID</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total</th>
                             <th>Date</th>
                             <th>Status</th>
-                            <th>Total</th>
-                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Aug 22, 2018</td>
-                            <td>Pending</td>
-                            <td>$3000</td>
-                            <td><a href="cart.html" class="check-btn sqr-btn ">View</a></td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>July 22, 2018</td>
-                            <td>Approved</td>
-                            <td>$200</td>
-                            <td><a href="cart.html" class="check-btn sqr-btn ">View</a></td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>June 12, 2017</td>
-                            <td>On Hold</td>
-                            <td>$990</td>
-                            <td><a href="cart.html" class="check-btn sqr-btn ">View</a></td>
-                          </tr>
+                          @if (!Auth::user()->orders)
+                            @foreach (Auth::user()->orders as $order)
+                              <tr>
+                                <td>{{ $order->id }}</td>
+                                <td>{{ $order->product->title }}</td>
+                                <td>{{ $order->quantity }}</td>
+                                <td>{{ $order->price }}</td>
+                                <td>{{ $order->quantity* $order->price }}</td>
+                                <td>{{ $order->created_at }}</td>
+                                <td>Pending</td>
+                              </tr>
+                            @endforeach
+                          @else
+                            <tr>
+                              <td>Null</td>
+                              <td>Null</td>
+                              <td>Null</td>
+                              <td>Null</td>
+                              <td>Null</td>
+                              <td>Null</td>
+                              <td>Null</td>
+                            </tr>
+                          @endif
                         </tbody>
                       </table>
                     </div>

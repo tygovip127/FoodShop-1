@@ -17,6 +17,9 @@ class OrderController extends Controller
         $address= Auth::user() ?AddressController::getUserAddress(Auth::user()->id): NULL;
         $provinces = Province::all();
         $items = session()->get('cart');
+        if(empty($items)){
+            return redirect('/cart');
+        }
         return view('order', ["provinces"=> $provinces, 'address'=>$address, 'items'=>$items]);
     }
 

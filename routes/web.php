@@ -51,6 +51,7 @@ Route::get('/account', function () {
     $provinces = Province::all();
     $id= Auth::user()->id;
     $address= AddressController::getUserAddress($id);
+    // $orders= 
     return view('account', ['provinces'=> $provinces, 'address'=> $address]);
 })->middleware('auth');
 
@@ -92,9 +93,10 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get("/test", function (){
     //test thử code
-    // dd(session()->get('cart',[]));
-    $products= Models\Product::paginate(9);
-    return view('test', ['products'=> $products]);
+    // $orders = Models\Order::paginate(10);
+    $user= Auth::user();
+    dd($user->orders);
+    return view('test');
 });
 
 
