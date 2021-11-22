@@ -66,7 +66,7 @@
                 <ul>
                   <li><a class="prev" href="{{ $categories->previousPageUrl() }}"><i class="icon-arrow-left"></i></a></li>
                   @for ($i = 1; $i <= $pages; $i++) <li>
-                    <a href='{{ "http://127.0.0.1:8000/admin/category?page=".$i }}'>{{ $i }}</a>
+                    <a href=<?php echo url()->current()."?page=".$i ?> >{{ $i }}</a>
                     </li>
                     @endfor
                     <li><a class="next" href="{{ $categories->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
