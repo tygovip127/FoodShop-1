@@ -63,7 +63,7 @@ Route::get("/error", function (){
     return view('error');
 });
 
-// Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
+Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
 // Route::get('/users',[Controllers\UserController::class, 'index']);
 
 Route::get("/cart",[Controllers\CartController::class, 'index']);

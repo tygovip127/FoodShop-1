@@ -140,6 +140,9 @@
               </div>
             </div>
           </div>
+          <div id="response">
+
+          </div>
           <div class="Place-order col-sm-3">
             <a id="order">Order</a>
           </div>

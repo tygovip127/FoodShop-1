@@ -20,7 +20,7 @@ class OrderController extends Controller
         return view('order', ["provinces"=> $provinces, 'address'=>$address, 'items'=>$items]);
     }
 
-    public function store(Request $request){
+    public function store(OrderRequest $request){
         try{
             DB::beginTransaction();
 
@@ -51,14 +51,13 @@ class OrderController extends Controller
             }
 
             DB::commit();
+           session()->forget('cart');
 
         }catch(\Exception $exception){
             DB::rollBack();
             Log::error('Message: ' . $exception->getMessage() . ' --- Line : ' . $exception->getLine());
             return $exception->getMessage();
         }
-        return "ok";
-        // return redirect()->intended('/order')->with('success', 'Order products successfully!');
     }
 
 }
