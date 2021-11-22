@@ -11,10 +11,10 @@ class Transaction extends Model
     protected $fillable =[
         'id', 
         'number',
-        'price',
+        'total',
         'customer_name',
         'customer_contact',
-        'sell_time',
+        'deliver_address',
         'user_id',
     ];
 }

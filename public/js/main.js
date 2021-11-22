@@ -827,6 +827,7 @@
         var subTotal = document.getElementById(`subTotal_${id}`);
         var price = document.getElementById(`price_${id}`)
         var newSubTotal=parseFloat(newVal)*parseFloat(price.innerText);
+        console.log(subTotal)
         subTotal.innerText= newSubTotal.toFixed(1)+" VND";
         
         // send request update data to server

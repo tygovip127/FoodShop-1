@@ -37,3 +37,20 @@ $('#district').change(function (e){
     }
   })
 })
+
+$('#ward').change(function(e) {
+  e.preventDefault();
+  $province = $('#province  option:selected').text()
+  $district = $('#district option:selected').text()
+  $ward = $('#ward  option:selected').text()
+  $street = $('#street').val()
+  document.getElementById('address-billing-1').innerText=$province+", "+ $district+", "
+  document.getElementById('address-billing-2').innerText=$ward+", " +$street
+})
+
+
+$('#street').change(function(){
+  $ward = $('#ward  option:selected').text()
+  $street = $('#street').val()
+  document.getElementById('address-billing-2').innerText=$ward+", " +$street
+});

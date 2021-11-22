@@ -47,9 +47,6 @@ Route::get("/logout", function () {
 Route::get('/google', [Controllers\Auth\LoginController::class,'redirectToGoogle']);
 Route::get('/google/callback',  [Controllers\Auth\LoginController::class,'handleGoogleCallback']);
 
-Route::get("/wishlist", function () {
-    return view('wishlist');
-});
 Route::get('/account', function () {
     $provinces = Province::all();
     $id= Auth::user()->id;
@@ -74,6 +71,9 @@ Route::get("/cart/add-to-cart/{id}", [Controllers\CartController::class, 'addToC
 Route::delete("/cart/remove-cart-item", [Controllers\CartController::class, 'remove'])->name('removeCartItem');
 Route::put("/cart/update", [Controllers\CartController::class, 'update'])->name('updateCart');
 Route::delete('/cart/remove-all', [Controllers\CartController::class, 'removeAll'])->name("cart.remove.all");
+
+Route::get("/order",[Controllers\OrderController::class, 'index'])->middleware('auth')->name("order.index");
+Route::post("/order/store",[Controllers\OrderController::class, 'store'])->name("order.store");
 
 //route for admin
 Route::middleware(['auth'])->group(function () {
