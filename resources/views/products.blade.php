@@ -6,7 +6,7 @@
 @section('title','Food Shop VKU | Products')
 @section('content')
 <x-breadcrumb currentPage="Products List"></x-breadcrumb>
-
+{{-- {{ $url }} --}}
 <div class="shop-area pt-120 pb-120">
   <div class="container">
     <div class="row flex-row-reverse">
@@ -83,7 +83,7 @@
             <ul>
               <li><a class="prev" href="{{ $products->previousPageUrl() }}"><i class="icon-arrow-left"></i></a></li>
               @for ($i = 1; $i <= $pages; $i++) <li>
-                <a href=<?php echo url()->current()."?page=".$i ?> >{{ $i }}</a>
+                <a href=<?php echo $url."page=".$i ?> >{{ $i }}</a>
                 </li>
                 @endfor
                 <li><a class="next" href="{{ $products->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
@@ -111,7 +111,7 @@
               <ul>
                 @if(!empty($categories))
                 @foreach ($categories as $category)
-                <li><a href="#">{{ $category->name }}</a></li>
+                <li><a href=<?php echo url()->current()."?category_id=".$category->id ?> >{{ $category->name }}</a></li>
                 @endforeach
                 @endif
               </ul>

@@ -11,6 +11,7 @@ use App\Models\Province;
 use App\Models\Banner;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,10 +35,21 @@ Route::get('/login-register',function (){
     }
     return view('login-register');
 })->name('login-register');
+
 Route::post('/register', [Controllers\Auth\RegisterController::class, 'create'])->name('register');
 Route::post("/login", [Controllers\Auth\LoginController::class, 'login'])->name('login');
-Route::put('/reset-password', [Controllers\Auth\ResetPasswordController::class, 'reset'])
-    ->name('reset-password');
+Route::put('/change-password', [Controllers\Auth\ResetPasswordController::class, 'changePassword'])
+    ->name('change-password');
+Route::get("/forgot-password", function (){
+    return view("user.forgot-password");
+});
+Route::post("/forgot-password", [Controllers\Auth\ResetPasswordController::class, 'sentEmailLink'])->name("password.email");
+
+Route::get('/reset-password/{token}', [Controllers\Auth\ResetPasswordController::class, 'resetPassword'])->middleware('guest')->name('password.reset');
+Route::post('/update-password', [Controllers\Auth\ResetPasswordController::class, 'updatePassword'])
+    ->middleware('guest')->name('password.update');
+
+
 Route::get("/logout", function () {
     Auth::logout();
     return redirect()->intended('/login-register');
@@ -51,7 +63,6 @@ Route::get('/account', function () {
     $provinces = Province::all();
     $id= Auth::user()->id;
     $address= AddressController::getUserAddress($id);
-    // $orders= 
     return view('account', ['provinces'=> $provinces, 'address'=> $address]);
 })->middleware('auth');
 
@@ -91,12 +102,13 @@ Route::middleware(['auth'])->group(function () {
 });
  
 
-Route::get("/test", function (){
-    //test thử code
-    // $orders = Models\Order::paginate(10);
-    $user= Auth::user();
-    dd($user->orders);
-    return view('test');
+Route::get("/test/{id}", function($id){
+    return $id;
+    // $code =Controllers\Auth\ResetPasswordController::randomCode(6);
+    // return Mail::send('emails.reset-password', ['code'=> $code], function($email){
+    //     $email->subject('Reset your password');
+    //     $email->to(Auth::user()->email,"");
+    // });
 });
 
 

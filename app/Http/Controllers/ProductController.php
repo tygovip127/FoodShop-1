@@ -19,11 +19,20 @@ class ProductController extends Controller
      */
     public function showProducts(Request $request)
     {
-        $products = Product::paginate(9);
         $categories = Category::all();
+        $category_id=$request->get('category_id');
+        $url= url()->current()."?";
+
+        if($category_id===null){
+            $products = Product::paginate(9);
+        }else{
+            $products=Product::where('category_id', '=', $category_id)->paginate(9);
+            $url= $url."category_id=".$category_id."&&";
+        }
         return view('products', [
             'products' => $products,
-            'categories' => $categories
+            'categories' => $categories,
+            'url' => $url
         ]);
     }
 
@@ -160,11 +169,14 @@ class ProductController extends Controller
             $products = Product::where('title', 'LIKE', '%' . $keyword . '%')
                 ->paginate(9);
             $categories = Category::all();
+            $url='/search?keyword='.$keyword."&&";
             return view('products', [
                 'products' => $products,
-                'categories' => $categories
+                'categories' => $categories,
+                'url'=> $url,
             ]);
         } catch (\Exception $exception) {
+
         }
     }
 }

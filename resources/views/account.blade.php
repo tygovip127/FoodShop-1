@@ -250,7 +250,7 @@
                         </div>
                       </form>
                       {{-- Form change password --}}
-                      <form action="{{ route('reset-password') }}" method="post" enctype="multipart/form">
+                      <form action="{{ route('change-password') }}" method="post" enctype="multipart/form">
                         @csrf
                         @method('put')
                         <fieldset>
