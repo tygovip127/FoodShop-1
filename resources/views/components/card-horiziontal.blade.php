@@ -13,13 +13,13 @@
       </div>
       <div class="col-xl-8 col-lg-7 col-md-6 col-sm-6">
         <div class="shop-list-content">
-          <h3><a href="products/{{ $id }}">Basic White Simple Sneaker</a></h3>
+          <h3><a href="products/{{ $id }}">{{ $name }}</a></h3>
           <div class="pro-list-price">
             @if ($discount !=0 || $discount != null)
-            <span class="new-price">${{ $new_price }}</span>
-            <span class="old-price">${{ $old_price }}</span>
+            <span class="new-price">{{ $new_price }} VND</span>
+            <span class="old-price">{{ $old_price }} VND</span>
             @else
-            <span>${{ $old_price }}</span>
+            <span>{{ $old_price }} VND</span>
             @endif
           </div>
           <div class="product-list-rating-wrap">
@@ -32,9 +32,7 @@
             </div>
             <span>(3)</span>
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod tempor labor incididunt ut et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip.</p>
+          <p>{{ $description }}</p>
           <div class="product-list-action">
             <button title="Add To Cart"><i class="icon-basket-loaded"></i></button>
             <button title="Wishlist"><i class="icon-heart"></i></button>

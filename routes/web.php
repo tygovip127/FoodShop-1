@@ -30,10 +30,7 @@ Route::get('/', function () {
 });
 
 Route::get('/login-register',function (){
-    if(Auth::user()){
-        return redirect('/account');
-    }
-    return view('login-register');
+    return Auth::user()?  redirect('/account'):  view('login-register');
 })->name('login-register');
 
 Route::post('/register', [Controllers\Auth\RegisterController::class, 'create'])->name('register');
@@ -102,8 +99,8 @@ Route::middleware(['auth'])->group(function () {
 });
  
 
-Route::get("/test/{id}", function($id){
-    return $id;
+Route::get("/test", function(){
+    
     // $code =Controllers\Auth\ResetPasswordController::randomCode(6);
     // return Mail::send('emails.reset-password', ['code'=> $code], function($email){
     //     $email->subject('Reset your password');

@@ -21,6 +21,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $category_id=$request->get('category_id');
+        // $sort_price= $request->get('sort_price');
+
         $url= url()->current()."?";
 
         if($category_id===null){
@@ -29,6 +31,14 @@ class ProductController extends Controller
             $products=Product::where('category_id', '=', $category_id)->paginate(9);
             $url= $url."category_id=".$category_id."&&";
         }
+
+        // if($sort_price=="asc"){
+        //     $products= Product::orderBy('sell_value', 'asc')->paginate(9);
+        //     $url=$url."sort_price=".$sort_price."&&";
+        // }elseif($sort_price=="desc"){
+        //     $products= Product::orderBy('sell_value', 'desc')->paginate(9);
+        //     $url=$url."sort_price=".$sort_price."&&";
+        // }
         return view('products', [
             'products' => $products,
             'categories' => $categories,
@@ -88,6 +98,8 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
+        $product->view++;
+        $product->save();
         $product->pictures;
         return view('products.show', ['product' => $product]);
     }

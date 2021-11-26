@@ -6,7 +6,7 @@
 @section('title','Food Shop VKU | Products')
 @section('content')
 <x-breadcrumb currentPage="Products List"></x-breadcrumb>
-{{-- {{ $url }} --}}
+
 <div class="shop-area pt-120 pb-120">
   <div class="container">
     <div class="row flex-row-reverse">
@@ -23,17 +23,17 @@
             <div class="product-shorting shorting-style">
               <label>View :</label>
               <select>
-                <option value=""> 20</option>
-                <option value=""> 23</option>
-                <option value=""> 30</option>
+                <option value="9"> 9</option>
+                <option value="12"> 12</option>
+                <option value="15"> 15</option>
               </select>
             </div>
             <div class="product-show shorting-style">
               <label>Sort by :</label>
-              <select>
-                <option value="">Default</option>
-                <option value=""> Name</option>
-                <option value=""> price</option>
+              <select name="sort_price" id="sort_price">
+                <option value="null">Price</option>
+                <option value="asc"> Price: Low to High</option>
+                <option value="desc"> Price: High to Low</option>
               </select>
             </div>
           </div>
@@ -49,30 +49,19 @@
                   </div>
                 @endif
                 @foreach ($products as $item)
-                <x-card :id="$item->id" :name="$item->title" :price="$item->sell_value" :image="$item->feature_image_path">
+                <x-card :id="$item->id" :name="$item->title" 
+                  :price="$item->sell_value" :image="$item->feature_image_path">
                 </x-card>
                 @endforeach
               </div>
             </div>
             <div id="shop-2" class="tab-pane">
-              <x-card-horiziontal id="1" name="Make Thing Happen T-Shirt" price="80.50" image="images/products/product-14.jpg">
+              @foreach ($products as $item)
+              <x-card-horiziontal :id="$item->id" 
+                :name="$item->title" :description="$item->subtitle"
+                :price="$item->sell_value" :image="$item->feature_image_path">
               </x-card-horiziontal>
-              <x-card-horiziontal id="2" name="Basic White Simple Sneake" discount="20" price="80.50" image="images/products/product-14.jpg">
-              </x-card-horiziontal>
-              <x-card-horiziontal id="3" name="Basic White Simple Sneake" price="80.50" image="images/products/product-14.jpg">
-              </x-card-horiziontal>
-              <x-card-horiziontal id="1" name="Make Thing Happen T-Shirt" price="80.50" image="images/products/product-14.jpg">
-              </x-card-horiziontal>
-              <x-card-horiziontal id="2" name="Basic White Simple Sneake" discount="20" price="80.50" image="images/products/product-14.jpg">
-              </x-card-horiziontal>
-              <x-card-horiziontal id="3" name="Basic White Simple Sneake" price="80.50" image="images/products/product-14.jpg">
-              </x-card-horiziontal>
-              <x-card-horiziontal id="1" name="Make Thing Happen T-Shirt" price="80.50" image="images/products/product-14.jpg">
-              </x-card-horiziontal>
-              <x-card-horiziontal id="2" name="Basic White Simple Sneake" discount="20" price="80.50" image="images/products/product-14.jpg">
-              </x-card-horiziontal>
-              <x-card-horiziontal id="3" name="Basic White Simple Sneake" price="80.50" image="images/products/product-14.jpg">
-              </x-card-horiziontal>
+              @endforeach
             </div>
           </div>
           <div class="pro-pagination-style text-center mt-10">
@@ -236,4 +225,5 @@
 
 @section('script')
 <script src="{{ asset('../../js/product/cart.js') }}"></script>
+<script src="{{ asset('../../js/product/sort.js') }}"></script>
 @endsection

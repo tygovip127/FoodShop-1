@@ -68,8 +68,8 @@
               </div>
             </div>
             <div class="product-review-order">
-              <span>62 Reviews</span>
-              <span>242 orders</span>
+              <span>0 Reviews</span>
+              <span>{{ count($product->orders) }} Orders</span>
             </div>
           </div>
           <p>{{ strip_tags($product->subtitle) }}</p>
@@ -78,7 +78,7 @@
             <span class="old-price">$95.72</span> --}}
             <span class="new-price">{{ $product->sell_value }} VND</span>
           </div>
-          <div class="pro-details-color-wrap">
+          {{-- <div class="pro-details-color-wrap">
             <span>Color:</span>
             <div class="pro-details-color-content">
               <ul>
@@ -90,8 +90,8 @@
                 <li><a class="cupid" href="#">cupid</a></li>
               </ul>
             </div>
-          </div>
-          <div class="pro-details-size">
+          </div> --}}
+          {{-- <div class="pro-details-size">
             <span>Size:</span>
             <div class="pro-details-size-content">
               <ul>
@@ -102,19 +102,19 @@
                 <li><a href="#">XL</a></li>
               </ul>
             </div>
-          </div>
+          </div> --}}
           <div class="pro-details-quality">
             <span>Quantity:</span>
             <div class="cart-plus-minus">
               <input class="cart-plus-minus-box quantity update-cart" type="text" name="qtybutton" value="1">
             </div>
           </div>
-          <div class="product-details-meta">
+          {{-- <div class="product-details-meta">
             <ul>
               <li><span>Category:</span> <a href="#">{{ $product->category->name }}</a></li>
               <li><span>Tag: </span> <a href="#">Fashion,</a> <a href="#">Mentone</a> , <a href="#">Texas</a></li>
             </ul>
-          </div>
+          </div> --}}
           <div class="pro-details-action-wrap">
             <div data-id="{{ $product->id }}" class="pro-details-add-to-cart">
               <a class="add-to-cart" title="Add to Cart">Add To Cart</a>
