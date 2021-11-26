@@ -43,13 +43,13 @@
                   </form>
                 </div>
               </div>
-              <div class="same-style-2 main-menu" >
+              <div class="same-style-2 main-menu">
                 <nav>
                   <ul>
                     <li>
                       <a href="/login-register"><i class="icon-user"></i></a>
                       <ul class="sub-menu-style">
-                        <li ><a href="/account">{{ (Auth::user() && Auth::user()->fullname)? Auth::user()->fullname: "My account" }}  </a></li>
+                        <li><a href="/account">{{ (Auth::user() && Auth::user()->fullname)? Auth::user()->fullname: "My account" }} </a></li>
                         <li><a href="/logout">Logout </a></li>
                         <li><a href="/admin/dashboard">Admin </a></li>
                       </ul>
@@ -110,34 +110,34 @@
       <h3>Shopping Cart</h3>
       <ul id="list-cart-item">
         @if (session('cart'))
-            @foreach (session('cart') as $id => $item)
-            <li class="single-product-cart">
-              <div class="cart-img">
-                <a href="{{ route('product.show',$id) }}"><img src="{{ asset($item['image']) }}" alt=""></a>
-              </div>
-              <div class="cart-title">
-                <h4><a href="{{ route('product.show',$id) }}">{{ $item['title'] }}</a></h4>
-                <span> {{ $item['quantity'] ." x ". $item['price'] }} VND</span>
-              </div>
-              <div class="cart-delete">
-                <a href="#">×</a>
-              </div>
-            </li>
-            @endforeach
+        @foreach (session('cart') as $id => $item)
+        <li class="single-product-cart">
+          <div class="cart-img">
+            <a href="{{ route('product.show',$id) }}"><img src="{{ asset($item['image']) }}" alt=""></a>
+          </div>
+          <div class="cart-title">
+            <h4><a href="{{ route('product.show',$id) }}">{{ $item['title'] }}</a></h4>
+            <span> {{ $item['quantity'] ." x ". $item['price'] }} VND</span>
+          </div>
+          <div class="cart-delete">
+            <a href="#">×</a>
+          </div>
+        </li>
+        @endforeach
         @endif
       </ul>
       <div class="cart-total">
         @php
-          $subTotal=0;
+        $subTotal=0;
         @endphp
         @if (session('cart') )
         @foreach (session('cart') as $id => $item)
-          @php
-            $subTotal+= $item['quantity']*$item['price'];
-          @endphp
+        @php
+        $subTotal+= $item['quantity']*$item['price'];
+        @endphp
         @endforeach
         @endif
-        <h4>Subtotal: <span id="subTotal">{{  $subTotal  }} VND</span></h4>
+        <h4>Subtotal: <span id="subTotal">{{ $subTotal  }} VND</span></h4>
       </div>
       <div class="cart-checkout-btn">
         <a class="btn-hover cart-btn-style" href="/cart">view cart</a>

@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('css')
+<link rel="stylesheet" href="{{ asset('../../css/product.css')}}">
+@endsection
 @section('title','Food Shop VKU | Product Detail')
 
 @section('content')
@@ -12,7 +15,7 @@
             <div class="easyzoom-style">
               <div class="easyzoom easyzoom--overlay">
                 <a href="{{ asset($product->feature_image_path) }}">{{--  image full scrreen--}}
-                  <img src="{{ asset($product->feature_image_path) }}" alt=""> 
+                  <img class="product-detail-img" src="{{ asset($product->feature_image_path) }}" alt=""> 
                 </a>
               </div>
               <a class="easyzoom-pop-up img-popup" href="{{ asset($product->feature_image_path) }}">
@@ -24,7 +27,7 @@
                   <div class="easyzoom-style">
                     <div class="easyzoom easyzoom--overlay">
                       <a href="{{ asset($item->picture) }}">
-                        <img src="{{ asset($item->picture) }}" alt="">
+                        <img class="product-detail-img" src="{{ asset($item->picture) }}" alt="">
                       </a>
                     </div>
                     <a class="easyzoom-pop-up img-popup" href="{{ asset($item->picture) }}">
@@ -108,7 +111,7 @@
           </div>
           <div class="product-details-meta">
             <ul>
-              <li><span>Categories:</span> <a href="#">{{ $product->category->name }}</a></li>
+              <li><span>Category:</span> <a href="#">{{ $product->category->name }}</a></li>
               <li><span>Tag: </span> <a href="#">Fashion,</a> <a href="#">Mentone</a> , <a href="#">Texas</a></li>
             </ul>
           </div>

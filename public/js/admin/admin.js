@@ -48,8 +48,6 @@ $(function() {
 });
 
 //delete image from update product
-
-
 function actionDeleteImage(event) {
     event.preventDefault();
     let that = $(this);

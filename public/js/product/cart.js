@@ -52,7 +52,7 @@
     var host = window.location.host;
     $.ajaxSetup({
       headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
 
@@ -73,24 +73,22 @@
 
     $.ajaxSetup({
       headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
 
-    if(confirm("Are you sure want to remove?")) {
-      $.ajax({
-          url: `http://${host}/cart/remove-cart-item`,
-          method: "DELETE",
-          data: {
-            id: element.parents("tr").attr("data-id")
-          },
-          success: function (response) {
-            var numberCartTtem = document.getElementById("number-cart-time");
-    numberCartTtem.innerText= parseInt(numberCartTtem.innerText)-1;
-            element.parents('tr').remove();
-          }
-      });
-    }
+    $.ajax({
+        url: `http://${host}/cart/remove-cart-item`,
+        method: "DELETE",
+        data: {
+          id: element.parents("tr").attr("data-id")
+        },
+        success: function (response) {
+          var numberCartTtem = document.getElementById("number-cart-time");
+          numberCartTtem.innerText= parseInt(numberCartTtem.innerText)-1;
+          element.parents('tr').remove();
+        }
+    });
   });
 
   // function to update cart item
@@ -102,7 +100,7 @@
 
     $.ajaxSetup({
       headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
 

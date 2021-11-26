@@ -19923,6 +19923,11 @@ h3.cart-page-title {
     padding: 2px 20px;
 }
 
+.myaccount-content .account-details-form .multiple-input-item select {
+    border: 1px solid #eceff8;
+    padding: 2px 20px;
+}
+
 .myaccount-content .account-details-form .single-input-item button {
     border: none;
     background-color: #ff2f2f;
