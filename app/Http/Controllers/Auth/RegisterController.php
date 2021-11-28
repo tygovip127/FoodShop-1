@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -19,24 +20,29 @@ class RegisterController extends Controller
 
   protected function create(Request $request)
   {
-    $valid=$request->validate([
-      'fullname' => ['required', 'string', 'max:255'],
-      'username' => ['required', 'string', 'max:255'],
-      'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-      'password' => ['required', 'string', 'min:8'],
-      're-password' => ['required_with:password|same:password', 'string', 'min:8'],
-      'phone' => ['required','regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/'],
+    $request->validate([
+      '_fullname' => ['required', 'string', 'max:255'],
+      '_username' => ['required', 'string', 'max:255', 'unique:users,username'],
+      '_email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+      '_password' => ['required', 'string', 'min:8'],
+      '_re-password' => ['required_with:password|same:password', 'string', 'min:8'],
+      '_phone' => ['required', 'regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/'],
     ]);
-
-    $user= User::create([
-      'fullname' => $request->input('fullname'),
-      'username' => $request->input('username'),
-      'email' => $request->input('email'),
-      'phone' => $request->input('phone'),
-      'password' => Hash::make($request->input('password')),
-      'token' => Hash::make(Str::random(64)),
-    ]);
-    if($valid){
+    try {
+      DB::beginTransaction();
+      $user = User::create([
+        'fullname' => $request->input('_fullname'),
+        'username' => $request->input('_username'),
+        'email' => $request->input('_email'),
+        'phone' => $request->input('_phone'),
+        'password' => Hash::make($request->input('_password')),
+        'token' => Hash::make(Str::random(64)),
+      ]);
+      $user->roles()->sync('2');
+      DB::commit();
+      return redirect()->intended('/login-register');
+    } catch (\Exception $exception) {
+      DB::rollBack();
       return redirect()->intended('/login-register');
     }
   }

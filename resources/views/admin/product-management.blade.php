@@ -11,9 +11,11 @@
               <div>
                 <h5 class="mb-0">All Products</h5>
               </div>
+              @can('create_product')
               <div class="single-input-item m-0">
                 <a href="{{ route('admin.products.create') }}">Add product</a>
               </div>
+              @endcan
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -30,26 +32,11 @@
                         Name
                       </th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                        Category
-                      </th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                        Restock value
-                      </th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                         Sell value
                       </th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                         Rate
                       </th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                        View
-                      </th>
-                      <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Created at
-                                            </th> -->
-                      <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Updated at
-                                            </th>-->
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                         Action
                       </th>
@@ -57,7 +44,7 @@
                   </thead>
                   <tbody>
                     @foreach( $products as $product)
-                    <x-product-list-card :id="$product->id" :image="$product->feature_image_path" :title="$product->title" :categoryId="$product->category_id" :restockValue="$product->restock_value" :sellValue="$product->sell_value" :rate="$product->rate" :view="$product->view" :createdAt="$product->created_at" :updatedAt="$product->updated_at">
+                    <x-product-list-card :id="$product->id" :image="$product->feature_image_path" :title="$product->title" :sellValue="$product->sell_value" :rate="$product->rate">
                     </x-product-list-card>
                     @endforeach
                   </tbody>
@@ -79,7 +66,7 @@
   <ul>
     <li><a class="prev" href="{{ $products->previousPageUrl() }}"><i class="icon-arrow-left"></i></a></li>
     @for ($i = 1; $i <= $pages; $i++) <li>
-      <a href=<?php echo url()->current()."?page=".$i ?> >{{ $i }}</a>
+      <a href=<?php echo url()->current() . "?page=" . $i ?>>{{ $i }}</a>
       </li>
       @endfor
       <li><a class="next" href="{{ $products->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>

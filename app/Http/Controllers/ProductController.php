@@ -6,14 +6,21 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
 use App\Models\Category;
+use App\Traits\DeleteModelTrait;
 use App\Traits\StorageImageTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
-    use StorageImageTrait;
+    use StorageImageTrait, DeleteModelTrait;
 
+    private $product;
+
+    public function __construct(Product $product)
+    {
+        $this->product = $product;
+    }
     /**
      * Show all products for users
      */
@@ -40,18 +47,21 @@ class ProductController extends Controller
 
     public function index()
     {
+        $this->authorize('list_product');
         $products = Product::latest()->paginate(10);
         return view('admin.product-management', ['products' => $products]);
     }
 
     public function create()
     {
+        $this->authorize('create_product');
         $categories = Category::all();
         return view('products.create', ['categories' => $categories]);
     }
 
     public function store(StoreProductRequest $request)
     {
+        $this->authorize('create_product');
         try {
             DB::beginTransaction();
             $data_upload_feature_image = $this->storageTraitUpload($request, 'feature_image_path', 'product');
@@ -63,15 +73,15 @@ class ProductController extends Controller
                 'sell_value' => $request->input('sell_value'),
                 'subtitle' => $request->input('subtitle'),
             ];
-    
+
             if (!empty($data_upload_feature_image)) {
                 $data_product_create['feature_image_path'] = $data_upload_feature_image['file_path'];
             }
-    
+
             $product = Product::create($data_product_create);
-            
+
             if ($request->hasFile('image_path')) {
-                
+
                 foreach ($request->file('image_path') as $file) {
                     $data_upload_images = $this->storageTraitUploadMultiple($file, 'product');
                     $product->pictures()->create([
@@ -98,6 +108,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        $this->authorize('edit_product');
         $product = Product::find($id);
         $categories = Category::all();
         return view('products.edit', compact('product', 'categories'));
@@ -105,43 +116,44 @@ class ProductController extends Controller
 
     public function update(StoreProductRequest $request, $id)
     {
+        $this->authorize('edit_product');
         try {
-        DB::beginTransaction();
-        $data_upload_feature_image = $this->storageTraitUpload($request, 'feature_image_path', 'product');
+            DB::beginTransaction();
+            $data_upload_feature_image = $this->storageTraitUpload($request, 'feature_image_path', 'product');
 
-        $data_product_update = [
-            'title' => $request->input('title'),
-            'category_id' => $request->input('category_id'),
-            'restock_value' => $request->input('restock_value'),
-            'sell_value' => $request->input('sell_value'),
-            'subtitle' => $request->input('subtitle'),
-        ];
+            $data_product_update = [
+                'title' => $request->input('title'),
+                'category_id' => $request->input('category_id'),
+                'restock_value' => $request->input('restock_value'),
+                'sell_value' => $request->input('sell_value'),
+                'subtitle' => $request->input('subtitle'),
+            ];
 
-        if (!empty($data_upload_feature_image)) {
-            $data_product_update['feature_image_path'] = $data_upload_feature_image['file_path'];
-        }
-
-        Product::find($id)->update($data_product_update);
-        $product = Product::find($id);
-
-        $product->pictures()->delete();
-
-        if ($request->image_picture) {
-            foreach ($request->image_picture as $picture) {
-                $product->pictures()->create(['picture' => $picture]);
+            if (!empty($data_upload_feature_image)) {
+                $data_product_update['feature_image_path'] = $data_upload_feature_image['file_path'];
             }
-        }
 
-        if ($request->hasFile('image_path')) {
-            foreach ($request->file('image_path') as $file) {
-                $data_upload_images = $this->storageTraitUploadMultiple($file, 'product');
-                $product->pictures()->create([
-                    'picture' => $data_upload_images['file_path'],
-                ]);
+            Product::find($id)->update($data_product_update);
+            $product = Product::find($id);
+
+            $product->pictures()->delete();
+
+            if ($request->image_picture) {
+                foreach ($request->image_picture as $picture) {
+                    $product->pictures()->create(['picture' => $picture]);
+                }
             }
-        }
-        DB::commit();
-        return redirect()->route('admin.products.edit', array($id));
+
+            if ($request->hasFile('image_path')) {
+                foreach ($request->file('image_path') as $file) {
+                    $data_upload_images = $this->storageTraitUploadMultiple($file, 'product');
+                    $product->pictures()->create([
+                        'picture' => $data_upload_images['file_path'],
+                    ]);
+                }
+            }
+            DB::commit();
+            return redirect()->route('admin.products.edit', array($id));
         } catch (\Exception $exception) {
             DB::rollBack();
             Log::error('Message: ' . $exception->getMessage() . ' --- Line : ' . $exception->getLine());
@@ -150,20 +162,8 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        try {
-            Product::find($id)->delete();
-
-            return response()->json([
-                'code' => 200,
-                'message' => 'success'
-            ], 200);
-        } catch (\Exception $exception) {
-            Log::error('Message: ' . $exception->getMessage() . ' --- Line : ' . $exception->getLine());
-            return response()->json([
-                'code' => 500,
-                'message' => 'fail'
-            ], 500);
-        }
+        $this->authorize('delete_product');
+        return $this->deleteModelTrait($this->product, $id);
     }
 
     public function search(Request $request)

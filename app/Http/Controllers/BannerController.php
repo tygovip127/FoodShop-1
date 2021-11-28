@@ -11,6 +11,7 @@ class BannerController extends Controller
  
     public function index()
     {
+        $this->authorize('list_banner');
         $banners = Banner::all();
         return view('admin.banner',['banners'=>$banners]);
     }
@@ -22,6 +23,7 @@ class BannerController extends Controller
 
     public function store(Request $request)
     {  
+        $this->authorize('create_banner');
         $image= $request->image;
         $request->validate([
             'title'=>['string', 'max: 20'],
@@ -52,16 +54,17 @@ class BannerController extends Controller
 
     public function edit($id)
     {
-        //
+        $this->authorize('edit_banner');
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $this->authorize('edit_banner');
     }
 
     public function destroy($id)
     {
+        $this->authorize('delete_banner');
         $image=Banner::find($id);
         unlink('images'.$image->image);
         $image->delete();

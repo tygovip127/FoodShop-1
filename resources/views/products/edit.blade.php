@@ -7,7 +7,7 @@
 @section('content')
 <div class="main-content">
   <div class="myaccount-content">
-    <h3>Create new products</h3>
+    <h3>Update product</h3>
     <div class="account-details-form">
       <form action="{{ route('admin.products.update', array($product->id)) }}" method="post" enctype="multipart/form-data">
         @method('PUT')
