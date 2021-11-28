@@ -61,6 +61,9 @@ $("#sort_price").change((event) => {
 $("#perPage").change((event) => {
 
   $perPage = $("#perPage").val();
+  var sliderrange = $('#slider-range')
+  console.log(sliderrange.slider("values", 0))
+  console.log(sliderrange.slider("values", 1))
 
   $.ajaxSetup({
     headers: {

@@ -17,7 +17,7 @@
               <a class="active" href="#shop-1" data-toggle="tab"><i class="icon-grid"></i></a>
               <a href="#shop-2" data-toggle="tab"><i class="icon-menu"></i></a>
             </div>
-            <p>Showing 1 - 20 of 30 results </p>
+            {{-- <p>Showing 1 - 20 of 30 results </p> --}}
           </div>
           <div class="product-sorting-wrapper">
             <div class="product-shorting shorting-style">
@@ -125,67 +125,26 @@
               <ul>
                 <li>
                   <div class="sidebar-widget-list-left">
-                    <input type="checkbox"  id="checkbox_sale" name="checkbox_sale"> <a href="#">Sale Off <span>4</span> </a>
+                    <input type="checkbox"  id="checkbox_sale" name="checkbox_sale"> <a href="#">Sale Off </a>
                     <span class="checkmark"></span>
                   </div>
                 </li>
                 <li>
                   <div class="sidebar-widget-list-left">
-                    <input type="checkbox"  id="checkbox_new" name="checkbox_new"> <a href="#">New Products <span>5</span></a>
+                    <input type="checkbox"  id="checkbox_new" name="checkbox_new"> <a href="#">New Products</a>
                     <span class="checkmark"></span>
                   </div>
                 </li>
                 <li>
                   <div class="sidebar-widget-list-left">
-                    <input type="checkbox" value=""> <a href="#">In Stock <span>6</span> </a>
+                    <input type="checkbox" value=""> <a href="#">In Stock </a>
                     <span class="checkmark"></span>
                   </div>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="sidebar-widget shop-sidebar-border mb-40 pt-40">
-            <h4 class="sidebar-widget-title">Size </h4>
-            <div class="sidebar-widget-list">
-              <ul>
-                <li>
-                  <div class="sidebar-widget-list-left">
-                    <input type="checkbox" value=""> <a href="#">XL <span>4</span> </a>
-                    <span class="checkmark"></span>
-                  </div>
-                </li>
-                <li>
-                  <div class="sidebar-widget-list-left">
-                    <input type="checkbox" value=""> <a href="#">L <span>5</span> </a>
-                    <span class="checkmark"></span>
-                  </div>
-                </li>
-                <li>
-                  <div class="sidebar-widget-list-left">
-                    <input type="checkbox" value=""> <a href="#">SM <span>6</span> </a>
-                    <span class="checkmark"></span>
-                  </div>
-                </li>
-                <li>
-                  <div class="sidebar-widget-list-left">
-                    <input type="checkbox" value=""> <a href="#">XXL <span>7</span> </a>
-                    <span class="checkmark"></span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-         
-          {{-- <div class="sidebar-widget shop-sidebar-border pt-40">
-            <h4 class="sidebar-widget-title">Popular Tags</h4>
-            <div class="tag-wrap sidebar-widget-tag">
-              <a href="#">New Products</a>
-              <a href="#">Sale Off</a>
-              <a href="#">Best-selling</a>
-              <a href="#">For Man</a>
-              <a href="#">For Woman</a>
-            </div>
-          </div> --}}
+
           <div class="sidebar-widget shop-sidebar-border mb-40 pt-40">
             <div class="price-filter">
               <div class="price-slider-amount">
