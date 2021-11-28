@@ -44,6 +44,9 @@ class PermissionTableSeeder extends Seeder
             ['name' => 'Create role', 'display_name' => 'Create role', 'parent_id' => '21', 'key_code' => 'create_role'],
             ['name' => 'Edit role', 'display_name' => 'Edit role', 'parent_id' => '21', 'key_code' => 'edit_role'],
             ['name' => 'Delete role', 'display_name' => 'Delete role', 'parent_id' => '21', 'key_code' => 'delete_role'],
+
+            ['name' => 'Admin', 'display_name' => 'Admin', 'parent_id' => '0'],
+            ['name' => 'Access admin', 'display_name' => 'Access admin', 'parent_id' => '26', 'key_code' => 'access_admin'],
         ]);
     }
 }

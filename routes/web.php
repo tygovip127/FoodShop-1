@@ -12,6 +12,7 @@ use App\Models\Province;
 use App\Models\Banner;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,15 +31,23 @@ Route::get('/', function () {
 });
 
 Route::get('/login-register',function (){
-    if(Auth::user()){
-        return redirect('/account');
-    }
-    return view('login-register');
+    return Auth::user()?  redirect('/account'):  view('login-register');
 })->name('login-register');
+
 Route::post('/register', [Controllers\Auth\RegisterController::class, 'create'])->name('register');
 Route::post("/login", [Controllers\Auth\LoginController::class, 'login'])->name('login');
-Route::put('/reset-password', [Controllers\Auth\ResetPasswordController::class, 'reset'])
-    ->name('reset-password');
+Route::put('/change-password', [Controllers\Auth\ResetPasswordController::class, 'changePassword'])
+    ->name('change-password');
+Route::get("/forgot-password", function (){
+    return view("user.forgot-password");
+});
+Route::post("/forgot-password", [Controllers\Auth\ResetPasswordController::class, 'sentEmailLink'])->name("password.email");
+
+Route::get('/reset-password/{token}', [Controllers\Auth\ResetPasswordController::class, 'resetPassword'])->middleware('guest')->name('password.reset');
+Route::post('/update-password', [Controllers\Auth\ResetPasswordController::class, 'updatePassword'])
+    ->middleware('guest')->name('password.update');
+
+
 Route::get("/logout", function () {
     Auth::logout();
     return redirect()->intended('/login-register');
@@ -64,7 +73,7 @@ Route::get("/error", function (){
     return view('error');
 });
 
-// Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
+Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
 // Route::get('/users',[Controllers\UserController::class, 'index']);
 
 Route::get("/cart",[Controllers\CartController::class, 'index']);
@@ -92,11 +101,13 @@ Route::middleware(['auth'])->group(function () {
 });
  
 
-Route::get("/test", function (){
-    //test thử code
-    // dd(session()->get('cart',[]));
-    $products= Models\Product::paginate(9);
-    return view('test', ['products'=> $products]);
+Route::get("/test", function(){
+    
+    // $code =Controllers\Auth\ResetPasswordController::randomCode(6);
+    // return Mail::send('emails.reset-password', ['code'=> $code], function($email){
+    //     $email->subject('Reset your password');
+    //     $email->to(Auth::user()->email,"");
+    // });
 });
 
 

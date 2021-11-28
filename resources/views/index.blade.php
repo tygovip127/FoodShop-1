@@ -49,7 +49,7 @@
             </div>
             <div class="service-content">
               <h3>Free Shipping</h3>
-              <span>Orders over $100</span>
+              <span>Orders over 100k VND</span>
             </div>
           </div>
         </div>

@@ -66,7 +66,9 @@ class AddressController extends Controller
         $province = Province::find($user->province_id);
         $district = District::find($user->district_id);
         $ward = Ward::find($user->ward_id);
-        array_push($address,$province,$district,$ward);
+        if($province && $district && $ward){
+            array_push($address,$province,$district,$ward);
+        }
         return $address;
     }
 }

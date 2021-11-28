@@ -26,11 +26,30 @@ class ProductController extends Controller
      */
     public function showProducts(Request $request)
     {
-        $products = Product::paginate(9);
         $categories = Category::all();
+        $category_id=$request->get('category_id');
+        // $sort_price= $request->get('sort_price');
+
+        $url= url()->current()."?";
+
+        if($category_id===null){
+            $products = Product::paginate(9);
+        }else{
+            $products=Product::where('category_id', '=', $category_id)->paginate(9);
+            $url= $url."category_id=".$category_id."&&";
+        }
+
+        // if($sort_price=="asc"){
+        //     $products= Product::orderBy('sell_value', 'asc')->paginate(9);
+        //     $url=$url."sort_price=".$sort_price."&&";
+        // }elseif($sort_price=="desc"){
+        //     $products= Product::orderBy('sell_value', 'desc')->paginate(9);
+        //     $url=$url."sort_price=".$sort_price."&&";
+        // }
         return view('products', [
             'products' => $products,
-            'categories' => $categories
+            'categories' => $categories,
+            'url' => $url
         ]);
     }
 
@@ -89,6 +108,8 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
+        $product->view++;
+        $product->save();
         $product->pictures;
         return view('products.show', ['product' => $product]);
     }
@@ -160,11 +181,14 @@ class ProductController extends Controller
             $products = Product::where('title', 'LIKE', '%' . $keyword . '%')
                 ->paginate(9);
             $categories = Category::all();
+            $url='/search?keyword='.$keyword."&&";
             return view('products', [
                 'products' => $products,
-                'categories' => $categories
+                'categories' => $categories,
+                'url'=> $url,
             ]);
         } catch (\Exception $exception) {
+
         }
     }
 }

@@ -5,7 +5,7 @@
   <div class="tab-content jump">
     <div id="shop-1" class="tab-pane active">
       <div class="row">
-        {{ dd(session()->get('cart',[])) }}
+      
       </div>
     </div>
   </div>
