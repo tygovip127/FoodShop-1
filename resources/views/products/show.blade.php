@@ -109,12 +109,12 @@
               <input class="cart-plus-minus-box quantity update-cart" type="text" name="qtybutton" value="1">
             </div>
           </div>
-          {{-- <div class="product-details-meta">
+          <div class="product-details-meta">
             <ul>
               <li><span>Category:</span> <a href="#">{{ $product->category->name }}</a></li>
-              <li><span>Tag: </span> <a href="#">Fashion,</a> <a href="#">Mentone</a> , <a href="#">Texas</a></li>
+              {{-- <li><span>Tag: </span> <a href="#">Fashion,</a> <a href="#">Mentone</a> , <a href="#">Texas</a></li> --}}
             </ul>
-          </div> --}}
+          </div>
           <div class="pro-details-action-wrap">
             <div data-id="{{ $product->id }}" class="pro-details-add-to-cart">
               <a class="add-to-cart" title="Add to Cart">Add To Cart</a>

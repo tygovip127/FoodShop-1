@@ -191,4 +191,25 @@ class ProductController extends Controller
 
         }
     }
+
+    public function filter(Request $request){
+        $products= Product::query();
+        $perPage= $request->get('perPage');
+        $products->Name($request)->SortPrice($request)->NewProducts($request)
+            ->Category($request);
+        $products=$products->paginate($perPage);
+
+        // render blade compontent to hmtl
+        $html_render= array();
+        foreach($products as $item){
+            $item= new \App\View\Components\Card($item->id,$item->title,null,$item->sell_value, null, $item->feature_image_path);
+            array_push($html_render,$item->resolveView()->with($item->data())->render());
+        }
+        
+        return response()->json([
+            'data'=> $html_render, //array card component
+            'products'=>$products, //origin products
+        ]);
+        return $products;
+    }
 }

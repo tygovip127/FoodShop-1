@@ -10,7 +10,9 @@ use App\Models;
 use App\Models\Province;
 use App\Models\Banner;
 use App\Models\Product;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +67,7 @@ Route::get('/account', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/products', [Controllers\ProductController::class, 'showProducts'])->name('products');
+Route::get('/products/filter', [Controllers\ProductController::class, 'filter'])->name('products.filter');
 Route::get("/products/{id}", [Controllers\ProductController::class, 'show'])->name('product.show');
 Route::get("/search", [Controllers\ProductController::class, 'search'])->name('search');
 
@@ -88,6 +91,7 @@ Route::post("/order/store",[Controllers\OrderController::class, 'store'])->name(
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', function () {
+            $orders= Order::latest()->limit(5)->get();
             return view('dashboard');
         })->name('dashboard');
         // Route::get('/users-management',[Controllers\AdminController::class, "showUsers"])->name('users-managerment');
@@ -99,13 +103,16 @@ Route::middleware(['auth'])->group(function () {
 });
  
 
-Route::get("/test", function(){
-    
-    // $code =Controllers\Auth\ResetPasswordController::randomCode(6);
-    // return Mail::send('emails.reset-password', ['code'=> $code], function($email){
-    //     $email->subject('Reset your password');
-    //     $email->to(Auth::user()->email,"");
-    // });
+Route::get("/test", function(Request $request){
+    return $products=Product::paginate(9);
+    $html= array();
+    foreach($products as $item){
+        $item = new App\View\Components\Card($item->id);
+        array_push($html,$item->resolveView()->with($item->data())->render());
+    }
+    return response()->json([
+        "test"=> $html,
+    ],200);
 });
 
 
