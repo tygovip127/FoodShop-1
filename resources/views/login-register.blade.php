@@ -21,15 +21,18 @@
                 <div class="login-register-form">
                   <form action="{{ route('login') }}" method="post">
                     @csrf
-                    <input type="text" name="email" placeholder="Email"
-                      value="{{ old('email') }}">
+                    @error('email')
                     <span class="text-danger">
-                      @error('email'){{ $message }}@enderror
+                      {{ $message }}
                     </span>
+                    @enderror
+                    <input type="text" name="email" placeholder="Email" value="{{ old('email') }}">
+                    @error('password')
+                    <span class="text-danger">
+                      {{ $message }}
+                    </span>
+                    @enderror
                     <input type="password" name="password" placeholder="Password" value="{{ old('password') }}">
-                    <span class="text-danger">
-                      @error('password'){{ $message }}@enderror
-                    </span>
                     <div class="button-box">
                       <div class="login-toggle-btn">
                         <input type="checkbox">
@@ -37,7 +40,7 @@
                         <a href="#">Forgot Password?</a>
                       </div>
                       <div class="login-toggle-btn text-center">
-                      <button type="submit" >Login</button>
+                        <button type="submit">Login</button>
                       </div>
                       <hr>
                       <div class="row login-toggle-btn text-center">
@@ -53,31 +56,42 @@
                 <div class="login-register-form">
                   <form action="{{ route('register') }}" method="post">
                     @csrf
-                    <input type="text" name="fullname" placeholder="Fullname" value="{{ old('fullname') }}">
+                    @error('_fullname')
                     <span class="text-danger">
-                      @error('fullname'){{ $message }}@enderror
+                      {{ $message }}
                     </span>
-                    <input type="text" name="username" placeholder="Username" value="{{ old('username') }}">
+                    @enderror
+                    <input type="text" name="_fullname" placeholder="Fullname" value="{{ old('_fullname') }}">
+                    @error('_username')
                     <span class="text-danger">
-                      @error('username'){{ $message }}@enderror
+                      {{ $message }}
                     </span>
-                    <input type="password" name="password" placeholder="Password" value="{{ old('password') }}">
+                    @enderror
+                    <input type="text" name="_username" placeholder="Username" value="{{ old('_username') }}">
+                    @error('_password')
                     <span class="text-danger">
-                      @error('password'){{ $message }}@enderror
+                      {{ $message }}
                     </span>
-                    <input type="password" name="re-password" placeholder="Retype Password"
-                      value="{{ old('re-password') }}">
+                    @enderror
+                    <input type="password" name="_password" placeholder="Password" value="{{ old('_password') }}">
+                    @error('_password')
                     <span class="text-danger">
-                      @error('re-password'){{ $message }}@enderror
+                      {{ $message }}
                     </span>
-                    <input type="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                    @enderror
+                    <input type="password" name="_password" placeholder="Retype Password" value="{{ old('_password') }}">
+                    @error('_email')
                     <span class="text-danger">
-                      @error('email'){{ $message }}@enderror
+                      {{ $message }}
                     </span>
-                    <input type="text" name="phone" placeholder="Phone Number" value="{{ old('phone') }}">
+                    @enderror
+                    <input type="email" name="_email" placeholder="Email" value="{{ old('_email') }}">
+                    @error('_phone')
                     <span class="text-danger">
-                      @error('phone'){{ $message }}@enderror
+                      {{ $message }}
                     </span>
+                    @enderror
+                    <input type="text" name="_phone" placeholder="Phone Number" value="{{ old('_phone') }}">
                     <div class="button-box text-center">
                       <button type="submit">Register</button>
                     </div>

@@ -24,6 +24,9 @@
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.category.index') }}">Category Management</a></li>
                 </ul>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('admin.roles.index') }}">Role Management</a></li>
+                </ul>
             </li>
             <!-- <li class="menu-header">Table</li>
             <li class="nav-item dropdown">
