@@ -11,9 +11,11 @@
               <div>
                 <h5 class="mb-0">All Roles</h5>
               </div>
+              @can('create_role')
               <div class="single-input-item m-0">
                 <a href="{{ route('admin.roles.create') }}">Add role</a>
               </div>
+              @endcan
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">

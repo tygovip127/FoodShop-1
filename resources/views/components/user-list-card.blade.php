@@ -16,15 +16,16 @@
     <td>
         <p class="text-xs font-weight-bold ">{{ $phone }}</p>
     </td>
-    <td>
-        <p class="text-xs font-weight-bold ">{{ $address }}</p>
-    </td>
     <td class="text-center">
+        @can('edit_user')
         <a href="{{ route('admin.users.edit', array($id)) }}" class="mx-3">
             <i class="fas fa-user-edit text-secondary"></i>
         </a>
+        @endcan
+        @can('delete_user')
         <a href="" data-url="{{ route('admin.users.destroy', array($id)) }}" class="action_delete">
             <i class="cursor-pointer fas fa-trash text-secondary"></i>
         </a>
+        @endcan
     </td>
 </tr>

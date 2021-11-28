@@ -12,21 +12,32 @@
              <li class="menu-header">Management</li>
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-columns"></i> <span>Management</span></a>
+                @can('list_user')
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.users.index') }}">User Management</a></li>
                 </ul>
+                @endcan
+                @can('list_product')
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.products.index') }}">Product Management</a></li>
                 </ul>
+                @endcan
+                @can('list_product')
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.banner.index') }}">Banner Management</a></li>
                 </ul>
+                @endcan
+                
+                @can('list_product')
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.category.index') }}">Category Management</a></li>
                 </ul>
+                @endcan
+                @can('list_product')
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.roles.index') }}">Role Management</a></li>
                 </ul>
+                @endcan 
             </li>
             <!-- <li class="menu-header">Table</li>
             <li class="nav-item dropdown">
@@ -169,11 +180,5 @@
             </li>
             <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
         </ul> -->
-
-        <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-            <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
-                <i class="fas fa-rocket"></i> Documentation
-            </a>
-        </div>
     </aside>
 </div>

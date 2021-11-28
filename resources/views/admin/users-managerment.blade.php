@@ -11,9 +11,11 @@
               <div>
                 <h5 class="mb-0">All Users</h5>
               </div>
+              @can('create_user')
               <div class="single-input-item m-0">
                 <a href="{{ route('admin.users.create') }}">Add user</a>
               </div>
+              @endcan
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -26,7 +28,7 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                         Avatar
                       </th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                         Full name
                       </th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -36,22 +38,13 @@
                         Phone
                       </th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                        Address
-                      </th>
-                      <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Created at
-                                            </th> -->
-                      <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Updated at
-                                            </th>-->
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                         Action
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     @foreach( $users as $user)
-                    <x-user-list-card :id="$user->id" :avatar="$user->avatar" :fullname="$user->fullname" :email="$user->email" :phone="$user->phone" :address="$user->address">
+                    <x-user-list-card :id="$user->id" :avatar="$user->avatar" :fullname="$user->fullname" :email="$user->email" :phone="$user->phone">
                     </x-user-list-card>
                     @endforeach
                   </tbody>
@@ -72,9 +65,8 @@
   </span>
   <ul>
     <li><a class="prev" href="{{ $users->previousPageUrl() }}"><i class="icon-arrow-left"></i></a></li>
-    @for ($i = 1; $i <= $pages; $i++) 
-      <li>
-        <a href=<?php echo url()->current()."?page=".$i ?> >{{ $i }}</a>
+    @for ($i = 1; $i <= $pages; $i++) <li>
+      <a href=<?php echo url()->current() . "?page=" . $i ?>>{{ $i }}</a>
       </li>
       @endfor
       <li><a class="next" href="{{ $users->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
