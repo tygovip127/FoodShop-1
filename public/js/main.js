@@ -786,15 +786,15 @@
     $(function() {
         sliderrange.slider({
             range: true,
-            min: 16,
-            max: 400,
+            min: 10000,
+            max: 200000,
             values: [0, 300],
             slide: function(event, ui) {
-                amountprice.val("$" + ui.values[0] + " - $" + ui.values[1]);
+                amountprice.val(ui.values[0] + " VND - " + ui.values[1]+" VND");
             }
         });
-        amountprice.val("$" + sliderrange.slider("values", 0) +
-            " - $" + sliderrange.slider("values", 1));
+        amountprice.val(sliderrange.slider("values", 0) +
+            " VND - " + sliderrange.slider("values", 1)+" VND");
     });
     
     /*----------------------------

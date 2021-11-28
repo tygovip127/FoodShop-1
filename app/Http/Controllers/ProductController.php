@@ -28,7 +28,6 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $category_id=$request->get('category_id');
-        // $sort_price= $request->get('sort_price');
 
         $url= url()->current()."?";
 
@@ -38,14 +37,7 @@ class ProductController extends Controller
             $products=Product::where('category_id', '=', $category_id)->paginate(9);
             $url= $url."category_id=".$category_id."&&";
         }
-
-        // if($sort_price=="asc"){
-        //     $products= Product::orderBy('sell_value', 'asc')->paginate(9);
-        //     $url=$url."sort_price=".$sort_price."&&";
-        // }elseif($sort_price=="desc"){
-        //     $products= Product::orderBy('sell_value', 'desc')->paginate(9);
-        //     $url=$url."sort_price=".$sort_price."&&";
-        // }
+      
         return view('products', [
             'products' => $products,
             'categories' => $categories,
@@ -190,5 +182,26 @@ class ProductController extends Controller
         } catch (\Exception $exception) {
 
         }
+    }
+
+    public function filter(Request $request){
+        $products= Product::query();
+        $perPage= $request->get('perPage');
+        $products->Name($request)->SortPrice($request)->NewProducts($request)
+            ->Category($request);
+        $products=$products->paginate($perPage);
+
+        // render blade compontent to hmtl
+        $html_render= array();
+        foreach($products as $item){
+            $item= new \App\View\Components\Card($item->id,$item->title,null,$item->sell_value, null, $item->feature_image_path);
+            array_push($html_render,$item->resolveView()->with($item->data())->render());
+        }
+        
+        return response()->json([
+            'data'=> $html_render, //array card component
+            'products'=>$products, //origin products
+        ]);
+        return $products;
     }
 }
