@@ -55,13 +55,21 @@ class Product extends Model
     }
 
     public function scopeNewProducts($query, $request){
-        if($request->new_products== true){
+        if($request->new_products== "true"){
             return $query->latest();
         }
     }
 
     public function scopeSale($query, $request){
 
+    }
+
+    public function scopeRangerPrice($query, $request){
+        $minPrice= $request->min_price;
+        $maxPrice= $request->max_price;
+        if($minPrice!=$maxPrice){
+            return $query->whereBetween('sell_value', [$minPrice, $maxPrice]);
+        }
     }
 
 }

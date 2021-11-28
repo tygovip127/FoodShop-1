@@ -115,7 +115,6 @@
                 <div class="label-input">
                   <input type="text" id="amount" name="price" placeholder="Add Your Price" />
                 </div>
-                <button type="button">Filter</button>
               </div>
             </div>
           </div>
@@ -144,14 +143,7 @@
               </ul>
             </div>
           </div>
-
-          <div class="sidebar-widget shop-sidebar-border mb-40 pt-40">
-            <div class="price-filter">
-              <div class="price-slider-amount">
-                <button type="button" id="btn-filter">Filter</button>
-              </div>
-            </div>
-          </div>
+          <button type="button" class="btn-style-1" id="btn-filter">Filter</button>
         </div>
       </div>
     </div>

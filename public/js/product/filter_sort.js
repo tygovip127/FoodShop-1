@@ -6,6 +6,11 @@ $("#btn-filter").click((event) => {
   $perPage = $("#perPage").val();
   $new_products = $('#checkbox_new').is(":checked");
   $sale = $('#checkbox_sale').is(":checked");
+  $sort_price = $("#sort_price").val();
+
+  var sliderrange = $('#slider-range')
+  $min_price = sliderrange.slider("values",0)
+  $max_price = sliderrange.slider("values",1)
 
   $.ajaxSetup({
     headers: {
@@ -20,6 +25,9 @@ $("#btn-filter").click((event) => {
       perPage: $perPage,
       new_products: $new_products,
       sale: $sale,
+      sort_price: $sort_price,
+      min_price: $min_price,
+      max_price: $max_price
     },
     success: function (response) {
       renderProducts(response)
@@ -61,10 +69,8 @@ $("#sort_price").change((event) => {
 $("#perPage").change((event) => {
 
   $perPage = $("#perPage").val();
-  var sliderrange = $('#slider-range')
-  console.log(sliderrange.slider("values", 0))
-  console.log(sliderrange.slider("values", 1))
-
+  
+  
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
