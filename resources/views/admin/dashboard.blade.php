@@ -1,5 +1,8 @@
 @extends('layouts.admin-app')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/soft-ui-dashboard.min.css')}}">
+@endsection
 @section('title','Food Shop VKU | Admin')
 @section('content')
 <div class="main-content">
@@ -111,9 +114,9 @@
             </div>
             <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
               <div class="bg-gradient-primary border-radius-lg h-100">
-                <img src="../assets/img/shapes/waves-white.svg" class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves">
+                <img src="" class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves">
                 <div class="position-relative d-flex align-items-center justify-content-center h-100">
-                  <img class="w-100 position-relative z-index-2 pt-4" src="/assets/img/illustrations/warning-rocket.png">
+                  <img class="w-100 position-relative z-index-2 pt-4" src="">
                 </div>
               </div>
             </div>
@@ -123,7 +126,7 @@
     </div>
     <div class="col-lg-5">
       <div class="card h-100 p-3">
-        <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('../assets/img/ivancik.jpg');">
+        <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('');">
           <span class="mask bg-gradient-dark"></span>
           <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
             <h5 class="text-white font-weight-bolder mb-4 pt-2">Work with the rockets</h5>
@@ -313,7 +316,7 @@
                   <td>
                     <div class="d-flex px-2 py-1">
                       <div>
-                        <img src="../assets/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3">
+                        <img src="" class="avatar avatar-sm me-3">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
                         <h6 class="mb-0 text-sm">Soft UI XD Version</h6>
@@ -617,4 +620,9 @@
     </div>
   </div>
 </div>
+@section('js')
+<script src="{{ asset('js/plugins/chartjs.min.js') }}"></script>
+<script src="{{ asset('js/plugins/Chart.extension.js') }}"></script>
+<script src="{{ asset('js/plugins/chart-view.js') }}"></script>
+@endsection
 @endsection

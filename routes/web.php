@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Models;
@@ -26,11 +28,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    $banners= Banner::all();
-    $products = Product::paginate(8);
-    return view('index', compact('banners', 'products'));
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/login-register',function (){
     return Auth::user()?  redirect('/account'):  view('login-register');
@@ -91,11 +89,7 @@ Route::post("/order/store",[Controllers\OrderController::class, 'store'])->name(
 //route for admin
 Route::middleware(['auth', 'can:access_admin'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
-        Route::get('/dashboard', function () {
-            $orders= Order::latest()->limit(5)->get();
-            return view('dashboard');
-        })->name('dashboard');
-        // Route::get('/users-management',[Controllers\AdminController::class, "showUsers"])->name('users-managerment');
+        Route::get('/', [AdminController::class, 'index'])->name('dashboard');
         Route::resource('/users', UserController::class);
         Route::resource('/category', Controllers\CategoryController::class);
         Route::resource('/products', Controllers\ProductController::class)->except(['show']);
