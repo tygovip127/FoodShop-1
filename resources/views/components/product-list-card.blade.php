@@ -11,26 +11,21 @@
         <p class="text-xs font-weight-bold mb-0">{{ $title }}</p>
     </td>
     <td>
-        <p class="text-xs font-weight-bold ">{{ $categoryId }}</p>
-    </td>
-    <td>
-        <p class="text-xs font-weight-bold ">{{ $restockValue }}</p>
-    </td>
-    <td>
         <p class="text-xs font-weight-bold ">{{ $sellValue }}</p>
     </td>
     <td>
         <p class="text-xs font-weight-bold ">{{ $rate }}</p>
     </td>
-    <td>
-        <p class="text-xs font-weight-bold ">{{ $view }}</p>
-    </td>
     <td class="text-center">
+        @can('edit_product')
         <a href="{{ route('admin.products.edit', array($id)) }}" class="mx-3">
             <i class="fas fa-user-edit text-secondary"></i>
         </a>
+        @endcan
+        @can('delete_product')
         <a href="" data-url="{{ route('admin.products.destroy', array($id)) }}" class="action_delete">
             <i class="cursor-pointer fas fa-trash text-secondary"></i>
         </a>
+        @endcan
     </td>
 </tr>

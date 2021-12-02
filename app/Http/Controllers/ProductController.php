@@ -19,7 +19,7 @@ class ProductController extends Controller
 
     public function __construct(Product $product)
     {
-        
+        $this->product = $product;
     }
     /**
      * Show all products for users
@@ -36,18 +36,21 @@ class ProductController extends Controller
 
     public function index()
     {
+        $this->authorize('list_product');
         $products = Product::latest()->paginate(10);
         return view('admin.product-management', ['products' => $products]);
     }
 
     public function create()
     {
+        $this->authorize('create_product');
         $categories = Category::all();
         return view('products.create', ['categories' => $categories]);
     }
 
     public function store(StoreProductRequest $request)
     {
+        $this->authorize('create_product');
         try {
             DB::beginTransaction();
             $data_upload_feature_image = $this->storageTraitUpload($request, 'feature_image_path', 'product');
@@ -92,6 +95,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        $this->authorize('edit_product');
         $product = Product::find($id);
         $categories = Category::all();
         return view('products.edit', compact('product', 'categories'));
@@ -99,6 +103,7 @@ class ProductController extends Controller
 
     public function update(StoreProductRequest $request, $id)
     {
+        $this->authorize('edit_product');
         try {
             DB::beginTransaction();
             $data_upload_feature_image = $this->storageTraitUpload($request, 'feature_image_path', 'product');
@@ -144,6 +149,7 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('delete_product');
         return $this->deleteModelTrait($this->product, $id);
     }
 

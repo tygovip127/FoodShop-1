@@ -9,17 +9,20 @@ class CategoryController extends Controller
    
     public function index()
     {
+        $this->authorize('list_category');
         $categories= Category::paginate(10);
         return view('admin.category', ['categories' => $categories]);
     }
 
     public function create()
     {
+        $this->authorize('create_category');
         return view('category.create');
     }
 
     public function store(Request $request)
     {
+        $this->authorize('create_category');
         $request->validate([
             'category' =>"required",
         ]);
@@ -37,11 +40,12 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        //
+        $this->authorize('edit_category');
     }
 
     public function update(Request $request, $id)
     {
+        $this->authorize('edit_category');
         // return Category::find($id);
         $category =Category::find($id);
         $category->update($request->all());
@@ -50,6 +54,7 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('delete_category');
         Category::find($id)->delete();
         // return view('admin.category', ['categories' =>  Category::paginate(10)]);
     }

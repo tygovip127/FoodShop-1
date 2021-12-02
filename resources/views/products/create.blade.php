@@ -4,7 +4,7 @@
 @section('content')
 <div class="main-content">
   <div class="myaccount-content">
-    <h3>Create new products</h3>
+    <h3>Create new product</h3>
     <div class="account-details-form">
       <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
         @csrf

@@ -23,18 +23,21 @@ class UserController extends Controller
     }
     public function index()
     {
-        $users = User::latest()->paginate(10);
+        $this->authorize('list_user');
+        $users = User::paginate(10);
         return view('admin.users-managerment', ['users' => $users]);
     }
 
     public function create()
     {
+        $this->authorize('create_user');
         $roles = Role::all();
         return view('users.create', compact('roles'));
     }
 
     public function store(RegisterUserRequest $request)
     {
+        $this->authorize('create_user');
         try {
             DB::beginTransaction();
 
@@ -62,26 +65,22 @@ class UserController extends Controller
 
     public function edit($id)
     {
+        $this->authorize('edit_user');
         $user = User::find($id);
         $roles = Role::all();
-        return view('users.edit', compact('user', 'roles'));
+        $roles_selected = $user->roles;
+        return view('users.edit', compact('user', 'roles', 'roles_selected'));
     }
 
     public function update(UpdateUserRequest $request, $id)
     {
+        $this->authorize('edit_user');
         try {
             DB::beginTransaction();
-            $data_user_update = [
-                'fullname' => $request->input('fullname'),
-                'username' => $request->input('username'),
-                'email' => $request->input('email'),
-                'phone' => $request->input('phone'),
-            ];
-            User::find($id)->update($data_user_update);
             $user = User::find($id);
             $user->roles()->sync($request->role_id);
             DB::commit();
-            return redirect()->route('admin.users.edit', array($id))->with('user_success', 'Change user information successfully!');
+            return redirect()->route('admin.users.edit', array($id))->with('user_success', 'Change user role successfully!');
         } catch (\Exception $exception) {
             DB::rollBack();
             Log::error('Message: ' . $exception->getMessage() . ' --- Line : ' . $exception->getLine());
@@ -90,6 +89,7 @@ class UserController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('delete_user');
         return $this->deleteModelTrait($this->user, $id);
     }
 }

@@ -1,5 +1,5 @@
 @extends('layouts.admin-app')
-@section('title', 'Food Shop VKU | Users')
+@section('title', 'Food Shop VKU | Roles')
 @section('content')
 <div class="main-content">
   <div class="myaccount-content">
@@ -9,11 +9,11 @@
           <div class="card">
             <div class="card-header pb-0 d-flex flex-row justify-content-between">
               <div>
-                <h5 class="mb-0">All Users</h5>
+                <h5 class="mb-0">All Roles</h5>
               </div>
-              @can('create_user')
+              @can('create_role')
               <div class="single-input-item m-0">
-                <a href="{{ route('admin.users.create') }}">Add user</a>
+                <a href="{{ route('admin.roles.create') }}">Add role</a>
               </div>
               @endcan
             </div>
@@ -22,20 +22,14 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                         ID
                       </th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                        Avatar
+                        Name
                       </th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                        Full name
-                      </th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                        Email
-                      </th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                        Phone
+                        Description
                       </th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                         Action
@@ -43,9 +37,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach( $users as $user)
-                    <x-user-list-card :id="$user->id" :avatar="$user->avatar" :fullname="$user->fullname" :email="$user->email" :phone="$user->phone">
-                    </x-user-list-card>
+                    @foreach( $roles as $role)
+                    <x-role-list-card :id="$role->id" :name="$role->name" :displayName="$role->display_name">
+                    </x-role-list-card>
                     @endforeach
                   </tbody>
                 </table>
@@ -61,15 +55,16 @@
 </div>
 <div class="pro-pagination-style text-center mt-10">
   <span class="hidden">
-    {{ $pages = ceil($users->total()/ $users->perPage()) }}
+    {{ $pages = ceil($roles->total()/ $roles->perPage()) }}
   </span>
   <ul>
-    <li><a class="prev" href="{{ $users->previousPageUrl() }}"><i class="icon-arrow-left"></i></a></li>
-    @for ($i = 1; $i <= $pages; $i++) <li>
-      <a href=<?php echo url()->current() . "?page=" . $i ?>>{{ $i }}</a>
+    <li><a class="prev" href="{{ $roles->previousPageUrl() }}"><i class="icon-arrow-left"></i></a></li>
+    @for ($i = 1; $i <= $pages; $i++) 
+      <li>
+        <a href=<?php echo url()->current()."?page=".$i ?> >{{ $i }}</a>
       </li>
       @endfor
-      <li><a class="next" href="{{ $users->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
+      <li><a class="next" href="{{ $roles->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
   </ul>
 </div>
 </div>
