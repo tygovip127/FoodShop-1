@@ -89,7 +89,7 @@ Route::get("/order",[Controllers\OrderController::class, 'index'])->middleware('
 Route::post("/order/store",[Controllers\OrderController::class, 'store'])->name("order.store");
 
 //route for admin
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'can:access_admin'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', function () {
             $orders= Order::latest()->limit(5)->get();

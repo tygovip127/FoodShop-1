@@ -22,8 +22,8 @@
           <div class="product-sorting-wrapper">
             <div class="product-shorting shorting-style">
               <label>View :</label>
-              <select id="perPage">
-                <option value="9"> 9</option>
+              <select id="perPage" data-url="{{ $url }}" name="product_per_page">
+                <option value="9" selected> 9</option>
                 <option value="12"> 12</option>
                 <option value="15"> 15</option>
               </select>
@@ -72,7 +72,7 @@
             <ul id="pagination">
               <li><a class="prev" href="{{ $products->previousPageUrl() }}"><i class="icon-arrow-left"></i></a></li>
               @for ($i = 1; $i <= $pages; $i++) <li>
-                <a href=<?php echo $url."page=".$i ?> >{{ $i }}</a>
+                <a href={{ $url."page=".$i }} >{{ $i }}</a>
                 </li>
                 @endfor
                 <li><a class="next" href="{{ $products->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
