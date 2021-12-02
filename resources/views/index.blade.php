@@ -28,7 +28,7 @@
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="hero-slider-img-1 slider-animated-1">
-              <img class="animated" src="{{  asset("images".$banner->image) }}" alt="">
+              <img class="animated" src="{{  asset($banner->image) }}" alt="">
             </div>
           </div>
         </div>
