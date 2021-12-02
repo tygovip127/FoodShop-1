@@ -10,7 +10,9 @@ class AdminController extends Controller
 {
     public function index()
     {
-        Order::latest()->limit(5)->get();
-        return view('admin.dashboard');
+        $order = Order::all();
+        $totalOrder = $order->count('number');
+        dd($totalOrder);
+        return view('admin.dashboard', compact('order'));
     }
 }

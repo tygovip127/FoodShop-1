@@ -16,9 +16,10 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('number');
-            $table->float('price');
+            $table->float('total');
             $table->string('customer_name');
             $table->string('customer_contact');
+            $table->string('deliver_address');
             $table->datetime('sell_time');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')

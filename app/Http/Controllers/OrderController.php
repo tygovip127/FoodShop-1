@@ -14,13 +14,13 @@ use App\Models\Order;
 class OrderController extends Controller
 {
     public function index(){
-        $address= Auth::user() ?AddressController::getUserAddress(Auth::user()->id): NULL;
+        $address = Auth::user() ? AddressController::getUserAddress(Auth::user()->id) : NULL;
         $provinces = Province::all();
         $items = session()->get('cart');
         if(empty($items)){
             return redirect('/cart');
         }
-        return view('order', ["provinces"=> $provinces, 'address'=>$address, 'items'=>$items]);
+        return view('order', compact('provinces', 'address', 'items'));
     }
 
     public function store(OrderRequest $request){
