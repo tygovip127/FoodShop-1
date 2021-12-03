@@ -73,4 +73,15 @@ class User extends Authenticatable
 
         return false;
     }
+    
+    public function orders(){
+        return $this->hasManyThrough(
+            Order::class, 
+            Transaction::class,
+            'user_id',
+            'transaction_id',
+            'id',
+            'id',
+        );
+    }
 }

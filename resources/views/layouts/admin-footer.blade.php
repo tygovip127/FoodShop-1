@@ -1,4 +1,5 @@
 <div class="subscribe-area bg-gray pt-115 pb-115">
+  <div class="main-footer">
   <div class="container">
       <div class="row">
           <div class="col-lg-5 col-md-5">
@@ -25,7 +26,9 @@
       </div>
   </div>
 </div>
+</div>
 <footer class="footer-area bg-gray pb-30">
+  <div class="main-footer">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-md-6">
@@ -70,5 +73,6 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </footer>

@@ -4,11 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Banner;
+use App\Traits\DeleteModelTrait;
+use App\Traits\StorageImageTrait;
 use Illuminate\Support\Facades\File; 
 
 class BannerController extends Controller
 {
  
+    use StorageImageTrait, DeleteModelTrait;
+    
+    public function __construct(Banner $banner)
+    {
+        $this->banner = $banner;
+    }
+
     public function index()
     {
         $this->authorize('list_banner');
@@ -24,21 +33,20 @@ class BannerController extends Controller
     public function store(Request $request)
     {  
         $this->authorize('create_banner');
-        $image= $request->image;
         $request->validate([
             'title'=>['string', 'max: 20'],
             'name'=>['required','string', 'max: 30'],
             'description'=>['required','string', 'max:255'],
             'image'=>['required','mimes:png,jpg,jpeg|max:5048' ],
         ]);
-        $newImage= time()."_".$image->getClientOriginalName();
-        $request->image->move(public_path('images\slider'), $newImage);
-        $newImage= '/slider/'.$newImage;
-        $banner =Banner::create([
-            'title' => $request->input('title'),
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'image'=> $newImage,
+
+        $data_upload_banner_image = $this->storageTraitUpload($request, 'image', 'banner');
+
+        $banner = Banner::create([
+            'title' => $request->title,
+            'name' => $request->name,
+            'description' => $request->description,
+            'image' => $data_upload_banner_image['file_path']
         ]);
         if($banner){
             return redirect('admin/banner')->with('success',"Save the banner successfully!");
@@ -65,10 +73,7 @@ class BannerController extends Controller
     public function destroy($id)
     {
         $this->authorize('delete_banner');
-        $image=Banner::find($id);
-        unlink('images'.$image->image);
-        $image->delete();
-
-        return redirect('admin/banner');
+        
+        return $this->deleteModelTrait($this->banner, $id);
     }
 }

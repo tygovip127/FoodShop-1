@@ -14,17 +14,19 @@ class CardHoriziontal extends Component
     public $id;
     public $name;
     public $title;
+    public $description;
     public $old_price;
     public $new_price;
     public $discount;
     public $image;  
     public $link; //the link to detail product
 
-    public function __construct($id=null, $name=null, $title=null, $price=null, $discount=null, $image=null, $link=null)
+    public function __construct($id=null, $name=null, $title=null, $price=null, $description=null, $discount=null, $image=null, $link=null)
     {
         $this->id = $id;
         $this->name = $name;
         $this->title = $title;
+        $this->description = $description;
         $this->old_price= floatval($price);
         $this->discount = floatval($discount);
         $this->image = $image;

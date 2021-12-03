@@ -24,7 +24,6 @@
   <link rel="stylesheet" href="{{ asset('../../css/style.css')}}">
 
   <link rel="stylesheet" href="{{ asset('../../css/vendor/vendor.min.css')}}">
-  <link rel="stylesheet" href="{{ asset('../../plugins/plugins.min.css')}}">
   <link rel="stylesheet" href="{{ asset('../../css/style.min.css')}}">
   @yield('css')
   <title>@yield('title')</title>
@@ -44,7 +43,6 @@
   <script src="{{ asset('../../js/vendor/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('../../js/plugins/slick.js') }}"></script>
   <script src="{{ asset('../../js/plugins/jquery.syotimer.min.js') }}"></script>
-  <script src="{{ asset('../../js/plugins/jquery.instagramfeed.min.js') }}"></script>
   <script src="{{ asset('../../js/plugins/jquery.nice-select.min.js') }}"></script>
   <script src="{{ asset('../../js/plugins/wow.js') }}"></script>
   <script src="{{ asset('../../js/plugins/jquery-ui-touch-punch.js') }}"></script>

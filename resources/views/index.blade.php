@@ -28,7 +28,7 @@
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="hero-slider-img-1 slider-animated-1">
-              <img class="animated" src="{{  asset("images".$banner->image) }}" alt="">
+              <img class="animated" src="{{  asset($banner->image) }}" alt="">
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@
             </div>
             <div class="service-content">
               <h3>Free Shipping</h3>
-              <span>Orders over $100</span>
+              <span>Orders over 100k VND</span>
             </div>
           </div>
         </div>
@@ -123,7 +123,7 @@
       </div>
       <div class="tab-style-1 nav">
         <a class="active" href="#product-1" data-toggle="tab">Best Seller</a>
-        <a href="#product-2" data-toggle="tab"> Trending</a>
+        <a href="#product-2" data-toggle="tab"> Sale-off</a>
         <a href="#product-3" data-toggle="tab">New Arrivals </a>
         <a href="#product-4" data-toggle="tab">All Products</a>
       </div>
@@ -134,69 +134,33 @@
       <div id="product-1" class="tab-pane active">
         <div class="row">
           @foreach ($products as $item)
-          <x-simple-card :id="$item->id" :name="$item->title" :price="$item->sell_value" discount="15" :image="$item->feature_image_path" link="product-details.html">
+          <x-simple-card :id="$item->id" :name="$item->title" :price="$item->sell_value" discount="100" :image="$item->feature_image_path" link="product-details.html">
           </x-simple-card>
           @endforeach
         </div>
       </div>
       <div id="product-2" class="tab-pane">
         <div class="row">
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg" link="product-details.html">
+        @foreach ($products as $item)
+          <x-simple-card :id="$item->id" :name="$item->title" :price="$item->sell_value" discount="15" :image="$item->feature_image_path" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
+          @endforeach
         </div>
       </div>
       <div id="product-3" class="tab-pane">
         <div class="row">
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg" link="product-details.html">
+        @foreach ($products as $item)
+          <x-simple-card :id="$item->id" :name="$item->title" :price="$item->sell_value" discount="15" :image="$item->feature_image_path" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
+          @endforeach
         </div>
       </div>
       <div id="product-4" class="tab-pane">
         <div class="row">
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg" link="product-details.html">
+        @foreach ($products as $item)
+          <x-simple-card :id="$item->id" :name="$item->title" :price="$item->sell_value" discount="15" :image="$item->feature_image_path" link="product-details.html">
           </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Simple Black T-Shirt" id="1" price="56.20" discount="15" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
-          <x-simple-card name="Norda Simple Backpack" id="1" price="102.54" discount="0" image="images/products/product-1.jpg" link="product-details.html">
-          </x-simple-card>
+          @endforeach
         </div>
       </div>
     </div>
@@ -205,5 +169,5 @@
 
 @endsection
 @section('script')
-<script src="{{ asset('../../js/product/cart.js') }}"></script>
+<script src="{{ asset('js/product/cart.js') }}"></script>
 @endsection

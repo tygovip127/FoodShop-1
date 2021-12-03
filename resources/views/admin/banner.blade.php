@@ -84,19 +84,18 @@
                 <tbody>
                   @if (!empty($banners))
                   @foreach ($banners as $banner)
-                  <form action="/admin/banner/{{ $banner->id }}" method="post">
-                    @csrf
-                    @method('delete')
-                    <tr>
-                      <td>{{ $banner->id }}</td>
-                      <td><img src="{{  asset("images".$banner->image) }}" style="width:5rem" alt=""></td>
-                      <td>{{ $banner->title }}</td>
-                      <td>{{ $banner->name }}</td>
-                      <td>{{ $banner->description }}</td>
-                      <td>
-                        <button type="submit" class="btn-danger m-auto">Delete</button>
-                      </td>
-                    </tr>
+                  <tr>
+                    <td>{{ $banner->id }}</td>
+                    <td><img src="{{  asset($banner->image) }}" style="width:5rem" alt=""></td>
+                    <td>{{ $banner->title }}</td>
+                    <td>{{ $banner->name }}</td>
+                    <td>{{ $banner->description }}</td>
+                    <td>
+                      <a href="" data-url="{{ route('admin.banner.destroy', array($banner->id)) }}" class="action_delete">
+                        <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                      </a>
+                    </td>
+                  </tr>
                   </form>
                   @endforeach
                   @endif
@@ -111,4 +110,8 @@
   </div>
 </div>
 </div>
+@section('js')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('../../js/admin/admin.js') }}"></script>
+@endsection
 @endsection

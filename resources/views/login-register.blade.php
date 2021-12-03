@@ -37,8 +37,14 @@
                       <div class="login-toggle-btn">
                         <input type="checkbox">
                         <label>Remember me</label>
-                        <a href="#">Forgot Password?</a>
+                        <a href="/forgot-password">Forgot Password?</a>
                       </div>
+                      @if (session()->has('errors'))
+                        <div class="alert alert-danger">{{ session()->get('errors') }}</div>
+                      @endif
+                      @if (session()->has('status'))
+                      <div class="alert alert-success">{{ session()->get('status') }}</div>
+                    @endif
                       <div class="login-toggle-btn text-center">
                         <button type="submit">Login</button>
                       </div>

@@ -10,11 +10,6 @@
         @csrf
         <div class="profile-header">
           <div class="row align-items-center">
-            <!-- <div class="col-auto profile-image">
-              <a href="#">
-                <img class="rounded-circle" style="width:5rem" alt="User Image" src="">
-              </a>
-            </div> -->
             <img class="rounded-circle" style="width:5rem" alt="User Image" src="http://localhost:8000/../images/users/usersavatardefault_92824.png">
             <div class="single-input-item">
               <label for="feature_image_path" class="required">Main Image</label>

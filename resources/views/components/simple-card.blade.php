@@ -2,7 +2,7 @@
   <div class="single-product-wrap mb-35">
     <div class="product-img product-img-zoom mb-20">
       <a href="products/{{ $id }}">
-        <img src="{{ asset(''.$image.'') }}" class="obf-cover product-img">
+        <img src="{{ asset(''.$image.'') }}" class="obf-cover product-show-img">
       </a>
       @if ($discount !=0 || $discount != null)
       <span class="pro-badge left bg-red">-{{ $discount }}%</span>
@@ -26,10 +26,10 @@
         <h4><a href="products/{{ $id }}">{{ $name }}</a></h4>
         <div class="product-price">
           @if ($discount !=0 || $discount != null)
-          <span class="new-price">{{ $new_price }}đ</span>
-          <span class="old-price">{{ $old_price }}</span>
+          <span class="new-price">{{ $new_price }}</span>
+          <span class="old-price">{{ $old_price }} VND</span>
           @else
-          <span>{{ $old_price }}đ</span>
+          <span>{{ $old_price }} VND</span>
           @endif
         </div>
       </div>

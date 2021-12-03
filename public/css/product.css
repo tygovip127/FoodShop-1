@@ -26,3 +26,19 @@
     height: 465px;
     object-fit: cover;
 }
+
+.btn-style-1{
+    background-color: #000000;
+    border: medium none;
+    color: #fff;
+    line-height: 1;
+    padding: 8px 16px;
+    cursor: pointer;
+    /* -webkit-transition: all .3s ease 0s;
+    -o-transition: all .3s ease 0s;
+    transition: all .3s ease 0s; */
+}
+
+.btn-style-1 button:hover {
+    background-color:#ff2f2f;
+}

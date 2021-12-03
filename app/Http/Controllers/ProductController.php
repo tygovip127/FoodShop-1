@@ -26,11 +26,22 @@ class ProductController extends Controller
      */
     public function showProducts(Request $request)
     {
-        $products = Product::paginate(9);
         $categories = Category::all();
+        $category_id=$request->get('category_id');
+
+        $url= url()->current()."?";
+
+        if($category_id===null){
+            $products = Product::paginate(9);
+        }else{
+            $products=Product::where('category_id', '=', $category_id)->paginate(9);
+            $url= $url."category_id=".$category_id."&&";
+        }
+      
         return view('products', [
             'products' => $products,
-            'categories' => $categories
+            'categories' => $categories,
+            'url' => $url
         ]);
     }
 
@@ -89,6 +100,8 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
+        $product->view++;
+        $product->save();
         $product->pictures;
         return view('products.show', ['product' => $product]);
     }
@@ -160,11 +173,35 @@ class ProductController extends Controller
             $products = Product::where('title', 'LIKE', '%' . $keyword . '%')
                 ->paginate(9);
             $categories = Category::all();
+            $url='/search?keyword='.$keyword."&&";
             return view('products', [
                 'products' => $products,
-                'categories' => $categories
+                'categories' => $categories,
+                'url'=> $url,
             ]);
         } catch (\Exception $exception) {
+
         }
+    }
+
+    public function filter(Request $request){
+        $products= Product::query();
+        $perPage= $request->get('perPage');
+        $products->Name($request)->SortPrice($request)->NewProducts($request)
+            ->Category($request);
+        $products=$products->paginate($perPage);
+
+        // render blade compontent to hmtl
+        $html_render= array();
+        foreach($products as $item){
+            $item= new \App\View\Components\Card($item->id,$item->title,null,$item->sell_value, null, $item->feature_image_path);
+            array_push($html_render,$item->resolveView()->with($item->data())->render());
+        }
+        
+        return response()->json([
+            'data'=> $html_render, //array card component
+            'products'=>$products, //origin products
+        ]);
+        return $products;
     }
 }
