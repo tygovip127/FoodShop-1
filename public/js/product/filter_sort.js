@@ -5,6 +5,11 @@ $("#btn-filter").click((event) => {
     $perPage = $("#perPage").val();
     $new_products = $('#checkbox_new').is(":checked");
     $sale = $('#checkbox_sale').is(":checked");
+    $sort_price = $("#sort_price").val();
+
+    var sliderrange = $('#slider-range')
+    $min_price = sliderrange.slider("values", 0)
+    $max_price = sliderrange.slider("values", 1)
 
     $.ajaxSetup({
         headers: {
@@ -19,6 +24,9 @@ $("#btn-filter").click((event) => {
             perPage: $perPage,
             new_products: $new_products,
             sale: $sale,
+            sort_price: $sort_price,
+            min_price: $min_price,
+            max_price: $max_price
         },
         success: function(response) {
             renderProducts(response)
@@ -59,6 +67,8 @@ $("#sort_price").change((event) => {
 
 $("#perPage").change((event) => {
 
+    <<
+    << << < HEAD
     $perPage = $("#perPage").val();
     var sliderrange = $('#slider-range')
     console.log(sliderrange.slider("values", 0))
@@ -71,17 +81,40 @@ $("#perPage").change((event) => {
     });
 
     $.ajax({
-        url: `http://${host}/products/filter`,
-        method: 'GET',
-        data: {
-            perPage: $perPage,
-        },
-        success: function(response) {
-            renderProducts(response)
-            renderPagination(response)
-        },
+            url: `http://${host}/products/filter`,
+            method: 'GET',
+            data: {
+                perPage: $perPage,
+            },
+            success: function(response) {
+                renderProducts(response)
+                renderPagination(response)
+            },
 
-    })
+        }) ===
+        === =
+        $perPage = $("#perPage").val();
+
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+            url: `http://${host}/products/filter`,
+            method: 'GET',
+            data: {
+                perPage: $perPage,
+            },
+            success: function(response) {
+                renderProducts(response)
+                renderPagination(response)
+            },
+
+        }) >>>
+        >>> > 2 afb97a582bfbbde94dd419ceec31a63a44a35aa
 
 })
 

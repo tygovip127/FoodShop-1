@@ -54,6 +54,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function orders(){
+        return $this->hasManyThrough(
+            Order::class, 
+            Transaction::class,
+            'user_id',
+            'transaction_id',
+            'id',
+            'id',
+        );
+    }
+    
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'role_user');
@@ -72,16 +83,5 @@ class User extends Authenticatable
         }
 
         return false;
-    }
-    
-    public function orders(){
-        return $this->hasManyThrough(
-            Order::class, 
-            Transaction::class,
-            'user_id',
-            'transaction_id',
-            'id',
-            'id',
-        );
     }
 }

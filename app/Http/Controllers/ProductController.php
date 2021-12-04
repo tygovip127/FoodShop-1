@@ -188,7 +188,7 @@ class ProductController extends Controller
         $products= Product::query();
         $perPage= $request->get('perPage');
         $products->Name($request)->SortPrice($request)->NewProducts($request)
-            ->Category($request);
+            ->Category($request)->RangerPrice($request);
         $products=$products->paginate($perPage);
 
         // render blade compontent to hmtl
