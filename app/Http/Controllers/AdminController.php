@@ -61,6 +61,12 @@ class AdminController extends Controller
         
         //Statistic most view products
         $products = DB::table('products')->orderBy('view', 'desc')->take(5)->get();
+
+        //Statistic order request
+        $transaction_requests = Transaction::latest()->take(10)->get();
+        $total_done_transactions = Transaction::where('status', 2)->count();
+        $total_approved_transactions = Transaction::where('status', 1)->count();
+        $total_waiting_transactions = Transaction::where('status', 0)->count();
         $data = [
             'total_orders_today',
             'total_orders_last_day',
@@ -73,7 +79,11 @@ class AdminController extends Controller
             'dates',
             'sales',
             'users',
-            'products'
+            'products',
+            'transaction_requests',
+            'total_done_transactions',
+            'total_approved_transactions',
+            'total_waiting_transactions'
         ];
         return view('admin.dashboard', compact($data));
     }

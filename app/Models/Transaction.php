@@ -16,5 +16,6 @@ class Transaction extends Model
         'customer_contact',
         'deliver_address',
         'user_id',
+        'status'
     ];
 }

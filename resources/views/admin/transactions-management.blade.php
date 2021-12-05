@@ -41,7 +41,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach( $transactions as $transaction)
+                    @foreach($transactions as $transaction)
                     <tr class="text-center pb-10">
                       <td class="ps-4">
                         <p class="text-xs font-weight-bold mb-0">{{ $transaction->id }}</p>
@@ -59,30 +59,25 @@
                         <p class="text-xs font-weight-bold ">{{ $transaction->total }}</p>
                       </td>
                       <td>
-                        @if($transaction->status === 0)
-                        <span class="badge bg-warning rounded-pill">waiting</span>
-                        @elseif($transaction->status === 1)
-                        <span class="badge bg-info rounded-pill">approved</span>
-                        @elseif($transaction->status === 2)
-                        <span class="badge bg-success rounded-pill">done</span>
-                        @endif
+                       <x-transaction-status :status="$transaction->status"></x-transaction-status>
                       </td>
                       <td class="text-center">
-                        @can('edit_product')
-                        <form action="{{ route('admin.transactions.update', array($transaction->id)) }}" id="form_accept" method="post">
-                          @csrf
-                          @method('put')
-                          <input type="hidden" name="status" value="{{ $transaction->status +1}}">
-                          <a href="javascript:;" onclick="document.getElementById('form_accept').submit()"><i class="fas fa-check text-success"></i></a>
-                        </input>
-                        </form>
-                        
-                        @endcan
-                        @can('delete_product')
+
+                        <div class="d-inline-block mr-3">
+                          <form action="{{ route('admin.transactions.update', array($transaction->id)) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <input type="hidden" name="status" value="{{ number_format($transaction->status +1) }}">
+                            <a href="javascript:;" onclick="this.parentNode.submit(); return false;"><i class="fas fa-check text-success"></i></a>
+                            </input>
+                          </form>
+                        </div>
+
+
                         <a href="" data-url="{{ route('admin.transactions.destroy', array($transaction->id)) }}" class="action_delete">
-                        <i class="fas fa-times text-danger"></i>  
+                          <i class="fas fa-times text-danger"></i>
                         </a>
-                        @endcan
+
                       </td>
                     </tr>
                     @endforeach

@@ -18,6 +18,9 @@
           </form>
         </div>
       </div>
+      <div class="same-style-2">
+        <a href="/admin/transactions"><i class="icon-bell"></i><span class="pro-count red">01</span></a>
+      </div>
       <div class="same-style-2 main-menu">
         <nav>
           <ul>
@@ -31,15 +34,6 @@
             </li>
           </ul>
         </nav>
-      </div>
-
-      <div class="same-style-2">
-        <a href="/wishlist"><i class="icon-heart"></i><span class="pro-count red">03</span></a>
-      </div>
-      <div class="same-style-2 header-cart">
-        <a class="cart-active" href="#">
-          <i class="icon-basket-loaded"></i><span class="pro-count red">02</span>
-        </a>
       </div>
     </div>
   </div>

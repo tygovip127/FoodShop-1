@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
@@ -70,13 +71,17 @@ class TransactionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $transactions = Transaction::find($id);
+        $request->validate([
+            'status' => ['numeric', 'max:2'],
+        ]);
+
         $data_transaction_update = [
             'status' => $request->status
         ];
-        $transactions->update($data_transaction_update  );
-        return view('products.edit', compact('transactions'));
+        Transaction::find($id)->update($data_transaction_update);
+        return redirect()->route('admin.transactions.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
