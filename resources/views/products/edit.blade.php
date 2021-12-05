@@ -14,11 +14,6 @@
         @csrf
         <div class="profile-header">
           <div class="row align-items-center">
-            <!-- <div class="col-auto profile-image">
-              <a href="#">
-                <img class="rounded-circle" style="width:5rem" alt="User Image" src="">
-              </a>
-            </div> -->
             <img class="rounded-circle obf-cover" style="width:5rem; height:5rem" alt="User Image" src="{{ $product->feature_image_path }}">
             <div class="single-input-item">
               <label for="feature_image_path" class="required">Avatar</label>
@@ -26,12 +21,6 @@
               <span class="text-danger">
 
               </span>
-            </div>
-            <div class="col ml-md-n2 profile-user-info">
-              <h4 class="user-name mb-0"></h4>
-              <h6 class="text-muted"></h6>
-              <div class="user-Location"><i class="fa fa-map-marker"></i>
-              </div>
             </div>
           </div>
         </div>

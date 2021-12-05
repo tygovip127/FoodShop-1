@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/soft-ui-dashboard.min.css')}}">
+<link rel="stylesheet" href="{{ asset('css/dashboard.css')}}">
 @endsection
 @section('title','Food Shop VKU | Admin')
 @section('content')
@@ -13,17 +14,21 @@
           <div class="row">
             <div class="col-8">
               <div class="numbers">
+                <small class="text-sm mb-0 text-capitalize font-weight-bold">Yesterday</small><br>
+                <small class="text-sm mb-0 text-capitalize font-weight-bold">{{ $total_money_last_day }}</small>
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Money</p>
                 <h5 class="font-weight-bolder mb-0">
-                  $53,000
-                  <span class="text-success text-sm font-weight-bolder">+55%</span>
+                  {{ $total_money_today }}
+                  @if($total_money_today_percent >= 0)
+                  <small class="text-success text-sm font-weight-bolder">+{{ $total_money_today_percent }}%</small>
+                  @else
+                  <small class="text-danger text-sm font-weight-bolder">{{ $total_money_today_percent }}%</small>
+                  @endif
                 </h5>
               </div>
             </div>
             <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-lg">
-                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-              </div>
+              <i class="fas fa-coins"></i>
             </div>
           </div>
         </div>
@@ -35,17 +40,17 @@
           <div class="row">
             <div class="col-8">
               <div class="numbers">
-                <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
+                <small class="text-sm mb-0 text-capitalize font-weight-bold">Yesterday</small><br>
+                <small class="text-sm mb-0 text-capitalize font-weight-bold">0</small>
+                <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Users</p>
                 <h5 class="font-weight-bolder mb-0">
-                  2,300
-                  <span class="text-success text-sm font-weight-bolder">+3%</span>
+                  {{ $total_users }}
+                  <small class="text-success text-sm font-weight-bolder">+{{ $new_users_amount }}</small>
                 </h5>
               </div>
             </div>
             <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-              </div>
+              <i class="far fa-eye"></i>
             </div>
           </div>
         </div>
@@ -57,17 +62,17 @@
           <div class="row">
             <div class="col-8">
               <div class="numbers">
+                <small class="text-sm mb-0 text-capitalize font-weight-bold">Yesterday</small><br>
+                <small class="text-sm mb-0 text-capitalize font-weight-bold">0</small>
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">New Clients</p>
                 <h5 class="font-weight-bolder mb-0">
-                  +3,462
-                  <span class="text-danger text-sm font-weight-bolder">-2%</span>
+                  {{ $new_users_amount }}
+                  <small class="text-danger text-sm font-weight-bolder">-2%</small>
                 </h5>
               </div>
             </div>
             <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-              </div>
+              <i class="fas fa-user-plus"></i>
             </div>
           </div>
         </div>
@@ -79,17 +84,21 @@
           <div class="row">
             <div class="col-8">
               <div class="numbers">
-                <p class="text-sm mb-0 text-capitalize font-weight-bold">Sales</p>
+                <small class="text-sm mb-0 text-capitalize font-weight-bold">Yesterday</small><br>
+                <small class="text-sm mb-0 text-capitalize font-weight-bold">{{ $total_orders_last_day }}</small>
+                <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's order</p>
                 <h5 class="font-weight-bolder mb-0">
-                  $103,430
-                  <span class="text-success text-sm font-weight-bolder">+5%</span>
+                  {{ $total_orders_today }}
+                  @if($total_orders_today_percent >= 0)
+                  <small class="text-success text-sm font-weight-bolder">+{{ $total_orders_today_percent }}%</small>
+                  @else
+                  <small class="text-danger text-sm font-weight-bolder">{{ $total_orders_today_percent }}%</small>
+                  @endif
                 </h5>
               </div>
             </div>
             <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-              </div>
+              <i class="fas fa-file-invoice-dollar"></i>
             </div>
           </div>
         </div>
@@ -99,42 +108,78 @@
   <div class="row mt-4">
     <div class="col-lg-7 mb-lg-0 mb-4">
       <div class="card">
-        <div class="card-body p-3">
+        <div class="card-body px-0">
           <div class="row">
-            <div class="col-lg-6">
-              <div class="d-flex flex-column h-100">
-                <p class="mb-1 pt-2 text-bold">Built by developers</p>
-                <h5 class="font-weight-bolder">Soft UI Dashboard</h5>
-                <p class="mb-5">From colors, cards, typography to complex elements, you will find the full documentation.</p>
-                <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
-                  Read More
-                  <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
-              <div class="bg-gradient-primary border-radius-lg h-100">
-                <img src="" class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves">
-                <div class="position-relative d-flex align-items-center justify-content-center h-100">
-                  <img class="w-100 position-relative z-index-2 pt-4" src="">
-                </div>
-              </div>
+            <div class="col-lg-12">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Avatar
+                    </th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                      Title
+                    </th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      View
+                    </th>
+                  </tr>
+                </thead>
+                @foreach($products as $product)
+                <tr class="text-center pb-10">
+                  <td>
+                    <div>
+                      <img src="{{ asset($product->feature_image_path) }}" class="avatar avatar-sm me-3">
+                    </div>
+                  </td>
+                  <td class="">
+                    <p class="text-xs font-weight-bold mb-0">{{ $product->title }}</p>
+                  </td>
+                  <td>
+                    <p class="text-xs font-weight-bold ">{{ $product->view }}</p>
+                  </td>
+                </tr>
+                @endforeach
+              </table>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-lg-5">
-      <div class="card h-100 p-3">
-        <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('');">
-          <span class="mask bg-gradient-dark"></span>
-          <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-            <h5 class="text-white font-weight-bolder mb-4 pt-2">Work with the rockets</h5>
-            <p class="text-white">Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.</p>
-            <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
-              Read More
-              <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-            </a>
+      <div class="card">
+        <div class="card-body px-0">
+          <div class="row">
+            <div class="col-lg-12">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      ID
+                    </th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                      Full name
+                    </th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Spent
+                    </th>
+                  </tr>
+                </thead>
+                @foreach( $users as $user)
+                <tr class="text-center pb-10">
+                  <td class="ps-4">
+                    <p class="text-xs font-weight-bold mb-0">{{ $user->id }}</p>
+                  </td>
+                  <td class="">
+                    <p class="text-xs font-weight-bold mb-0">{{ $user->fullname }}</p>
+                  </td>
+                  <td class="">
+                    <p class="text-xs font-weight-bold mb-0">{{ $user->transactions()->sum('total') }}</p>
+                  </td>
+                </tr>
+                @endforeach
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -263,7 +308,7 @@
           <h6>Sales overview</h6>
           <p class="text-sm">
             <i class="fa fa-arrow-up text-success"></i>
-            <span class="font-weight-bold">4% more</span> in 2021
+            <span class="font-weight-bold">4% more</span> this month
           </p>
         </div>
         <div class="card-body p-3">
@@ -621,6 +666,10 @@
   </div>
 </div>
 @section('js')
+<script>
+  var dates = JSON.parse('{!! json_encode($dates) !!}');
+  var sales = JSON.parse('{!! json_encode($sales) !!}');
+</script>
 <script src="{{ asset('js/plugins/chartjs.min.js') }}"></script>
 <script src="{{ asset('js/plugins/Chart.extension.js') }}"></script>
 <script src="{{ asset('js/plugins/chart-view.js') }}"></script>

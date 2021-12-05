@@ -8,12 +8,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
-use App\Models;
 use App\Models\Province;
-use App\Models\Banner;
 use App\Models\Product;
-use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -95,6 +93,7 @@ Route::middleware(['auth', 'can:access_admin'])->group(function () {
         Route::resource('/products', Controllers\ProductController::class)->except(['show']);
         Route::resource('/banner', Controllers\BannerController::class);
         Route::resource('/roles', RoleController::class);
+        Route::resource('/transactions', TransactionController::class);
     });
 });
  

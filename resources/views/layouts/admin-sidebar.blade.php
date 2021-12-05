@@ -38,6 +38,9 @@
                     <li><a class="nav-link" href="{{ route('admin.roles.index') }}">Role Management</a></li>
                 </ul>
                 @endcan 
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('admin.transactions.index') }}">Order Management</a></li>
+                </ul>
             </li>
             <!-- <li class="menu-header">Table</li>
             <li class="nav-item dropdown">

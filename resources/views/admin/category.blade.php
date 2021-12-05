@@ -37,8 +37,7 @@
               <table class="table table-bordered text-center">
                 <thead class="thead-light">
                   <tr>
-                    <th>Ordinal numbers</th>
-                    <th>Category ID</th>
+                    <th>ID</th>
                     <th>Category Name</th>
                     <th>Action</th>
                   </tr>
@@ -47,7 +46,6 @@
                   <span class="hidden">{{ $index=0 }}</span>
                   @foreach ($categories as $category)
                     <tr>
-                      <td>{{ ++$index }}</td>
                       <td>{{ $category->id }}</td>
                       <td>{{ $category->name }}</td>
                       <td>

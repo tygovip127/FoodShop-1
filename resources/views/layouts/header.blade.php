@@ -52,7 +52,7 @@
                         <li><a href="/account">{{ (Auth::user() && Auth::user()->fullname)? Auth::user()->fullname: "My account" }} </a></li>
                         <li><a href="/logout">Logout </a></li>
                         @can('access_admin')
-                        <li><a href="/admin/dashboard">Admin </a></li>
+                        <li><a href="/admin">Admin </a></li>
                         @endcan
                       </ul>
                     </li>
