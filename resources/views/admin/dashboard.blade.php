@@ -328,11 +328,11 @@
               <h6>Order requests</h6>
               <div class="text-sm mb-0">
                 <i class="fas fa-circle text-success"></i>
-                <span class="font-weight-bold ms-1">{{ $total_done_transactions}} done</span>
+                <span class="font-weight-bold ms-1">{{ $total_done_transactions}} delivered</span>
                 <i class="fas fa-circle text-info"></i>
                 <span class="font-weight-bold ms-1">{{ $total_approved_transactions}} approved</span>
                 <i class="fas fa-circle text-warning"></i>
-                <span class="font-weight-bold ms-1">{{ $total_waiting_transactions  }} waiting</span>
+                <span class="font-weight-bold ms-1">{{ $total_waiting_transactions  }} pending</span>
               </div>
             </div>
           </div>
@@ -344,7 +344,7 @@
                 <tr>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Customer</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Amount</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Amount</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                 </tr>

@@ -1,0 +1,13 @@
+.badge {
+    vertical-align: middle;
+    padding: 7px 12px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: .3px;
+    /* border-radius: 30px; */
+    font-size: 12px;
+}
+
+.bg-info {
+    background-color: #3abaf4 !important;
+}
