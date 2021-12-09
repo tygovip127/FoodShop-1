@@ -67,8 +67,6 @@ $("#sort_price").change((event) => {
 
 $("#perPage").change((event) => {
 
-    <<
-    << << < HEAD
     $perPage = $("#perPage").val();
     var sliderrange = $('#slider-range')
     console.log(sliderrange.slider("values", 0))
@@ -91,8 +89,7 @@ $("#perPage").change((event) => {
                 renderPagination(response)
             },
 
-        }) ===
-        === =
+        })
         $perPage = $("#perPage").val();
 
 
@@ -113,8 +110,7 @@ $("#perPage").change((event) => {
                 renderPagination(response)
             },
 
-        }) >>>
-        >>> > 2 afb97a582bfbbde94dd419ceec31a63a44a35aa
+        }) 
 
 })
 

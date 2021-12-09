@@ -5,6 +5,7 @@
 @section('title','Food Shop VKU | Product Detail')
 
 @section('content')
+{{-- {{ dd($rating) }} --}}
 <x-breadcrumb currentPage=" Product-Detail"></x-breadcrumb>
 <div class="product-details-area pt-50 pb-115">
   <div class="container">
@@ -14,8 +15,8 @@
           <div class="pro-dec-big-img-slider">
             <div class="easyzoom-style">
               <div class="easyzoom easyzoom--overlay">
-                <a href="{{ asset($product->feature_image_path) }}">{{--  image full scrreen--}}
-                  <img class="product-detail-img" src="{{ asset($product->feature_image_path) }}" alt=""> 
+                <a href="{{ asset($product->feature_image_path) }}">{{-- image full scrreen--}}
+                  <img class="product-detail-img" src="{{ asset($product->feature_image_path) }}" alt="">
                 </a>
               </div>
               <a class="easyzoom-pop-up img-popup" href="{{ asset($product->feature_image_path) }}">
@@ -23,18 +24,18 @@
               </a>
             </div>
             @if ($product->pictures)
-                @foreach ($product->pictures as $item)
-                  <div class="easyzoom-style">
-                    <div class="easyzoom easyzoom--overlay">
-                      <a href="{{ asset($item->picture) }}">
-                        <img class="product-detail-img" src="{{ asset($item->picture) }}" alt="">
-                      </a>
-                    </div>
-                    <a class="easyzoom-pop-up img-popup" href="{{ asset($item->picture) }}">
-                      <i class="icon-size-fullscreen"></i>
-                    </a>
-                  </div>
-                @endforeach
+            @foreach ($product->pictures as $item)
+            <div class="easyzoom-style">
+              <div class="easyzoom easyzoom--overlay">
+                <a href="{{ asset($item->picture) }}">
+                  <img class="product-detail-img" src="{{ asset($item->picture) }}" alt="">
+                </a>
+              </div>
+              <a class="easyzoom-pop-up img-popup" href="{{ asset($item->picture) }}">
+                <i class="icon-size-fullscreen"></i>
+              </a>
+            </div>
+            @endforeach
             @endif
           </div>
           <div class="product-dec-slider-small product-dec-small-style1">
@@ -42,11 +43,11 @@
               <img src="{{ asset($product->feature_image_path) }}" alt="">
             </div>
             @if ($product->pictures)
-              @foreach ($product->pictures as $item)
-                <div class="product-dec-small active">
-                  <img src="{{ asset($item->picture) }}" alt="">
-                </div>
-              @endforeach
+            @foreach ($product->pictures as $item)
+            <div class="product-dec-small active">
+              <img src="{{ asset($item->picture) }}" alt="">
+            </div>
+            @endforeach
             @endif
           </div>
         </div>
@@ -78,31 +79,6 @@
             <span class="old-price">$95.72</span> --}}
             <span class="new-price">{{ $product->sell_value }} VND</span>
           </div>
-          {{-- <div class="pro-details-color-wrap">
-            <span>Color:</span>
-            <div class="pro-details-color-content">
-              <ul>
-                <li><a class="dolly" href="#">dolly</a></li>
-                <li><a class="white" href="#">white</a></li>
-                <li><a class="azalea" href="#">azalea</a></li>
-                <li><a class="peach-orange" href="#">Orange</a></li>
-                <li><a class="mona-lisa active" href="#">lisa</a></li>
-                <li><a class="cupid" href="#">cupid</a></li>
-              </ul>
-            </div>
-          </div> --}}
-          {{-- <div class="pro-details-size">
-            <span>Size:</span>
-            <div class="pro-details-size-content">
-              <ul>
-                <li><a href="#">XS</a></li>
-                <li><a href="#">S</a></li>
-                <li><a href="#">M</a></li>
-                <li><a href="#">L</a></li>
-                <li><a href="#">XL</a></li>
-              </ul>
-            </div>
-          </div> --}}
           <div class="pro-details-quality">
             <span>Quantity:</span>
             <div class="cart-plus-minus">
@@ -112,7 +88,6 @@
           <div class="product-details-meta">
             <ul>
               <li><span>Category:</span> <a href="#">{{ $product->category->name }}</a></li>
-              {{-- <li><span>Tag: </span> <a href="#">Fashion,</a> <a href="#">Mentone</a> , <a href="#">Texas</a></li> --}}
             </ul>
           </div>
           <div class="pro-details-action-wrap">
@@ -218,90 +193,77 @@
           </div>
           <div id="des-details4" class="tab-pane">
             <div class="review-wrapper">
-              <h2>1 review for Sleeve Button Cowl Neck</h2>
-              <div class="single-review">
-                <div class="review-img">
-                  <img src="assets/images/product-details/client-1.png" alt="">
-                </div>
-                <div class="review-content">
-                  <div class="review-top-wrap">
-                    <div class="review-name">
-                      <h5><span>John Snow</span> - March 14, 2019</h5>
+              <h2>{{ count($rating) }} reviews for {{ $product->title }}</h2>
+              @foreach ($rating as $item)
+                <div class="single-review">
+                  <div class="review-img">
+                    <img src="{{ $item->user->avatar}}" alt="">
+                  </div>
+                  <div class="review-content">
+                    <div class="review-top-wrap">
+                      <div class="review-name">
+                        <h5><span>{{ $item->user->username}}</span> {{date('d-m-Y', strtotime($item->created_at)) }}</h5>
+                      </div>
                     </div>
                     <div class="review-rating">
-                      <i class="yellow icon_star"></i>
-                      <i class="yellow icon_star"></i>
-                      <i class="yellow icon_star"></i>
-                      <i class="yellow icon_star"></i>
-                      <i class="yellow icon_star"></i>
+                      @for ($i = 1; $i <= $item->rate; $i++)
+                        <i class="text-warning icon_star"></i>
+                      @endfor
+                      @for ($i = 5; $i > $item->rate; $i--)
+                        <i class="text-muted icon_star"></i>
+                      @endfor
                     </div>
+                    <p>{{ $item->review}}</p>
                   </div>
-                  <p>Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex
-                    maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula
-                    lacus scelerisque</p>
                 </div>
-              </div>
+              @endforeach
             </div>
             <div class="ratting-form-wrapper">
-              <span>Add a Review</span>
-              <p>Your email address will not be published. Required fields are marked <span>*</span></p>
+              <h3>Rating and  Review</h3>
               <div class="ratting-form">
-                <form action="#">
+                {{-- <form action="#"> --}}
                   <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                      <div class="rating-form-style mb-20">
-                        <label>Name <span>*</span></label>
-                        <input type="text">
-                      </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                      <div class="rating-form-style mb-20">
-                        <label>Email <span>*</span></label>
-                        <input type="email">
-                      </div>
-                    </div>
                     <div class="col-lg-12">
-                      <div class="star-box-wrap">
-                        <div class="single-ratting-star">
-                          <a href="#"><i class="icon_star"></i></a>
-                        </div>
-                        <div class="single-ratting-star">
-                          <a href="#"><i class="icon_star"></i></a>
-                          <a href="#"><i class="icon_star"></i></a>
-                        </div>
-                        <div class="single-ratting-star">
-                          <a href="#"><i class="icon_star"></i></a>
-                          <a href="#"><i class="icon_star"></i></a>
-                          <a href="#"><i class="icon_star"></i></a>
-                        </div>
-                        <div class="single-ratting-star">
-                          <a href="#"><i class="icon_star"></i></a>
-                          <a href="#"><i class="icon_star"></i></a>
-                          <a href="#"><i class="icon_star"></i></a>
-                          <a href="#"><i class="icon_star"></i></a>
-                        </div>
-                        <div class="single-ratting-star">
-                          <a href="#"><i class="icon_star"></i></a>
-                          <a href="#"><i class="icon_star"></i></a>
-                          <a href="#"><i class="icon_star"></i></a>
-                          <a href="#"><i class="icon_star"></i></a>
-                          <a href="#"><i class="icon_star"></i></a>
+                      <div id="full-stars">
+                        <div class="rating-group">
+                          <input disabled checked class="rating__input rating__input--none" name="rating3"
+                            id="rating3-none" value="0" type="radio">
+                          <label aria-label="1 star" class="rating__label" for="rating3-1">
+                            <i class="rating__icon rating__icon--star fa fa-star"></i>
+                          </label>
+                          <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
+                          <label aria-label="2 stars" class="rating__label" for="rating3-2">
+                            <i class="rating__icon rating__icon--star fa fa-star"></i>
+                          </label>
+                          <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
+                          <label aria-label="3 stars" class="rating__label" for="rating3-3">
+                            <i class="rating__icon rating__icon--star fa fa-star"></i>
+                          </label>
+                          <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
+                          <label aria-label="4 stars" class="rating__label" for="rating3-4">
+                            <i class="rating__icon rating__icon--star fa fa-star"></i>
+                          </label>
+                          <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
+                          <label aria-label="5 stars" class="rating__label" for="rating3-5">
+                            <i class="rating__icon rating__icon--star fa fa-star"></i>
+                          </label>
+                          <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
                         </div>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="rating-form-style mb-20">
                         <label>Your review <span>*</span></label>
-                        <textarea name="Your Review"></textarea>
+                        <textarea id="yourReivew" name="Your Review"></textarea>
                       </div>
                     </div>
                     <div class="col-lg-12">
                       <div class="form-submit">
-                        <input type="submit" value="Submit">
+                        <input type="submit" id="btn-rating" value="Submit">
                       </div>
                     </div>
                   </div>
-                </form>
+                {{-- </form> --}}
               </div>
             </div>
           </div>
@@ -313,4 +275,5 @@
 @endsection
 @section('script')
 <script src="{{ asset('../../js/product/cart.js') }}"></script>
+<script src="{{ asset('../../js/product/rating.js') }}"></script>
 @endsection

@@ -16,6 +16,7 @@ use App\Models\Product;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,7 @@ Route::get('/products', [Controllers\ProductController::class, 'showProducts'])-
 Route::get('/products/filter', [Controllers\ProductController::class, 'filter'])->name('products.filter');
 Route::get("/products/{id}", [Controllers\ProductController::class, 'show'])->name('product.show');
 Route::get("/search", [Controllers\ProductController::class, 'search'])->name('search');
+Route::post('/rating',[Controllers\ProductController::class, 'rating'])->name('rating');
 
 Route::get("/error", function (){
     return view('error');
@@ -100,15 +102,13 @@ Route::middleware(['auth', 'can:access_admin'])->group(function () {
  
 
 Route::get("/test", function(Request $request){
-    return $products=Product::paginate(9);
-    $html= array();
-    foreach($products as $item){
-        $item = new App\View\Components\Card($item->id);
-        array_push($html,$item->resolveView()->with($item->data())->render());
-    }
-    return response()->json([
-        "test"=> $html,
-    ],200);
+    return App\Models\Transaction::select('user_id',DB::raw('sum(total)'),DB::raw('count(user_id)'))
+    ->where('user_id','=','2')
+    ->groupBy('user_id')
+    ->get();
+    return Order::select(Order::raw('sum(price)'))->get();
+    // return view('test');
+   
 });
 
 

@@ -26,6 +26,6 @@
         <a href="" data-url="{{ route('admin.users.destroy', array($id)) }}" class="action_delete">
             <i class="cursor-pointer fas fa-trash text-secondary"></i>
         </a>
-        @endcan
+        @endcan 
     </td>
 </tr>

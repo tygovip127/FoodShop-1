@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Rating;
 use App\Traits\DeleteModelTrait;
 use App\Traits\StorageImageTrait;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Sum;
 
 class ProductController extends Controller
 {
@@ -103,7 +106,8 @@ class ProductController extends Controller
         $product->view++;
         $product->save();
         $product->pictures;
-        return view('products.show', ['product' => $product]);
+        $rating =Rating::where('product_id', $product->id)->get();
+        return view('products.show', ['product' => $product, 'rating'=>$rating]);
     }
 
     public function edit($id)
@@ -203,5 +207,41 @@ class ProductController extends Controller
             'products'=>$products, //origin products
         ]);
         return $products;
+    }
+
+    public function rating(Request $request){
+
+        $user= Auth::user();
+        $product_id = $request->input('product_id');
+        $rate = $request->input('rate');
+        $review = $request->input('review');
+        if($rate==0){
+            $rate=1;
+        }
+        // create rating in Rating table
+        $new_rating =Rating::create([
+            'product_id'=>$product_id,
+            'user_id'=>$user->id,
+            'rate'=>$rate,
+            'review'=>$review,
+        ]);
+
+        // get total rating of product
+        $product_rating= Rating::select('product_id',DB::raw('sum(rate) rate'),DB::raw('count(product_id) count'))
+                        ->where('product_id','=', $product_id)
+                        ->groupBy('product_id')
+                        ->get();
+
+        // update rate to Product table
+        $product= Product::find($product_id);
+        $product->rate= floatval($product_rating[0]->rate)/$product_rating[0]->count;
+        $product->rate= round($product->rate,0);
+        $product->save();
+
+        // return [$new_rating, ];
+        return response()->json([
+            'new_rating' => $new_rating,
+            'user' => $user,
+        ]);
     }
 }
