@@ -107,7 +107,10 @@ class ProductController extends Controller
         $product->save();
         $product->pictures;
         $rating =Rating::where('product_id', $product->id)->get();
-        return view('products.show', ['product' => $product, 'rating'=>$rating]);
+
+        $user= Auth::user();
+        $availableRate=$this->availableRate($id);
+        return view('products.show', ['product' => $product, 'rating'=>$rating,'availableRate'=>$availableRate]);
     }
 
     public function edit($id)
@@ -198,7 +201,7 @@ class ProductController extends Controller
         // render blade compontent to hmtl
         $html_render= array();
         foreach($products as $item){
-            $item= new \App\View\Components\Card($item->id,$item->title,null,$item->sell_value, null, $item->feature_image_path);
+            $item= new \App\View\Components\Card($item->id,$item->title,null,$item->sell_value, null, $item->feature_image_path,null,$item->rate);
             array_push($html_render,$item->resolveView()->with($item->data())->render());
         }
         
@@ -238,10 +241,22 @@ class ProductController extends Controller
         $product->rate= round($product->rate,0);
         $product->save();
 
-        // return [$new_rating, ];
         return response()->json([
             'new_rating' => $new_rating,
             'user' => $user,
         ]);
+    }
+
+    public static function availableRate($product_id) {
+        $user=Auth::user();
+        if($user!=null){
+            $orders= $user->orders; //get all orders of user
+            foreach($orders as $order){
+                if($order->product_id == $product_id){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

@@ -19,8 +19,9 @@ class SimpleCard extends Component
     public $discount;
     public $image;  
     public $link; //the link to detail product
+    public $rate;
 
-    public function __construct($id=null,$name=null, $title=null, $price=null, $discount=null, $image=null, $link=null)
+    public function __construct($id=null,$name=null, $title=null, $price=null, $discount=null, $image=null, $link=null, $rate=0)
     {
         $this->id = $id;
         $this->name = $name;
@@ -32,6 +33,7 @@ class SimpleCard extends Component
         if($discount !=0 || $discount != null) {
             $this->new_price = round( (100-$discount)/100*$this->old_price, 2);
         }
+        $this->rate=$rate;
     }
 
     /**

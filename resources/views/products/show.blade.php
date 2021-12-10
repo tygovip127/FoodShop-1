@@ -58,18 +58,19 @@
           <div class="product-ratting-review-wrap">
             <div class="product-ratting-digit-wrap">
               <div class="product-ratting">
-                <i class="icon_star"></i>
-                <i class="icon_star"></i>
-                <i class="icon_star"></i>
-                <i class="icon_star"></i>
-                <i class="icon_star"></i>
+                @for ($i = 1; $i <= $product->rate; $i++)
+                  <i class="text-warning icon_star"></i>
+                @endfor
+                @for ($i = 5; $i > $product->rate; $i--)
+                  <i class="text-muted icon_star"></i>
+                @endfor
               </div>
               <div class="product-digit">
-                <span>5.0</span>
+                <span>{{ $product->rate }}.0</span>
               </div>
             </div>
             <div class="product-review-order">
-              <span>0 Reviews</span>
+              <span>{{ count($rating) }} Reviews</span>
               <span>{{ count($product->orders) }} Orders</span>
             </div>
           </div>
@@ -195,31 +196,31 @@
             <div class="review-wrapper">
               <h2>{{ count($rating) }} reviews for {{ $product->title }}</h2>
               @foreach ($rating as $item)
-                <div class="single-review">
-                  <div class="review-img">
-                    <img src="{{ $item->user->avatar}}" alt="">
-                  </div>
-                  <div class="review-content">
-                    <div class="review-top-wrap">
-                      <div class="review-name">
-                        <h5><span>{{ $item->user->username}}</span> {{date('d-m-Y', strtotime($item->created_at)) }}</h5>
-                      </div>
+              <div class="single-review">
+                <div class="review-img">
+                  <img src="{{ $item->user->avatar}}" alt="">
+                </div>
+                <div class="review-content">
+                  <div class="review-top-wrap">
+                    <div class="review-name">
+                      <h5><span>{{ $item->user->username}}</span> {{date('d-m-Y', strtotime($item->created_at)) }}</h5>
                     </div>
-                    <div class="review-rating">
-                      @for ($i = 1; $i <= $item->rate; $i++)
-                        <i class="text-warning icon_star"></i>
+                  </div>
+                  <div class="review-rating">
+                    @for ($i = 1; $i <= $item->rate; $i++)
+                      <i class="text-warning icon_star"></i>
                       @endfor
                       @for ($i = 5; $i > $item->rate; $i--)
-                        <i class="text-muted icon_star"></i>
+                      <i class="text-muted icon_star"></i>
                       @endfor
-                    </div>
-                    <p>{{ $item->review}}</p>
                   </div>
+                  <p>{{ $item->review}}</p>
                 </div>
+              </div>
               @endforeach
             </div>
             <div class="ratting-form-wrapper">
-              <h3>Rating and  Review</h3>
+              <h3>Rating and Review</h3>
               <div class="ratting-form">
                 {{-- <form action="#"> --}}
                   <div class="row">
@@ -259,11 +260,14 @@
                     </div>
                     <div class="col-lg-12">
                       <div class="form-submit">
-                        <input type="submit" id="btn-rating" value="Submit">
+                        @if ($availableRate ===true)
+                          <input type="submit" id="btn-rating" value="Submit">
+                        @endif
                       </div>
                     </div>
                   </div>
-                {{-- </form> --}}
+                  {{--
+                </form> --}}
               </div>
             </div>
           </div>
