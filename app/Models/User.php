@@ -70,6 +70,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'role_user');
     }
 
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
     public function checkPermissionAccess($permission_check)
     {
         $roles = Auth::user()->roles;

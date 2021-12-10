@@ -29,4 +29,5 @@ class HomeController extends Controller
         $products = Product::paginate(8);
         return view('index', compact('banners', 'products'));
     }
+
 }

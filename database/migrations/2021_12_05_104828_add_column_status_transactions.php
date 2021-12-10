@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateTransactionsTable extends Migration
+class AddColumnStatusTransactions extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class UpdateTransactionsTable extends Migration
     public function up()
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->string('deliver_address');
-            $table->renameColumn('price', 'total');
+            $table->tinyInteger('status')->default(0);
         });
     }
 
@@ -27,8 +26,7 @@ class UpdateTransactionsTable extends Migration
     public function down()
     {
         Schema::table('transactions', function (Blueprint $table) {
-            $table->dropColumn('deliver_address');
-            $table->renameColumn('total', 'price');
+            //
         });
     }
 }

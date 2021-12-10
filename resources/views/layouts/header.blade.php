@@ -49,7 +49,7 @@
                     <li>
                       <a href="/login-register"><i class="icon-user"></i></a>
                       <ul class="sub-menu-style">
-                        <li><a href="/account">{{ (Auth::user() && Auth::user()->fullname)? Auth::user()->fullname: "My account" }} </a></li>
+                        <li><a href="/profile">{{ (Auth::user() && Auth::user()->fullname)? Auth::user()->fullname: "My account" }} </a></li>
                         <li><a href="/logout">Logout </a></li>
                         @can('access_admin')
                         <li><a href="/admin">Admin </a></li>

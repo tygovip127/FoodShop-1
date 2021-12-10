@@ -7,13 +7,12 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
-use App\Models;
-use App\Models\Province;
-use App\Models\Banner;
 use App\Models\Product;
-use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -58,12 +57,8 @@ Route::get("/logout", function () {
 Route::get('/google', [Controllers\Auth\LoginController::class,'redirectToGoogle']);
 Route::get('/google/callback',  [Controllers\Auth\LoginController::class,'handleGoogleCallback']);
 
-Route::get('/account', function () {
-    $provinces = Province::all();
-    $id= Auth::user()->id;
-    $address= AddressController::getUserAddress($id);
-    return view('account', ['provinces'=> $provinces, 'address'=> $address]);
-})->middleware('auth');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/products', [Controllers\ProductController::class, 'showProducts'])->name('products');
@@ -76,7 +71,7 @@ Route::get("/error", function (){
     return view('error');
 });
 
-Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
+// Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
 // Route::get('/users',[Controllers\UserController::class, 'index']);
 
 Route::get("/cart",[Controllers\CartController::class, 'index']);
@@ -97,16 +92,18 @@ Route::middleware(['auth', 'can:access_admin'])->group(function () {
         Route::resource('/products', Controllers\ProductController::class)->except(['show']);
         Route::resource('/banner', Controllers\BannerController::class);
         Route::resource('/roles', RoleController::class);
+        Route::resource('/transactions', TransactionController::class);
+        Route::resource('/permissions', PermissionController::class);
     });
 });
  
 
 Route::get("/test", function(Request $request){
-    return App\Models\Transaction::select('user_id',DB::raw('sum(total)'),DB::raw('count(user_id)'))
-    ->where('user_id','=','2')
-    ->groupBy('user_id')
-    ->get();
-    return Order::select(Order::raw('sum(price)'))->get();
+    // return App\Models\Transaction::select('user_id',DB::raw('sum(total)'),DB::raw('count(user_id)'))
+    // ->where('user_id','=','2')
+    // ->groupBy('user_id')
+    // ->get();
+    // return Order::select(Order::raw('sum(price)'))->get();
     // return view('test');
    
 });

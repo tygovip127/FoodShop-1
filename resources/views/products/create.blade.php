@@ -10,19 +10,13 @@
         @csrf
         <div class="profile-header">
           <div class="row align-items-center">
-            <img class="rounded-circle" style="width:5rem" alt="User Image" src="http://localhost:8000/../images/users/usersavatardefault_92824.png">
+            <img class="rounded-circle" style="width:5rem" alt="Image" src="http://localhost:8000/../images/users/usersavatardefault_92824.png">
             <div class="single-input-item">
               <label for="feature_image_path" class="required">Main Image</label>
               <input type="file" name="feature_image_path" id="feature_image_path">
               <span class="text-danger">
 
               </span>
-            </div>
-            <div class="col ml-md-n2 profile-user-info">
-              <h4 class="user-name mb-0"></h4>
-              <h6 class="text-muted"></h6>
-              <div class="user-Location"><i class="fa fa-map-marker"></i>
-              </div>
             </div>
           </div>
         </div>

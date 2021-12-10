@@ -1603,6 +1603,7 @@ table tr:hover .table-links {
     vertical-align: middle;
     padding: 7px 12px;
     font-weight: 600;
+    color: #fff;
     letter-spacing: .3px;
     border-radius: 30px;
     font-size: 12px;

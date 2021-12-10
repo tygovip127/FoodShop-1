@@ -9,6 +9,13 @@ class Permission extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'display_name',
+        'parent_id',
+        'key_code'
+    ];
+
     public function permissionsChildren()
     {
         return $this->hasMany(Permission::class, 'parent_id');

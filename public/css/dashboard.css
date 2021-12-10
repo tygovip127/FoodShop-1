@@ -1,0 +1,20 @@
+.card .card-body .row .text-end .fas,
+.far {
+    font-size: 40px !important;
+}
+
+.fa-coins {
+    color: rgb(240, 240, 14);
+}
+
+.fa-user-plus {
+    color: rgb(18, 240, 14);
+}
+
+.fa-eye {
+    color: rgb(14, 229, 240);
+}
+
+.fa-file-invoice-dollar {
+    color: rgb(226, 36, 55);
+}

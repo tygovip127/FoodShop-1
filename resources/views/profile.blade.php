@@ -1,9 +1,11 @@
 @extends('layouts.app')
-@section('title','Food Shop VKU | Account')
-
+@section('title','Food Shop VKU | Profile')
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/client.css')}}">
+@endsection
 @section('content')
-{{-- {{ dd(count(Auth::user()->orders)) }} --}}
-<x-breadcrumb currentPage="Account"></x-breadcrumb>
+
+<x-breadcrumb currentPage="Profile"></x-breadcrumb>
 <!-- my account wrapper start -->
 <div class="my-account-wrapper pt-50 pb-50">
   <div class="container-fluid ">
@@ -15,12 +17,12 @@
           <div class="row">
             <div class="col-lg-3 col-md-4">
               <div class="myaccount-tab-menu nav" role="tablist">
-                <a href="#dashboad" data-toggle="tab"><i class="fa fa-dashboard"></i>
+                <a href="#dashboard" data-toggle="tab"><i class="fa fa-dashboard"></i>
                   Dashboard
                 </a>
-                <a href="#account-info" class="active" data-toggle="tab"><i class="fa fa-user"></i> Account Details</a>
+                <a href="#account-info" class="active" data-toggle="tab"><i class="fa fa-user"></i> Profile</a>
                 <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Orders</a>
-                <a href="#address-edit" data-toggle="tab"><i class="fa fa-map-marker"></i> address</a>
+                <a href="#address-edit" data-toggle="tab"><i class="fa fa-map-marker"></i> Address</a>
                 <a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i> Logout</a>
               </div>
             </div>
@@ -29,7 +31,7 @@
             <div class="col-lg-9 col-md-8">
               <div class="tab-content" id="myaccountContent">
                 <!-- Single Tab Content Start -->
-                <div class="tab-pane fade" id="dashboad" role="tabpanel">
+                <div class="tab-pane fade" id="dashboard" role="tabpanel">
                   <div class="myaccount-content">
                     <h3>Dashboard</h3>
                     <div class="welcome">
@@ -69,7 +71,7 @@
                                 <td>{{ $order->price }}</td>
                                 <td>{{ $order->quantity* $order->price }}</td>
                                 <td>{{ $order->created_at }}</td>
-                                <td>Pending</td>
+                                <td><x-transaction-status :status="$order->transaction->status"></x-transaction-status></td>
                               </tr>
                             @endforeach
                           @else
@@ -180,9 +182,9 @@
                 <!-- Single Tab Content Start -->
                 <div class="tab-pane fade show active" id="account-info" role="tabpanel">
                   <div class="myaccount-content">
-                    <h3>Account Details</h3>
+                    <h3>Profile</h3>
                     <div class="account-details-form">
-                      <form action="/users/{{ Auth::user()->id }}" method="post">
+                      <form action="{{ route('profile.update') }}" method="post">
                         @csrf
                         @method('put')
                         <div class="profile-header">

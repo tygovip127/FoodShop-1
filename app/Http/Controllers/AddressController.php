@@ -53,10 +53,10 @@ class AddressController extends Controller
             $user->ward_id = $request->input('ward');
             $user->address = $request->input('street');
             $user->save();
-            return redirect()->intended('/account')
+            return redirect()->intended('/profile')
                 ->with('address_success', "Change address successfully!");
         }
-        return redirect()->intended('/account')
+        return redirect()->intended('/profile')
             ->with('address_fail', "Change address fail! Try again!");
     }
 
