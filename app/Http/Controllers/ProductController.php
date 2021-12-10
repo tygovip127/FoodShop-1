@@ -134,6 +134,7 @@ class ProductController extends Controller
                 'restock_value' => $request->input('restock_value'),
                 'sell_value' => $request->input('sell_value'),
                 'subtitle' => $request->input('subtitle'),
+                'discount' => $request->discount,
             ];
 
             if (!empty($data_upload_feature_image)) {
@@ -248,6 +249,7 @@ class ProductController extends Controller
     }
 
     public static function availableRate($product_id) {
+        // return true if user can rate
         $user=Auth::user();
         if($user!=null){
             $orders= $user->orders; //get all orders of user
@@ -258,5 +260,29 @@ class ProductController extends Controller
             }
         }
         return false;
+    }
+
+    public function setDiscount(Request $request){
+        // set discount for products
+        $discount = $request->input('discount');
+        $checkAll = $request->input('checkAll');
+        $productIDs = $request->input('productIDs');
+        $status=null;
+        if($checkAll=="true"){
+            // set discount for all products
+            $status= DB::table('products')
+                ->update(['discount' => $discount]);
+        }else{
+            // set discount for products is selected
+            foreach($productIDs as $item){
+                $status= DB::table('products')
+                    ->where('id',$item)
+                    ->update(['discount' => $discount]);
+            }
+        }
+
+        return response()->json([
+            'status' => $status,
+        ]);
     }
 }

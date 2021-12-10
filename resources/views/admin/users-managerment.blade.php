@@ -50,7 +50,19 @@
                   </tbody>
                 </table>
               </div>
-
+            </div>
+            <div class="pro-pagination-style text-center mt-10">
+              <span class="hidden">
+                {{ $pages = ceil($users->total()/ $users->perPage()) }}
+              </span>
+              <ul>
+                <li><a class="prev" href="{{ $users->previousPageUrl() }}"><i class="icon-arrow-left"></i></a></li>
+                @for ($i = 1; $i <= $pages; $i++) <li>
+                  <a href=<?php echo url()->current() . "?page=" . $i ?>>{{ $i }}</a>
+                  </li>
+                  @endfor
+                  <li><a class="next" href="{{ $users->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -58,19 +70,6 @@
     </div>
   </div>
 </div>
-</div>
-<div class="pro-pagination-style text-center mt-10">
-  <span class="hidden">
-    {{ $pages = ceil($users->total()/ $users->perPage()) }}
-  </span>
-  <ul>
-    <li><a class="prev" href="{{ $users->previousPageUrl() }}"><i class="icon-arrow-left"></i></a></li>
-    @for ($i = 1; $i <= $pages; $i++) <li>
-      <a href=<?php echo url()->current() . "?page=" . $i ?>>{{ $i }}</a>
-      </li>
-      @endfor
-      <li><a class="next" href="{{ $users->nextPageUrl() }}"><i class="icon-arrow-right"></i></a></li>
-  </ul>
 </div>
 </div>
 </div>

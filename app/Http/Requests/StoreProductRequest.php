@@ -28,7 +28,8 @@ class StoreProductRequest extends FormRequest
             'category_id' => 'required',
             'restock_value' => 'numeric|min:0',
             'sell_value' => 'numeric|min:0',
-            'subtitle' => 'max:1000'
+            'subtitle' => 'max:1000',
+            'discount' => 'min:0|max:100',
         ];
     }
 }

@@ -94,6 +94,7 @@ Route::middleware(['auth', 'can:access_admin'])->group(function () {
         Route::resource('/roles', RoleController::class);
         Route::resource('/transactions', TransactionController::class);
         Route::resource('/permissions', PermissionController::class);
+        Route::post('/products/set-discount',[Controllers\ProductController::class, 'setDiscount']);
     });
 });
  

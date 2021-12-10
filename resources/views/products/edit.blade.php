@@ -79,13 +79,15 @@
             </div>
           </div>
           <div class="col-lg-6">
-            <label for="subtitle" class="required">Subtitle</label>
-            <textarea name="subtitle" id="editor" class="@error('subtitle') is-invalid @enderror">{{ $product->subtitle }}</textarea>
-            @error('subtitle')
-            <span class="text-danger">
-              <strong>{{ $message }}</strong>
-            </span>
-            @enderror
+            <div class="single-input-item">
+              <label for="discount" class="required">Discount(%)</label>
+              <input type="number" name="discount" id="discount" class="@error('discount') is-invalid @enderror" min="0" max="100" value="{{ $product->discount }}" />
+              @error('discount')
+              <span class="text-danger">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+            </div>
           </div>
           <div class="col-lg-6">
             <div class="single-input-item">
@@ -112,6 +114,15 @@
               </span>
 
             </div>
+          </div>
+          <div class="col-lg-12">
+            <label for="subtitle" class="required">Subtitle</label>
+            <textarea name="subtitle" id="editor" class="@error('subtitle') is-invalid @enderror">{{ $product->subtitle }}</textarea>
+            @error('subtitle')
+            <span class="text-danger">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
           </div>
         </div>
         <div class="single-input-item mt-2">
