@@ -19,16 +19,21 @@ class CartController extends Controller
     public function addToCart($id)
     {
         $product = Product::find($id);
+        $product->view++;
+        $product->save();
         $cart = session()->get('cart', []);
 
+        $discount = $product->discount;
+        $price= $product->sell_value*(100-$discount)/100.0;
         if (isset($cart[$id])) {
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
                 "title" => $product->title,
                 "quantity" => 1,
-                "price" => $product->sell_value,
+                "price" => $price,
                 "image" => $product->feature_image_path,
+                "discount" => $discount
             ];
         }
         session()->put('cart', $cart);

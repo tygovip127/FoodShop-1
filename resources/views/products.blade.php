@@ -49,7 +49,8 @@
                   </div>
                 @endif
                 @foreach ($products as $item)
-                <x-card :id="$item->id" :name="$item->title" :rate="$item->rate"
+                <x-card :id="$item->id" :name="$item->title" 
+                  :rate="$item->rate" :discount="$item->discount"
                   :price="$item->sell_value" :image="$item->feature_image_path">
                 </x-card>
                 @endforeach
@@ -57,7 +58,7 @@
             </div>
             <div id="shop-2" class="tab-pane">
               @foreach ($products as $item)
-              <x-card-horiziontal :id="$item->id" :rate="$item->rate"
+              <x-card-horiziontal :id="$item->id" :rate="$item->rate" :discount="$item->discount"
                 :name="$item->title" :description="$item->subtitle"
                 :price="$item->sell_value" :image="$item->feature_image_path">
               </x-card-horiziontal>

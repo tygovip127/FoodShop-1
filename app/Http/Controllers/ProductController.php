@@ -201,7 +201,7 @@ class ProductController extends Controller
         // render blade compontent to hmtl
         $html_render= array();
         foreach($products as $item){
-            $item= new \App\View\Components\Card($item->id,$item->title,null,$item->sell_value, null, $item->feature_image_path,null,$item->rate);
+            $item= new \App\View\Components\Card($item->id,$item->title,null,$item->sell_value, $item->discount, $item->feature_image_path,null,$item->rate);
             array_push($html_render,$item->resolveView()->with($item->data())->render());
         }
         

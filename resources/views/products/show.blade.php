@@ -77,9 +77,12 @@
           </div>
           <p>{{ strip_tags($product->subtitle) }}</p>
           <div class="pro-details-price">
-            {{-- <span class="new-price">$75.72</span>
-            <span class="old-price">$95.72</span> --}}
-            <span class="new-price">{{ $product->sell_value }} VND</span>
+            @if ($product->discount !=0 || $product->discount != null)
+              <span class="new-price">{{ $product->sell_value*(100-$product->discount)/100.0 }} VND</span>
+              <span class="old-price">{{ $product->sell_value }} VND</span>
+            @else
+             <span class="new-price">{{ $product->sell_value }} VND</span>
+            @endif
           </div>
           <div class="pro-details-quality">
             <span>Quantity:</span>

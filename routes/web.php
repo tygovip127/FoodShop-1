@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\DB;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/login-register',function (){
-    return Auth::user()?  redirect('/account'):  view('login-register');
+    return Auth::user()?  redirect('/profile'):  view('login-register');
 })->name('login-register');
 
 Route::post('/register', [Controllers\Auth\RegisterController::class, 'create'])->name('register');

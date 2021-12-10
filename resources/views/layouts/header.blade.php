@@ -81,7 +81,7 @@
         <div class="col-7">
           <div class="header-action header-action-flex">
             <div class="same-style-2">
-              <a href="login-register.html"><i class="icon-user"></i></a>
+              <a href="/login-register"><i class="icon-user"></i></a>
             </div>
             <div class="same-style-2">
               <a href="#" class="cart-active"><i class="icon-heart"></i><span class="pro-count red">03</span></a>
