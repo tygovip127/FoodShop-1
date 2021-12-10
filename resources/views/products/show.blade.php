@@ -72,6 +72,7 @@
             <div class="product-review-order">
               <span>{{ count($rating) }} Reviews</span>
               <span>{{ count($product->orders) }} Orders</span>
+              <span>{{ $product->view }} Views</span>
             </div>
           </div>
           <p>{{ strip_tags($product->subtitle) }}</p>
