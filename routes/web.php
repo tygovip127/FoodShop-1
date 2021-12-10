@@ -7,11 +7,11 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
-use App\Models\Province;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -91,6 +91,7 @@ Route::middleware(['auth', 'can:access_admin'])->group(function () {
         Route::resource('/banner', Controllers\BannerController::class);
         Route::resource('/roles', RoleController::class);
         Route::resource('/transactions', TransactionController::class);
+        Route::resource('/permissions', PermissionController::class);
     });
 });
  

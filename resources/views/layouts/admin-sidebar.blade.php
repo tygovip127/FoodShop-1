@@ -40,7 +40,7 @@
                 @endcan 
 
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ route('admin.transactions.index') }}">Order Management</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.transactions.index') }}">Transaction Management</a></li>
                 </ul>
                 
                 <ul class="dropdown-menu">

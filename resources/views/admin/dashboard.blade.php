@@ -154,7 +154,7 @@
               <table class="table align-items-center mb-0">
                 <thead>
                   <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                       ID
                     </th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
@@ -174,7 +174,7 @@
                     <p class="text-left text-xs font-weight-bold mb-0">{{ $user->fullname }}</p>
                   </td>
                   <td class="">
-                    <p class="text-xs font-weight-bold mb-0">{{ $user->transactions()->sum('total') }}</p>
+                    <p class="text-xs font-weight-bold mb-0">{{ $user->spent }}</p>
                   </td>
                 </tr>
                 @endforeach

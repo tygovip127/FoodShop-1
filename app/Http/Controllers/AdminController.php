@@ -57,7 +57,7 @@ class AdminController extends Controller
         }
 
         //Statistic most order users
-        $users = User::take(5)->get();
+        $users = DB::table('users')->join('transactions', 'transactions.user_id', '=', 'users.id')->selectRaw('users.id, fullname, sum(total) as spent')->groupBy('user_id')->orderBy('spent', 'desc')->take(5)->get();
         
         //Statistic most view products
         $products = DB::table('products')->orderBy('view', 'desc')->take(5)->get();
