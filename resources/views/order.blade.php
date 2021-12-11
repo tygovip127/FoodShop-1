@@ -92,9 +92,10 @@
               </div>
               <div class="your-order-middle">
                 <ul>
-                  <?php $subTotal=0; $total=0; ?>
+                  <?php $subTotal = 0;
+                  $total = 0; ?>
                   @foreach ($items as $id =>$item)
-                  <?php  $subTotal+= $item['quantity']*$item['price'] ?>
+                  <?php $subTotal += $item['quantity'] * $item['price'] ?>
                   <li>{{ $item['title'] }} x{{ $item['quantity'] }}
                     <span>{{ $item['quantity']*$item['price'] }} VND</span>
                   </li>
@@ -103,7 +104,7 @@
               </div>
               <div class="your-order-info order-subtotal">
                 <ul>
-                  <li>Subtotal <span>{{ $subTotal }} VND </span></li>
+                  <li>Subtotal <span>&nbsp;VND</span><span id="subTotalValue">{{ $subTotal }}</span></li>
                 </ul>
               </div>
               <div class="your-order-info order-shipping">
@@ -132,10 +133,31 @@
                   </li>
                 </ul>
               </div>
+              
+              <!-- Display voucher select -->
+              <div class="your-order-info order-subtotal">
+                <ul>
+                  <li>Voucher
+                    <span>
+                      <!-- Select voucher and then update totalValue -->
+                      <select name="voucher_id" id="voucher_id" class="update-voucher">
+                      @if(Auth::user()->vouchers)
+                        <option value="">Apply voucher</option>
+                        @foreach(Auth::user()->vouchers as $voucher)
+                        <option value="{{ $voucher->id }}">{{ $voucher->discount . '%. ' . $voucher->name }} </option>
+                        @endforeach
+                      @else
+                        <option value="">Empty</option>
+                      @endif
+                      </select>
+                    </span>
+                  </li>
+                </ul>
+              </div>
               <div class="your-order-info order-total">
                 <ul>
-                  <li>Total <span>{{ $total=$subTotal-0 }} VND</span></li>
-                  <li class="hidden" id="total-value">{{ $total }}</li>
+                  <li>Total <span id="totalValue">{{ $subTotal }} VND</span></li>
+                  <li class="hidden" id="total-value">{{ $subTotal }}</li>
                 </ul>
               </div>
             </div>

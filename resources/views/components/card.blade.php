@@ -4,7 +4,7 @@
       <a href="{{ route('product.show',$id) }}">
         <img src="{{ asset(''.$image.'') }}" class="obf-cover product-show-img" alt="">
       </a>
-      
+
       @if($discount !=0 || $discount != null)
       <span class="pro-badge left bg-red">{{ $discount }}%</span>
       @endif
@@ -18,13 +18,13 @@
     <div class="product-content-wrap-2 text-center">
       <div class="product-rating-wrap">
         <div class="product-rating">
-          <i class="icon_star"></i>
-          <i class="icon_star"></i>
-          <i class="icon_star"></i>
-          <i class="icon_star"></i>
-          <i class="icon_star"></i>
+          @for ($i = 1; $i <= $rate; $i++) <i class="text-warning icon_star"></i>
+            @endfor
+            @for ($i = 5; $i > $rate; $i--)
+            <i class="text-muted icon_star"></i>
+            @endfor
         </div>
-        <span>(5)</span>
+        <span>({{ $rate }})</span>
       </div>
       <h3><a href="{{ route('product.show',$id) }}">{{ $name }}</a></h3>
       <div class="product-price-2">
@@ -39,13 +39,14 @@
     <div class="product-content-wrap-2 product-content-position text-center">
       <div class="product-rating-wrap">
         <div class="product-rating">
-          <i class="icon_star"></i>
-          <i class="icon_star"></i>
-          <i class="icon_star"></i>
-          <i class="icon_star"></i>
-          <i class="icon_star"></i>
+          @for ($i = 1; $i <= $rate; $i++) 
+           <i class="text-warning icon_star"></i>
+          @endfor
+          @for ($i = 5; $i > $rate; $i--)
+           <i class="text-muted icon_star"></i>
+          @endfor
         </div>
-        <span>(5)</span>
+        <span>({{ $rate }})</span>
       </div>
       <h3><a href="{{ route('product.show',$id) }}">{{ $name }}</a></h3>
       <div class="product-price-2">

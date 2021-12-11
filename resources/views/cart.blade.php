@@ -19,7 +19,7 @@
                 <tr>
                   <th>Image</th>
                   <th>Product Name</th>
-                  <th>Until Price</th>
+                  <th>Last Price</th>
                   <th>Qty</th>
                   <th>Subtotal</th>
                   <th>action</th>

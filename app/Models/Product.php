@@ -20,7 +20,8 @@ class Product extends Model
         'subtitle',
         'rate',
         'view',
-        'feature_image_path'
+        'feature_image_path',
+        'discount',
     ];
 
     public function pictures(){

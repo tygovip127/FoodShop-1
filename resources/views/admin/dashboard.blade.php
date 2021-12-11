@@ -419,33 +419,6 @@
                 <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 9:34 PM</p>
               </div>
             </div>
-            <div class="timeline-block mb-3">
-              <span class="timeline-step">
-                <i class="ni ni-credit-card text-warning text-gradient"></i>
-              </span>
-              <div class="timeline-content">
-                <h6 class="text-dark text-sm font-weight-bold mb-0">New card added for order #4395133</h6>
-                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">20 DEC 2:20 AM</p>
-              </div>
-            </div>
-            <div class="timeline-block mb-3">
-              <span class="timeline-step">
-                <i class="ni ni-key-25 text-primary text-gradient"></i>
-              </span>
-              <div class="timeline-content">
-                <h6 class="text-dark text-sm font-weight-bold mb-0">Unlock packages for development</h6>
-                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">18 DEC 4:54 AM</p>
-              </div>
-            </div>
-            <div class="timeline-block">
-              <span class="timeline-step">
-                <i class="ni ni-money-coins text-dark text-gradient"></i>
-              </span>
-              <div class="timeline-content">
-                <h6 class="text-dark text-sm font-weight-bold mb-0">New order #9583120</h6>
-                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">17 DEC</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

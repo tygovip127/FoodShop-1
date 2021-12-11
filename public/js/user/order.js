@@ -7,6 +7,7 @@ $("#order").click(function() {
 
     var total = document.getElementById("total-value").innerText
     var phone = $("#phone").val();
+    var voucher_id = $('#voucher_id').val();
 
     console.log(address, total, phone)
 
@@ -23,6 +24,7 @@ $("#order").click(function() {
             'address': address,
             'phone': phone,
             'total': total,
+            'voucher_id': voucher_id //send voucher_id
         },
         success: function(response) {
             var $success = document.getElementById('response')
@@ -34,4 +36,34 @@ $("#order").click(function() {
             console.log(error.getMessage())
         }
     })
-})
+});
+
+// function to update totalValue when change voucher
+$(".update-voucher").change(function(e) {
+    e.preventDefault();
+    var element = $(this);
+    var host = window.location.host;
+    console.log(element);
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        url: `http://${host}/order/update`,
+        method: "put",
+        data: {
+            voucher_id: element.val()
+        },
+        success: function(response) {
+            let totalValueDisplay = document.getElementById('totalValue');
+            let totalValue = document.getElementById('total-value');
+            let subTotal = document.getElementById('subTotalValue');
+            let newTotalValue = parseInt(subTotal.innerText) - parseInt(subTotal.innerText) * response.voucher / 100;
+            totalValueDisplay.innerText = newTotalValue + " VND";
+            totalValue.innerText = newTotalValue;
+        }
+    });
+});

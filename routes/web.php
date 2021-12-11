@@ -7,6 +7,7 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\VoucherController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +33,7 @@ use Illuminate\Http\Request;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/login-register',function (){
-    return Auth::user()?  redirect('/account'):  view('login-register');
+    return Auth::user()?  redirect('/profile'):  view('login-register');
 })->name('login-register');
 
 Route::post('/register', [Controllers\Auth\RegisterController::class, 'create'])->name('register');
@@ -65,6 +67,7 @@ Route::get('/products', [Controllers\ProductController::class, 'showProducts'])-
 Route::get('/products/filter', [Controllers\ProductController::class, 'filter'])->name('products.filter');
 Route::get("/products/{id}", [Controllers\ProductController::class, 'show'])->name('product.show');
 Route::get("/search", [Controllers\ProductController::class, 'search'])->name('search');
+Route::post('/rating',[Controllers\ProductController::class, 'rating'])->name('rating');
 
 Route::get("/error", function (){
     return view('error');
@@ -81,6 +84,7 @@ Route::delete('/cart/remove-all', [Controllers\CartController::class, 'removeAll
 
 Route::get("/order",[Controllers\OrderController::class, 'index'])->middleware('auth')->name("order.index");
 Route::post("/order/store",[Controllers\OrderController::class, 'store'])->name("order.store");
+Route::put("/order/update",[OrderController::class, 'update'])->name("order.update");
 
 //route for admin
 Route::middleware(['auth', 'can:access_admin'])->group(function () {
@@ -94,20 +98,19 @@ Route::middleware(['auth', 'can:access_admin'])->group(function () {
         Route::resource('/transactions', TransactionController::class);
         Route::resource('/permissions', PermissionController::class);
         Route::resource('/vouchers', VoucherController::class);
+        Route::post('/products/set-discount',[Controllers\ProductController::class, 'setDiscount']);
     });
 });
  
 
 Route::get("/test", function(Request $request){
-    return $products=Product::paginate(9);
-    $html= array();
-    foreach($products as $item){
-        $item = new App\View\Components\Card($item->id);
-        array_push($html,$item->resolveView()->with($item->data())->render());
-    }
-    return response()->json([
-        "test"=> $html,
-    ],200);
+    // return App\Models\Transaction::select('user_id',DB::raw('sum(total)'),DB::raw('count(user_id)'))
+    // ->where('user_id','=','2')
+    // ->groupBy('user_id')
+    // ->get();
+    // return Order::select(Order::raw('sum(price)'))->get();
+    // return view('test');
+   
 });
 
 

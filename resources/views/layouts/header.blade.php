@@ -49,7 +49,7 @@
                     <li>
                       <a href="/login-register"><i class="icon-user"></i></a>
                       <ul class="sub-menu-style">
-                        <li><a href="/account">{{ (Auth::user() && Auth::user()->fullname)? Auth::user()->fullname: "My account" }} </a></li>
+                        <li><a href="/profile">{{ (Auth::user() && Auth::user()->fullname)? Auth::user()->fullname: "My account" }} </a></li>
                         <li><a href="/logout">Logout </a></li>
                         @can('access_admin')
                         <li><a href="/admin">Admin </a></li>
@@ -81,7 +81,7 @@
         <div class="col-7">
           <div class="header-action header-action-flex">
             <div class="same-style-2">
-              <a href="login-register.html"><i class="icon-user"></i></a>
+              <a href="/login-register"><i class="icon-user"></i></a>
             </div>
             <div class="same-style-2">
               <a href="#" class="cart-active"><i class="icon-heart"></i><span class="pro-count red">03</span></a>
@@ -139,7 +139,7 @@
       </div>
       <div class="cart-checkout-btn">
         <a class="btn-hover cart-btn-style" href="/cart">view cart</a>
-        <a class="no-mrg btn-hover cart-btn-style" href="checkout.html">checkout</a>
+        <a class="no-mrg btn-hover cart-btn-style" href="/order">checkout</a>
       </div>
     </div>
   </div>

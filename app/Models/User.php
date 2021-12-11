@@ -75,6 +75,11 @@ class User extends Authenticatable
         return $this->hasMany(Transaction::class);
     }
 
+    public function vouchers()
+    {
+        return $this->hasMany(Voucher::class);
+    }
+
     public function checkPermissionAccess($permission_check)
     {
         $roles = Auth::user()->roles;

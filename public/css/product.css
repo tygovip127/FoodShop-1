@@ -27,7 +27,7 @@
     object-fit: cover;
 }
 
-.btn-style-1{
+.btn-style-1 {
     background-color: #000000;
     border: medium none;
     color: #fff;
@@ -40,5 +40,44 @@
 }
 
 .btn-style-1 button:hover {
-    background-color:#ff2f2f;
+    background-color: #ff2f2f;
+}
+
+#full-stars .rating-group {
+    display: inline-flex;
+}
+
+#full-stars .rating__icon {
+    pointer-events: none;
+}
+
+#full-stars .rating__input {
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+#full-stars .rating__input--none {
+    display: none;
+}
+
+#full-stars .rating__label {
+    cursor: pointer;
+    padding: 0 0.1em;
+    font-size: 1.5rem;
+}
+
+#full-stars .rating__icon--star {
+    color: orange;
+}
+
+#full-stars .rating__input:checked~.rating__label .rating__icon--star {
+    color: #ddd;
+}
+
+#full-stars .rating-group:hover .rating__label .rating__icon--star {
+    color: orange;
+}
+
+#full-stars .rating__input:hover~.rating__label .rating__icon--star {
+    color: #ddd;
 }

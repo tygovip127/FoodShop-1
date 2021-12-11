@@ -1,4 +1,7 @@
 <tr class="text-center pb-10">
+    <td>
+        <input type="checkbox" name="select[]" value="{{ $id }}" style="width:20px">
+    </td>
     <td class="ps-4">
         <p class="text-xs font-weight-bold mb-0">{{ $id }}</p>
     </td>
