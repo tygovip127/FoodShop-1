@@ -124,10 +124,18 @@ class PermissionController extends Controller
             {
                 Permission::find($permission_child->id)->delete();
             }
-            $this->deleteModelTrait($this->permission, $id);
+            $permission_parent->delete();
             DB::commit();
+            return response()->json([
+                'code' => 200,
+                'message' => 'success'
+            ], 200);
         } catch (\Exception $exception) {
             DB::rollBack();
+            return response()->json([
+                'code' => 500,
+                'message' => 'fail'
+            ], 500);
         }
     }
 }

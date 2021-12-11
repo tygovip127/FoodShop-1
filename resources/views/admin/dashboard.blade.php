@@ -158,6 +158,9 @@
                       ID
                     </th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                      Username
+                    </th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                       Full name
                     </th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -171,10 +174,13 @@
                     <p class="text-xs font-weight-bold mb-0">{{ $user->id }}</p>
                   </td>
                   <td class="">
+                    <p class="text-left text-xs font-weight-bold mb-0">{{ $user->username }}</p>
+                  </td>
+                  <td class="">
                     <p class="text-left text-xs font-weight-bold mb-0">{{ $user->fullname }}</p>
                   </td>
                   <td class="">
-                    <p class="text-xs font-weight-bold mb-0">{{ $user->spent }}</p>
+                    <p class="text-xs font-weight-bold mb-0">{{ $user->spent ? $user->spent : '0' }}</p>
                   </td>
                 </tr>
                 @endforeach

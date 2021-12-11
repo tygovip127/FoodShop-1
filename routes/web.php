@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VoucherController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -92,6 +93,7 @@ Route::middleware(['auth', 'can:access_admin'])->group(function () {
         Route::resource('/roles', RoleController::class);
         Route::resource('/transactions', TransactionController::class);
         Route::resource('/permissions', PermissionController::class);
+        Route::resource('/vouchers', VoucherController::class);
     });
 });
  

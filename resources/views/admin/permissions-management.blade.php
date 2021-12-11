@@ -21,12 +21,12 @@
                                 <option value="{{ $module }}">{{ $module }} </option>
                                 @endforeach
                             </select>
+                            @error('module_parent')
+                            <span class="text-danger">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
-                        @error('module_parent')
-                        <span class="text-danger">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
                     </div>
                     <div class="col-lg-12">
                         <div class="card">

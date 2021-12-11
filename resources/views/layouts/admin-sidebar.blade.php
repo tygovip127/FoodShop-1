@@ -46,6 +46,9 @@
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.permissions.index') }}">Permission Management</a></li>
                 </ul>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('admin.vouchers.index') }}">Voucher Management</a></li>
+                </ul>
             </li>
             <li class="nav-link mt-auto">
                 <a href="#"
