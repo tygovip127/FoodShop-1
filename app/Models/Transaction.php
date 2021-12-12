@@ -18,4 +18,9 @@ class Transaction extends Model
         'user_id',
         'status'
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

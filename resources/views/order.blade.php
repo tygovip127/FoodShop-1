@@ -157,7 +157,6 @@
               <div class="your-order-info order-total">
                 <ul>
                   <li>Total <span id="totalValue">{{ $subTotal }} VND</span></li>
-                  <li class="hidden" id="total-value">{{ $subTotal }}</li>
                 </ul>
               </div>
             </div>

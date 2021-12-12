@@ -5,11 +5,10 @@ $("#order").click(function() {
     var address = document.getElementById("address-billing-1").innerText
     address += document.getElementById("address-billing-2").innerText
 
-    var total = document.getElementById("total-value").innerText
     var phone = $("#phone").val();
     var voucher_id = $('#voucher_id').val();
 
-    console.log(address, total, phone)
+    console.log(address, phone)
 
     $.ajaxSetup({
         headers: {
@@ -23,7 +22,6 @@ $("#order").click(function() {
         data: {
             'address': address,
             'phone': phone,
-            'total': total,
             'voucher_id': voucher_id //send voucher_id
         },
         success: function(response) {

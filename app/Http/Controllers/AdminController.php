@@ -66,7 +66,7 @@ class AdminController extends Controller
 
         //Statistic most view products
         $products = DB::table('products')->orderBy('view', 'desc')->take(5)->get();
-
+        
         //Statistic order request
         $transaction_requests = Transaction::latest()->take(10)->get();
         $total_done_transactions = Transaction::where('status', 2)->count();

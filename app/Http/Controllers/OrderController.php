@@ -35,23 +35,22 @@ class OrderController extends Controller
             $items = session()->get('cart');
             $deliver_address = $request->get('address');
             $customer_contact = $request->get('phone');
-            $total = $request->get('total');
             $voucher_discount = 0;
-            
+
             //check voucher discount whether valid
             if ($request->voucher_id) {
                 $voucher_discount = Voucher::where('user_id', $user->id)
                     ->where('id', $request->voucher_id)
+                    ->first()
                     ->discount;
             }
-            dd($voucher_discount);
+
             $transaction = Transaction::create([
                 'user_id' => $user->id,
                 'customer_name' => $user->fullname,
                 'customer_contact' => $customer_contact,
                 'deliver_address' => $deliver_address,
                 'number' => count($items),
-                'total' => $total,
             ]);
 
             $orders_arr = array();
@@ -64,6 +63,10 @@ class OrderController extends Controller
                 ]);
                 array_push($orders_arr, $order);
             }
+
+            $transaction->update([
+                'total' => $transaction->orders()->where('transaction_id', $transaction->id)->sum('price')
+            ]);
 
             //delete voucher after used
             if ($request->voucher_id) {
