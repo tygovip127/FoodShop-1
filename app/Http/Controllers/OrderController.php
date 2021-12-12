@@ -36,8 +36,15 @@ class OrderController extends Controller
             $deliver_address = $request->get('address');
             $customer_contact = $request->get('phone');
             $total = $request->get('total');
-            $voucher_discount = Voucher::find($request->voucher_id)->discount;
-
+            $voucher_discount = 0;
+            
+            //check voucher discount whether valid
+            if ($request->voucher_id) {
+                $voucher_discount = Voucher::where('user_id', $user->id)
+                    ->where('id', $request->voucher_id)
+                    ->discount;
+            }
+            dd($voucher_discount);
             $transaction = Transaction::create([
                 'user_id' => $user->id,
                 'customer_name' => $user->fullname,
@@ -57,7 +64,7 @@ class OrderController extends Controller
                 ]);
                 array_push($orders_arr, $order);
             }
-            
+
             //delete voucher after used
             if ($request->voucher_id) {
                 Voucher::find($request->voucher_id)->delete();
