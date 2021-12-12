@@ -4,7 +4,6 @@ $("#order").click(function() {
 
     var address = document.getElementById("address-billing-1").innerText
     address += document.getElementById("address-billing-2").innerText
-
     var phone = $("#phone").val();
     var voucher_id = $('#voucher_id').val();
 
@@ -57,11 +56,9 @@ $(".update-voucher").change(function(e) {
         },
         success: function(response) {
             let totalValueDisplay = document.getElementById('totalValue');
-            let totalValue = document.getElementById('total-value');
             let subTotal = document.getElementById('subTotalValue');
             let newTotalValue = parseInt(subTotal.innerText) - parseInt(subTotal.innerText) * response.voucher / 100;
             totalValueDisplay.innerText = newTotalValue + " VND";
-            totalValue.innerText = newTotalValue;
         }
     });
 });
