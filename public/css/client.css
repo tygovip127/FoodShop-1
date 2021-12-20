@@ -11,3 +11,14 @@
 .bg-info {
     background-color: #3abaf4 !important;
 }
+
+.obf-cover {
+    object-fit: cover;
+}
+
+.avatar-mini {
+    width: 28px;
+    height: 28px;
+    border: 2px solid rgb(209, 209, 209);
+    padding: 2px;
+}

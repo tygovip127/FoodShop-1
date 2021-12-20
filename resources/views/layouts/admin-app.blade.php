@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="{{ asset('../../css/plugins/magnific-popup.css')}}">
   <link rel="stylesheet" href="{{ asset('../../css/plugins/jquery-ui.css')}}">
   <link rel="stylesheet" href="{{ asset('../../css/style.css')}}">
+  <link rel="stylesheet" href="{{ asset('../../css/admin.css')}}">
 
   <link rel="stylesheet" href="{{ asset('../../css/vendor/vendor.min.css')}}">
   <link rel="stylesheet" href="{{ asset('../../css/style.min.css')}}">  

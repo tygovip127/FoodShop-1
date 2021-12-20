@@ -50,11 +50,8 @@
                     <li><a class="nav-link" href="{{ route('admin.vouchers.index') }}">Voucher Management</a></li>
                 </ul>
             </li>
-            <li class="nav-link mt-auto">
-                <a href="#"
-                    class="btn btn-primary btn-md active px-5 text-white" target="_blank" role="button" aria-pressed="true">
-                    Setting Information</a>
-            </li>
-
+            <li class="menu-header">Setting interface</li>
+            <li><a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-cog"></i> <span>Setting interface</span></a></li>
+        </ul>
     </aside>
 </div>

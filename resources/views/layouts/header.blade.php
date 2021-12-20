@@ -47,7 +47,8 @@
                 <nav>
                   <ul>
                     <li>
-                      <a href="/login-register"><i class="icon-user"></i></a>
+                      @if(Auth::user())
+                      <a href="/login-register"><img src="{{ Auth::user()->avatar }}" alt="" class="obf-cover avatar-mini rounded-circle"></a>
                       <ul class="sub-menu-style">
                         <li><a href="/profile">{{ (Auth::user() && Auth::user()->fullname)? Auth::user()->fullname: "My account" }} </a></li>
                         <li><a href="/logout">Logout </a></li>
@@ -55,6 +56,9 @@
                         <li><a href="/admin">Admin </a></li>
                         @endcan
                       </ul>
+                      @else
+                      <a href="/login-register"><i class="icon-user"></i></a>
+                      @endif
                     </li>
                   </ul>
                 </nav>

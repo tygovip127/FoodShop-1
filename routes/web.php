@@ -32,15 +32,15 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/login-register',function (){
-    return Auth::user()?  redirect('/profile'):  view('login-register');
+Route::get('/login-register', function () {
+    return Auth::user() ?  redirect('/profile') :  view('login-register');
 })->name('login-register');
 
 Route::post('/register', [Controllers\Auth\RegisterController::class, 'create'])->name('register');
 Route::post("/login", [Controllers\Auth\LoginController::class, 'login'])->name('login');
 Route::put('/change-password', [Controllers\Auth\ResetPasswordController::class, 'changePassword'])
     ->name('change-password');
-Route::get("/forgot-password", function (){
+Route::get("/forgot-password", function () {
     return view("user.forgot-password");
 });
 Route::post("/forgot-password", [Controllers\Auth\ResetPasswordController::class, 'sentEmailLink'])->name("password.email");
@@ -56,35 +56,37 @@ Route::get("/logout", function () {
 })->name('logout');
 
 //route login with google
-Route::get('/google', [Controllers\Auth\LoginController::class,'redirectToGoogle']);
-Route::get('/google/callback',  [Controllers\Auth\LoginController::class,'handleGoogleCallback']);
+Route::get('/google', [Controllers\Auth\LoginController::class, 'redirectToGoogle']);
+Route::get('/google/callback',  [Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
 
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/products', [Controllers\ProductController::class, 'showProducts'])->name('products');
 Route::get('/products/filter', [Controllers\ProductController::class, 'filter'])->name('products.filter');
 Route::get("/products/{id}", [Controllers\ProductController::class, 'show'])->name('product.show');
 Route::get("/search", [Controllers\ProductController::class, 'search'])->name('search');
-Route::post('/rating',[Controllers\ProductController::class, 'rating'])->name('rating');
+Route::post('/rating', [Controllers\ProductController::class, 'rating'])->name('rating');
 
-Route::get("/error", function (){
+Route::get("/error", function () {
     return view('error');
 });
 
 // Route::put("/users/{id}", [Controllers\UserController::class, 'update'])->name('users.update');
 // Route::get('/users',[Controllers\UserController::class, 'index']);
 
-Route::get("/cart",[Controllers\CartController::class, 'index']);
+Route::get("/cart", [Controllers\CartController::class, 'index']);
 Route::get("/cart/add-to-cart/{id}", [Controllers\CartController::class, 'addToCart'])->name('addToCart');
 Route::delete("/cart/remove-cart-item", [Controllers\CartController::class, 'remove'])->name('removeCartItem');
 Route::put("/cart/update", [Controllers\CartController::class, 'update'])->name('updateCart');
 Route::delete('/cart/remove-all', [Controllers\CartController::class, 'removeAll'])->name("cart.remove.all");
 
-Route::get("/order",[Controllers\OrderController::class, 'index'])->middleware('auth')->name("order.index");
-Route::post("/order/store",[Controllers\OrderController::class, 'store'])->name("order.store");
-Route::put("/order/update",[OrderController::class, 'update'])->name("order.update");
+Route::get("/order", [Controllers\OrderController::class, 'index'])->middleware('auth')->name("order.index");
+Route::post("/order/store", [Controllers\OrderController::class, 'store'])->name("order.store");
+Route::put("/order/update", [OrderController::class, 'update'])->name("order.update");
 
 //route for admin
 Route::middleware(['auth', 'can:access_admin'])->group(function () {
@@ -98,19 +100,17 @@ Route::middleware(['auth', 'can:access_admin'])->group(function () {
         Route::resource('/transactions', TransactionController::class);
         Route::resource('/permissions', PermissionController::class);
         Route::resource('/vouchers', VoucherController::class);
-        Route::post('/products/set-discount',[Controllers\ProductController::class, 'setDiscount']);
+        Route::post('/products/set-discount', [Controllers\ProductController::class, 'setDiscount']);
     });
 });
- 
 
-Route::get("/test", function(Request $request){
+
+Route::get("/test", function (Request $request) {
     // return App\Models\Transaction::select('user_id',DB::raw('sum(total)'),DB::raw('count(user_id)'))
     // ->where('user_id','=','2')
     // ->groupBy('user_id')
     // ->get();
     // return Order::select(Order::raw('sum(price)'))->get();
     // return view('test');
-   
+
 });
-
-
