@@ -7,7 +7,6 @@
   <div class="shop-area pb-120 section-padding-2">
     <div class="container-fluid">
       <div class="row">
-        @include('layouts.admin-sidebar')
         <div class="col-12">
           <div class="myaccount-content">
             <h3>Banners</h3>

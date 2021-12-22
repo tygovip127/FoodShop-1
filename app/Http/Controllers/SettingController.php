@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Setting;
 use App\Models\Transaction;
+use App\Traits\StorageImageTrait;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class TransactionController extends Controller
+class SettingController extends Controller
 {
+    use StorageImageTrait;
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +17,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::latest()->paginate(20);
-        return view('admin.transactions-management', compact('transactions'));
+        $settings = Setting::all();
+        return view('admin.settings', compact('settings'));
     }
 
     /**
@@ -72,17 +73,22 @@ class TransactionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'status' => ['numeric', 'max:2'],
+        $setting = Setting::find($id);
+        
+        if($setting->name === 'logo')
+        {
+            $content_image = $this->storageTraitUpload($request, 'content', 'logo');
+            $content = $content_image ? $content_image['file_path'] : '';
+        } else
+        {
+            $content = $request->content;
+        }
+        
+        $setting->update([
+            'content' => $content
         ]);
-
-        $data_transaction_update = [
-            'status' => $request->status
-        ];
-        Transaction::find($id)->update($data_transaction_update);
-        return redirect()->route('admin.transactions.index');
+        return redirect()->route('admin.settings.index')->with('setting_success', 'Save successfully');
     }
-
 
     /**
      * Remove the specified resource from storage.

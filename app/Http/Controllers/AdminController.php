@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Setting;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -72,6 +73,7 @@ class AdminController extends Controller
         $total_done_transactions = Transaction::where('status', 2)->count();
         $total_approved_transactions = Transaction::where('status', 1)->count();
         $total_waiting_transactions = Transaction::where('status', 0)->count();
+
         $data = [
             'total_orders_today',
             'total_orders_last_day',
@@ -88,7 +90,7 @@ class AdminController extends Controller
             'transaction_requests',
             'total_done_transactions',
             'total_approved_transactions',
-            'total_waiting_transactions'
+            'total_waiting_transactions',
         ];
         return view('admin.dashboard', compact($data));
     }

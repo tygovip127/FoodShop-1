@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Setting;
+use App\Models\Transaction;
+
 class CategoryController extends Controller
 {
    
@@ -11,7 +14,7 @@ class CategoryController extends Controller
     {
         $this->authorize('list_category');
         $categories= Category::paginate(10);
-        return view('admin.category', ['categories' => $categories]);
+        return view('admin.category', compact('categories'));
     }
 
     public function create()

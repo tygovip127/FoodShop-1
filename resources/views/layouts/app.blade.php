@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="{{ asset('../../css/plugins/magnific-popup.css')}}">
   <link rel="stylesheet" href="{{ asset('../../css/plugins/jquery-ui.css')}}">
   <link rel="stylesheet" href="{{ asset('../../css/style.css')}}">
+  <link rel="stylesheet" href="{{ asset('../../css/client.css')}}">
 
   <link rel="stylesheet" href="{{ asset('../../css/vendor/vendor.min.css')}}">
   <link rel="stylesheet" href="{{ asset('../../css/style.min.css')}}">
@@ -32,11 +33,19 @@
 
 <body>
   <div class="main-wrapper">
-    @include('layouts.header')
+    @include('layouts.header', ['logo' => App\Models\Setting::where('name', 'logo')->first()->content])
 
     @yield('content')
 
-    @include('layouts.footer')
+    @include('layouts.footer', ['logo' => App\Models\Setting::where('name', 'logo')->first()->content,
+      'introduction' => App\Models\Setting::where('name', 'introduction')->first()->content, 
+      'location' => App\Models\Setting::where('name', 'location')->first()->content, 
+      'hotline' => App\Models\Setting::where('name', 'hotline')->first()->content, 
+      'twitter_link' => App\Models\Setting::where('name', 'twitter link')->first()->content, 
+      'facebook_link' => App\Models\Setting::where('name', 'facebook link')->first()->content, 
+      'gmail_link' => App\Models\Setting::where('name', 'gmail link')->first()->content, 
+      'instagram_link' => App\Models\Setting::where('name', 'instagram link')->first()->content, 
+      'youtube_link' => App\Models\Setting::where('name', 'youtube link')->first()->content])
   </div>
   <script src="{{ asset('../../js/vendor/modernizr-3.6.0.min.js') }}"></script>
   <script src="{{ asset('../../js/vendor/jquery-3.5.1.min.js') }}"></script>

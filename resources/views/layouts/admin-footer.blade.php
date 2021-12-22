@@ -34,15 +34,15 @@
       <div class="col-lg-6 col-md-6">
         <div class="contact-info-wrap">
           <div class="footer-logo">
-            <a href="#"><img src="{{ asset('/images/logo/logo.png') }}" alt="logo"></a>
+            <a href="#"><img src="{{ asset($logo) }}" alt="logo"></a>
           </div>
           <div class="single-contact-info">
             <span>Our Location</span>
-            <p>Hoa Hai, Ngu Hanh Son, Da Nang</p>
+            <p>{{ $location }}</p>
           </div>
           <div class="single-contact-info">
             <span>24/7 hotline:</span>
-            <p>(+99) 052 128 2399</p>
+            <p>{{ $hotline }}</p>
           </div>
         </div>
       </div>
@@ -60,11 +60,11 @@
             </nav>
           </div>
           <div class="social-style-2 social-style-2-mrg">
-            <a href="#"><i class="social_twitter"></i></a>
-            <a href="#"><i class="social_facebook"></i></a>
-            <a href="#"><i class="social_googleplus"></i></a>
-            <a href="#"><i class="social_instagram"></i></a>
-            <a href="#"><i class="social_youtube"></i></a>
+            <a href="{{ $twitter_link}}"><i class="social_twitter"></i></a>
+            <a href="{{ $facebook_link}}"><i class="social_facebook"></i></a>
+            <a href="{{ $gmail_link}}"><i class="social_googleplus"></i></a>
+            <a href="{{ $instagram_link}}"><i class="social_instagram"></i></a>
+            <a href="{{ $youtube_link}}"><i class="social_youtube"></i></a>
           </div>
           {{-- <div class="copyright">
             <p>Copyright © 2020 HasThemes | <a href="https://hasthemes.com/">Built with <span>Norda</span> by

@@ -1,10 +1,10 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="/"><img src="{{ asset('images/logo/logo.png') }}" alt="logo" class="w-100 px-5"></a>
+            <a href="/"><img src="{{ asset($logo) }}" alt="logo" class="w-100 px-5 h-100"></a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="/"><img src="{{ asset('images/logo/logo.png') }}" alt="logo" class="w-100 px-1"></a>
+            <a href="/"><img src="{{  asset($logo) }}" alt="logo" class="w-100 px-1"></a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
@@ -51,7 +51,7 @@
                 </ul>
             </li>
             <li class="menu-header">Setting interface</li>
-            <li><a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-cog"></i> <span>Setting interface</span></a></li>
+            <li><a class="nav-link" href="{{ route('admin.settings.index') }}"><i class="fas fa-cog"></i> <span>Interface setting</span></a></li>
         </ul>
     </aside>
 </div>

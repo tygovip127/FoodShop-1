@@ -96,15 +96,13 @@
       <div class="row">
         <div class="col-lg-3 col-md-3">
           <div class="about-us-logo">
-            <img alt="" src="{{ asset('images/logo/logo.png') }}">
+            <img alt="" src="{{ asset($logo) }}">
           </div>
         </div>
         <div class="col-lg-9 col-md-9">
           <div class="about-us-content">
             <h3>Introduce</h3>
-            <p>Food Shop VKU is a business concept is to offer Foods and Drinks with the best price. It has since it
-              was founded in 2021 with the goal of bringing the best products to everyone at reasonable prices.
-              It's really convenient, fast and economical thanks to ordering via our webiste</p>
+            {!! $introduction !!}
             <div class="signature">
               <h2>Food Shop VKU</h2>
             </div>

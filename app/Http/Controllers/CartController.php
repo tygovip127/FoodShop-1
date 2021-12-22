@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Province;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -12,7 +13,7 @@ class CartController extends Controller
     public function index(){
         $address= Auth::user() ?AddressController::getUserAddress(Auth::user()->id): NULL;
         $provinces = Province::all();
-        return view('cart', ["provinces"=> $provinces, 'address'=>$address]);
+        return view('cart', compact('provinces', 'address'));
     }
 
 

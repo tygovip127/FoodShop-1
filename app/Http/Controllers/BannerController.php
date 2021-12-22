@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Banner;
+use App\Models\Setting;
+use App\Models\Transaction;
 use App\Traits\DeleteModelTrait;
 use App\Traits\StorageImageTrait;
 use Illuminate\Support\Facades\File; 
@@ -22,7 +24,7 @@ class BannerController extends Controller
     {
         $this->authorize('list_banner');
         $banners = Banner::all();
-        return view('admin.banner',['banners'=>$banners]);
+        return view('admin.banner', compact('banners'));
     }
 
     public function create()

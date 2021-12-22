@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Product;
+use App\Models\Setting;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,7 +29,9 @@ class HomeController extends Controller
     {
         $banners = Banner::all();
         $products = Product::paginate(8);
-        return view('index', compact('banners', 'products'));
-    }
+        $logo = Setting::where('name', 'logo')->first()->content;
+        $introduction = Setting::where('name', 'introduction')->first()->content;
 
+        return view('index', compact('banners', 'products', 'logo', 'introduction'));
+    }
 }

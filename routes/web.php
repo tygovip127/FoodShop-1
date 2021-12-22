@@ -11,10 +11,12 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoucherController;
 use App\Models\Product;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -33,7 +35,8 @@ use Illuminate\Support\Facades\DB;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/login-register', function () {
-    return Auth::user() ?  redirect('/profile') :  view('login-register');
+    $logo = Setting::where('name', 'logo')->first();
+    return Auth::user() ?  redirect('/profile') :  view('login-register', compact('logo'));
 })->name('login-register');
 
 Route::post('/register', [Controllers\Auth\RegisterController::class, 'create'])->name('register');
@@ -41,7 +44,8 @@ Route::post("/login", [Controllers\Auth\LoginController::class, 'login'])->name(
 Route::put('/change-password', [Controllers\Auth\ResetPasswordController::class, 'changePassword'])
     ->name('change-password');
 Route::get("/forgot-password", function () {
-    return view("user.forgot-password");
+    $logo = Setting::where('name', 'logo')->first();
+    return view("user.forgot-password", compact('logo'));
 });
 Route::post("/forgot-password", [Controllers\Auth\ResetPasswordController::class, 'sentEmailLink'])->name("password.email");
 
@@ -101,6 +105,7 @@ Route::middleware(['auth', 'can:access_admin'])->group(function () {
         Route::resource('/permissions', PermissionController::class);
         Route::resource('/vouchers', VoucherController::class);
         Route::post('/products/set-discount', [Controllers\ProductController::class, 'setDiscount']);
+        Route::resource('/settings', SettingController::class);
     });
 });
 

@@ -33,8 +33,8 @@
           </ul>
         </nav>
       </div>
-      <div class="same-style-2 pt-1">
-        <a href="/admin/transactions"><i class="icon-bell"></i><span class="pro-count red">01</span></a>
+      <div class="same-style-2 pt-1 mr-5">
+        <a href="/admin/transactions"><i class="icon-bell"></i><span class="pro-count red">{{ $transaction_notification }}</span></a>
       </div>
     </div>
   </div>

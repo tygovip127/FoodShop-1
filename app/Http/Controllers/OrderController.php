@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Province;
 use App\Models\Transaction;
 use App\Models\Order;
+use App\Models\Setting;
 use App\Models\Voucher;
 
 class OrderController extends Controller

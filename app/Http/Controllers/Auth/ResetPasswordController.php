@@ -30,16 +30,16 @@ class ResetPasswordController extends Controller
             $_user = User::find($user->id);
             $_user->password = Hash::make($new_pwd);
             $_user->save();
-            return redirect()->indented('/account')->with('pwd_success', 'Change password successfully!');
+            return redirect()->indented('/profile')->with('pwd_success', 'Change password successfully!');
         }
 
         if (Hash::check($current_pwd, $user->password) && $new_pwd===$confirm_pwd) {
             $_user = User::find($user->id);
             $_user->password = Hash::make($new_pwd);
             $_user->save();
-            return redirect()->intended('/account')->with('pwd_success', 'Change password successfully!');
+            return redirect()->intended('/profile')->with('pwd_success', 'Change password successfully!');
         }
-        return redirect()->intended('/account')->with('pwd_fail', 'The password is incorrect. Please check again!');
+        return redirect()->intended('/profile')->with('pwd_fail', 'The password is incorrect. Please check again!');
     }
 
 

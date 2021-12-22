@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\RegisterUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
+use App\Models\Setting;
+use App\Models\Transaction;
 use App\Models\User;
 use App\Traits\DeleteModelTrait;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +28,7 @@ class UserController extends Controller
     {
         $this->authorize('list_user');
         $users = User::paginate(10);
-        return view('admin.users-managerment', ['users' => $users]);
+        return view('admin.users-management', compact('users'));
     }
 
     public function create()

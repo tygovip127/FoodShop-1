@@ -7,6 +7,8 @@ use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Rating;
+use App\Models\Setting;
+use App\Models\Transaction;
 use App\Traits\DeleteModelTrait;
 use App\Traits\StorageImageTrait;
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +46,7 @@ class ProductController extends Controller
         return view('products', [
             'products' => $products,
             'categories' => $categories,
-            'url' => $url
+            'url' => $url,
         ]);
     }
 
@@ -52,14 +54,14 @@ class ProductController extends Controller
     {
         $this->authorize('list_product');
         $products = Product::latest()->paginate(10);
-        return view('admin.product-management', ['products' => $products]);
+        return view('admin.product-management', compact('products'));
     }
 
     public function create()
     {
         $this->authorize('create_product');
         $categories = Category::all();
-        return view('products.create', ['categories' => $categories]);
+        return view('products.create', compact('categories'));
     }
 
     public function store(StoreProductRequest $request)

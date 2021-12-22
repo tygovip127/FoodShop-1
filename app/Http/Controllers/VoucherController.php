@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Setting;
+use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Voucher;
 use Illuminate\Http\Request;

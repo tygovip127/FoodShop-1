@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Province;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,10 +12,11 @@ class ProfileController extends Controller
 {
     public function index()
     {
+        $logo = Setting::where('name', 'logo')->first();
         $provinces = Province::all();
         $id = Auth::user()->id;
         $address = AddressController::getUserAddress($id);
-        return view('profile', ['provinces' => $provinces, 'address' => $address]);
+        return view('profile', compact('provinces', 'address', 'logo'));
     }
 
     public function update(Request $request)

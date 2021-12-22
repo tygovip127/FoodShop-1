@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="{{ asset('../../css/admin.css')}}">
 
   <link rel="stylesheet" href="{{ asset('../../css/vendor/vendor.min.css')}}">
-  <link rel="stylesheet" href="{{ asset('../../css/style.min.css')}}">  
+  <link rel="stylesheet" href="{{ asset('../../css/style.min.css')}}">
 
   <!-- General CSS Files Sidebar -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -41,12 +41,20 @@
 
 <body>
   <div class="main-wrapper">
-    @include('layouts.admin-header')
-    @include('layouts.admin-sidebar')
+    @include('layouts.admin-header', ['transaction_notification' => App\Models\Transaction::where('status', 0)->count()])
+    @include('layouts.admin-sidebar', ['logo' => App\Models\Setting::where('name', 'logo')->first()->content])
     @yield('content')
 
 
-    @include('layouts.admin-footer')
+    @include('layouts.admin-footer', ['logo' => App\Models\Setting::where('name', 'logo')->first()->content,
+      'introduction' => App\Models\Setting::where('name', 'introduction')->first()->content, 
+      'location' => App\Models\Setting::where('name', 'location')->first()->content, 
+      'hotline' => App\Models\Setting::where('name', 'hotline')->first()->content, 
+      'twitter_link' => App\Models\Setting::where('name', 'twitter link')->first()->content, 
+      'facebook_link' => App\Models\Setting::where('name', 'facebook link')->first()->content, 
+      'gmail_link' => App\Models\Setting::where('name', 'gmail link')->first()->content, 
+      'instagram_link' => App\Models\Setting::where('name', 'instagram link')->first()->content, 
+      'youtube_link' => App\Models\Setting::where('name', 'youtube link')->first()->content])
   </div>
   <script src="{{ asset('../../js/vendor/modernizr-3.6.0.min.js') }}"></script>
   <script src="{{ asset('../../js/vendor/jquery-3.5.1.min.js') }}"></script>
