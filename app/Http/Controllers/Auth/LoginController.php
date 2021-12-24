@@ -60,7 +60,7 @@ class LoginController extends Controller
     {
         $userData = Socialite::driver('google')->stateless()->user();
         $user = User::where('email', $userData->email)->first();
-        // $finduser = User::where('google_id', $user->id)->first();
+
         if ($user) {
             if (!($user->google_id)) {
                 $user->update([
@@ -73,6 +73,36 @@ class LoginController extends Controller
                 'fullname' => $userData->name,
                 'email' => $userData->email,
                 'google_id' => $userData->id,
+                'avatar' => $userData->avatar_original,
+                'token' => Hash::make(Str::random(64)),
+            ]);
+        }
+        Auth::login($user);
+        return redirect('/');
+    }
+
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function handleFacebookCallback()
+    {
+        $userData = Socialite::driver('facebook')->stateless()->user();
+        $user = User::where('email', $userData->email)->first();
+
+        if ($user) {
+            if (!($user->facebook_id)) {
+                $user->update([
+                    'facebook_id' => $userData->id,
+                    'avatar' => $userData->avatar_original
+                ]);
+            }
+        } else {
+            User::create([
+                'fullname' => $userData->name,
+                'email' => $userData->email,
+                'facebook_id' => $userData->id,
                 'avatar' => $userData->avatar_original,
                 'token' => Hash::make(Str::random(64)),
             ]);

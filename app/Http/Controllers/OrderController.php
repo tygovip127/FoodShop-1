@@ -37,6 +37,7 @@ class OrderController extends Controller
             $deliver_address = $request->get('address');
             $customer_contact = $request->get('phone');
             $voucher_discount = 0;
+            $total = 0;
 
             //check voucher discount whether valid
             if ($request->voucher_id) {
@@ -63,10 +64,11 @@ class OrderController extends Controller
                     'price' => $item['price'] - $item['price'] * $voucher_discount / 100,
                 ]);
                 array_push($orders_arr, $order);
+                $total += ($item['price'] - $item['price'] * $voucher_discount / 100) * $item['quantity'];
             }
 
             $transaction->update([
-                'total' => $transaction->orders()->where('transaction_id', $transaction->id)->sum('price')
+                'total' => $total
             ]);
 
             //delete voucher after used

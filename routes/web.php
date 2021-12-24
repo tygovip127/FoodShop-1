@@ -63,6 +63,10 @@ Route::get("/logout", function () {
 Route::get('/google', [Controllers\Auth\LoginController::class, 'redirectToGoogle']);
 Route::get('/google/callback',  [Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
 
+//route login with google
+Route::get('/facebook', [Controllers\Auth\LoginController::class, 'redirectToFacebook']);
+Route::get('/facebook/callback',  [Controllers\Auth\LoginController::class, 'handleFacebookCallback']);
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
