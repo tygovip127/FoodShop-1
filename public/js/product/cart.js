@@ -1,6 +1,13 @@
 
   // function to add a product to cart
   $(".add-to-cart").click(function (event) {
+    $qtyElement =document.getElementsByName('qtybutton')
+    $qty=1;
+
+    if($qtyElement.length!=0) {
+      $qty= $qtyElement[0].value
+    }
+
     event.preventDefault();
     var element = $(this);
     var id= element.parent().attr("data-id")
@@ -10,6 +17,9 @@
       url:  `http://${host}/cart/add-to-cart/${id}`,
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
+      data: {
+        'qty': $qty,
+      },
       success: function (response) {
         var cart=response;
 
@@ -26,7 +36,7 @@
           var li_item=`
             <li class="single-product-cart">
                 <div class="cart-img">
-                  <a href="#"><img src="{{ asset(${item.data.image}) }}" alt=""></a>
+                  <a href="#"><img src="${item.data.image}" alt=""></a>
                 </div>
                 <div class="cart-title">
                   <h4><a href="#">${item.data.title}</a></h4>

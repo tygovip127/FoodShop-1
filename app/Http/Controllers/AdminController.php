@@ -61,7 +61,7 @@ class AdminController extends Controller
         $users = DB::table('users')
             ->leftJoin('transactions', 'transactions.user_id', '=', 'users.id')
             ->selectRaw('users.id, username, fullname, sum(total) as spent')
-            ->groupBy('users.id')->orderBy('spent', 'desc')
+            ->groupBy('users.id', "username", "fullname")->orderBy('spent', 'desc')
             ->take(5)
             ->get();
 

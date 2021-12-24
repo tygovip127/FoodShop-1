@@ -132,7 +132,7 @@
       <div id="product-1" class="tab-pane active">
         <div class="row">
           @foreach ($products as $item)
-          <x-simple-card :id="$item->id" :name="$item->title" :price="$item->sell_value" discount="100" :image="$item->feature_image_path" link="product-details.html">
+          <x-simple-card :id="$item->id" :name="$item->title" :price="$item->sell_value" :discount="$item->discount" :image="$item->feature_image_path">
           </x-simple-card>
           @endforeach
         </div>
@@ -140,7 +140,7 @@
       <div id="product-2" class="tab-pane">
         <div class="row">
         @foreach ($products as $item)
-          <x-simple-card :id="$item->id" :name="$item->title" :price="$item->sell_value" discount="15" :image="$item->feature_image_path" link="product-details.html">
+          <x-simple-card :id="$item->id" :name="$item->title" :price="$item->sell_value" :discount="$item->discount" :image="$item->feature_image_path">
           </x-simple-card>
           @endforeach
         </div>
@@ -148,7 +148,7 @@
       <div id="product-3" class="tab-pane">
         <div class="row">
         @foreach ($products as $item)
-          <x-simple-card :id="$item->id" :name="$item->title" :price="$item->sell_value" discount="15" :image="$item->feature_image_path" link="product-details.html">
+          <x-simple-card :id="$item->id" :name="$item->title" :price="$item->sell_value" :discount="$item->discount" :image="$item->feature_image_path">
           </x-simple-card>
           @endforeach
         </div>
@@ -156,7 +156,7 @@
       <div id="product-4" class="tab-pane">
         <div class="row">
         @foreach ($products as $item)
-          <x-simple-card :id="$item->id" :name="$item->title" :price="$item->sell_value" discount="15" :image="$item->feature_image_path" link="product-details.html">
+          <x-simple-card :id="$item->id" :name="$item->title" :price="$item->sell_value" :discount="$item->discount" :image="$item->feature_image_path">
           </x-simple-card>
           @endforeach
         </div>

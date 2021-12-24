@@ -17,21 +17,22 @@ class CartController extends Controller
     }
 
 
-    public function addToCart($id)
+    public function addToCart($id, Request $request)
     {
         $product = Product::find($id);
         $product->view++;
         $product->save();
         $cart = session()->get('cart', []);
+        $qty= $request->get('qty');
 
         $discount = $product->discount;
         $price= $product->sell_value*(100-$discount)/100.0;
         if (isset($cart[$id])) {
-            $cart[$id]['quantity']++;
+            $cart[$id]['quantity']+= $qty;
         } else {
             $cart[$id] = [
                 "title" => $product->title,
-                "quantity" => 1,
+                "quantity" => $qty,
                 "price" => $price,
                 "image" => $product->feature_image_path,
                 "discount" => $discount,
