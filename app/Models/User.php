@@ -29,6 +29,7 @@ class User extends Authenticatable
         'address',
         'token',
         'google_id',
+        'facebook_id',
         'avatar',
         'province_id',
         'district_id',

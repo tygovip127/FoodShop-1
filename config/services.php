@@ -35,4 +35,10 @@ return [
         'client_secret' => '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',
         'redirect' => 'http://127.0.0.1:8000/google/callback',
     ],
+
+    'facebook' => [
+        'client_id' => env('FACEBOOK_APP_ID'),
+        'client_secret' => env('FACEBOOK_APP_SECRET'),
+        'redirect' => 'http://localhost:8000/facebook/callback',
+    ],
 ];

@@ -51,6 +51,7 @@
                       <hr>
                       <div class="row login-toggle-btn text-center">
                         <a href="{{ url('google') }}" class="btn">Or you can login with Google</a>
+                        <a href="{{ url('facebook') }}" class="btn">Or you can login with Facebook</a>
                       </div>
                     </div>
                   </form>
