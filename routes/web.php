@@ -16,6 +16,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoucherController;
 use App\Models\Product;
+use App\Models\Transaction;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -117,5 +118,4 @@ Route::get("/test", function (Request $request) {
     // ->get();
     // return Order::select(Order::raw('sum(price)'))->get();
     // return view('test');
-
 });
