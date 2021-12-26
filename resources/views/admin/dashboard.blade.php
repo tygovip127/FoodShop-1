@@ -203,7 +203,6 @@
           <h6 class="ms-2 mt-4 mb-0"> Active Users </h6>
           <p class="text-sm ms-2"> (<span class="font-weight-bolder">+23%</span>) than last week </p>
           <div class="container border-radius-lg">
-            <div class="row">
               <div class="col-3 py-3 ps-0">
                 <div class="d-flex mb-2">
                   <div class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-primary text-center me-2 d-flex align-items-center justify-content-center">
@@ -301,25 +300,6 @@
                 <h4 class="font-weight-bolder">43</h4>
                 <div class="progress w-75">
                   <div class="progress-bar bg-dark w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-7">
-      <div class="card">
-        <div class="card-header pb-0">
-          <h6>Sales overview</h6>
-          <p class="text-sm">
-            <i class="fa fa-arrow-up text-success"></i>
-            <span class="font-weight-bold">4% more</span> this month
-          </p>
-        </div>
-        <div class="card-body p-3">
-          <div class="chart">
-            <canvas id="chart-line" class="chart-canvas" height="300px"></canvas>
           </div>
         </div>
       </div>
