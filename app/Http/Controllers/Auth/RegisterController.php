@@ -40,7 +40,7 @@ class RegisterController extends Controller
       ]);
       $user->roles()->sync('2');
       DB::commit();
-      return redirect()->intended('/login-register');
+      return redirect()->intended('/login-register')->with('reg_success', 'Register successfully!');;
     } catch (\Exception $exception) {
       DB::rollBack();
       return redirect()->intended('/login-register');

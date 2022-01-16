@@ -62,7 +62,9 @@ class Product extends Model
     }
 
     public function scopeSale($query, $request){
-
+        if($request->sale== "true"){
+            return $query->where('discount' ,'>', 0);
+        }
     }
 
     public function scopeRangerPrice($query, $request){

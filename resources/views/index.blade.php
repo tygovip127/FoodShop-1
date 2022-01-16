@@ -139,7 +139,7 @@
       </div>
       <div id="product-2" class="tab-pane">
         <div class="row">
-        @foreach ($products as $item)
+        @foreach ($sale_products as $item)
           <x-simple-card :id="$item->id" :name="$item->title" :price="$item->sell_value" :discount="$item->discount" :image="$item->feature_image_path">
           </x-simple-card>
           @endforeach
@@ -147,7 +147,7 @@
       </div>
       <div id="product-3" class="tab-pane">
         <div class="row">
-        @foreach ($products as $item)
+        @foreach ($new_products as $item)
           <x-simple-card :id="$item->id" :name="$item->title" :price="$item->sell_value" :discount="$item->discount" :image="$item->feature_image_path">
           </x-simple-card>
           @endforeach

@@ -48,7 +48,10 @@
                   <ul>
                     <li>
                       @if(Auth::user())
-                      <a href="/login-register"><img src="{{ Auth::user()->avatar }}" alt="" class="obf-cover avatar-mini rounded-circle"></a>
+                      <a href="/login-register">
+                        <img src="{{ (Auth::user() && Auth::user()->avatar)? Auth::user()->avatar : asset('../images/users/usersavatardefault_92824.png') }}"
+                         alt="" class="obf-cover avatar-mini rounded-circle">
+                      </a>
                       <ul class="sub-menu-style">
                         <li><a href="/profile">{{ (Auth::user() && Auth::user()->fullname)? Auth::user()->fullname: "My account" }} </a></li>
                         <li><a href="/logout">Logout </a></li>

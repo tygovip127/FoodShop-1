@@ -28,10 +28,12 @@ class HomeController extends Controller
     public function index()
     {
         $banners = Banner::all();
-        $products = Product::paginate(8);
+        $products = Product::latest()->paginate(8);
+        $sale_products =Product::where('discount' ,'>', 0)->paginate(8);
+        $new_products = Product::latest()->paginate(8);
         $logo = Setting::where('name', 'logo')->first()->content;
         $introduction = Setting::where('name', 'introduction')->first()->content;
 
-        return view('index', compact('banners', 'products', 'logo', 'introduction'));
+        return view('index', compact('banners', 'products','sale_products', 'new_products', 'logo', 'introduction'));
     }
 }

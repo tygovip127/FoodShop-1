@@ -99,6 +99,11 @@
                     </span>
                     @enderror
                     <input type="text" name="_phone" placeholder="Phone Number" value="{{ old('_phone') }}">
+                    @if (session()->has('reg_success'))
+                        <div class="alert alert-success">
+                          {{ session()->get('reg_success') }}
+                        </div>
+                    @endif
                     <div class="button-box text-center">
                       <button type="submit">Register</button>
                     </div>
