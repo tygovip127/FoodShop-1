@@ -98,7 +98,6 @@ Route::post("/order/store", [Controllers\OrderController::class, 'store'])->name
 Route::put("/order/update", [OrderController::class, 'update'])->name("order.update");
 
 //route for admin
-<<<<<<< HEAD
 Route::middleware(['auth', 'can:access_admin'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('dashboard');
@@ -113,14 +112,6 @@ Route::middleware(['auth', 'can:access_admin'])->group(function () {
         Route::post('/products/set-discount', [Controllers\ProductController::class, 'setDiscount']);
         Route::resource('/settings', SettingController::class);
     });
-=======
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
-    Route::get('/users-management',[Controllers\AdminController::class, "showUsers"])->name('users-managerment');
-    Route::resource('/category', Controllers\CategoryController::class);
->>>>>>> 9810944424194ff831e55c14bcb70d901c7ac3e8
 });
 
 

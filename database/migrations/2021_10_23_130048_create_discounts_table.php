@@ -18,10 +18,10 @@ class CreateDiscountsTable extends Migration
             $table->unsignedInteger('discount');
             $table->date('start_time');
             $table->date('end_time');
-            $table->unsignedInteger('goods_id');
-            $table->foreign('goods_id')
+            $table->unsignedInteger('product_id');
+            $table->foreign('product_id')
                 ->references('id')
-                ->on('goods')
+                ->on('products')
                 ->onDelete('cascade');
             $table->timestamps();
         });
